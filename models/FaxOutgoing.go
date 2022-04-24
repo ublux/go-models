@@ -1,10 +1,10 @@
 package models
 
 type FaxOutgoing struct {
-	Id                 string          `bson:"_id" json:"id"`
 	EmailAttachment    EmailAttachment `bson:"emailAttachment" json:"emailAttachment"`
 	ErrorMessage       string          `bson:"errorMessage" json:"errorMessage"`
 	FaxStatus          string          `bson:"faxStatus" json:"faxStatus"`
+	Id                 string          `bson:"id" json:"id"`
 	IdFaxOutgoingGroup string          `bson:"idFaxOutgoingGroup" json:"idFaxOutgoingGroup"`
 	IsComplete         bool            `bson:"isComplete" json:"isComplete"`
 	IsPortrait         bool            `bson:"isPortrait" json:"isPortrait"`
@@ -16,19 +16,13 @@ type FaxOutgoing struct {
 	To                 string          `bson:"to" json:"to"`
 }
 
-// Implementing interface IUbluxSubDocument
-// Implementing interface IUbluxDocumentId
+// Implementing interface UbluxSubDocument
 func (x FaxOutgoing) GetId() string {
 	return x.Id
 }
 
-// Implementing interface UbluxSubDocument
-
 // BUILDER from bson map:
 func BuildFaxOutgoing(m map[string]interface{}, x *FaxOutgoing) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["emailAttachment"]; ok && val != nil {
 		BuildEmailAttachment(val.(map[string]interface{}), &x.EmailAttachment)
 	}
@@ -37,6 +31,9 @@ func BuildFaxOutgoing(m map[string]interface{}, x *FaxOutgoing) {
 	}
 	if val, ok := m["faxStatus"]; ok && val != nil {
 		x.FaxStatus = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idFaxOutgoingGroup"]; ok && val != nil {
 		x.IdFaxOutgoingGroup = val.(string)

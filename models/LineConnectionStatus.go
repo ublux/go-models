@@ -1,8 +1,8 @@
 package models
 
 type LineConnectionStatus struct {
-	Id            string `bson:"_id" json:"id"`
 	DateConnected string `bson:"dateConnected" json:"dateConnected"`
+	Id            string `bson:"id" json:"id"`
 	IpLAN         string `bson:"ipLAN" json:"ipLAN"`
 	IpWAN         string `bson:"ipWAN" json:"ipWAN"`
 	IsConnected   bool   `bson:"isConnected" json:"isConnected"`
@@ -11,21 +11,18 @@ type LineConnectionStatus struct {
 	UserAgent     string `bson:"userAgent" json:"userAgent"`
 }
 
-// Implementing interface IUbluxSubDocument
-// Implementing interface IUbluxDocumentId
+// Implementing interface UbluxSubDocument
 func (x LineConnectionStatus) GetId() string {
 	return x.Id
 }
 
-// Implementing interface UbluxSubDocument
-
 // BUILDER from bson map:
 func BuildLineConnectionStatus(m map[string]interface{}, x *LineConnectionStatus) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateConnected"]; ok && val != nil {
 		x.DateConnected = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["ipLAN"]; ok && val != nil {
 		x.IpLAN = val.(string)

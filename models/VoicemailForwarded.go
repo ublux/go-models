@@ -1,10 +1,7 @@
 package models
 
-import (
-	. "github.com/ublux/go-models/enums"
-
-	"go.mongodb.org/mongo-driver/bson/primitive"
-)
+import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type VoicemailForwarded struct {
 	Voicemail

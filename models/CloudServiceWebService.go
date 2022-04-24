@@ -1,10 +1,7 @@
 package models
 
-import (
-	. "github.com/ublux/go-models/enums"
-
-	"go.mongodb.org/mongo-driver/bson/primitive"
-)
+import . "github.com/ublux/go-models/enums"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type CloudServiceWebService struct {
 	Id               string           `bson:"_id" json:"id"`
