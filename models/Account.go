@@ -1,26 +1,28 @@
 package models
 
-import . "github.com/ublux/go-models/enums"
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	. "github.com/ublux/go-models/enums"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Account struct {
-	Id                                                        string           `bson:"_id" json:"id"`
-	AccountSecrets                                            AccountSecrets   `bson:"accountSecrets" json:"accountSecrets"`
-	AccountSettings                                           AccountSettings  `bson:"accountSettings" json:"accountSettings"`
-	CompanyName                                               string           `bson:"companyName" json:"companyName"`
-	CountriesThatCanCallInternationally                       []CountryIsoCode `bson:"countriesThatCanCallInternationally" json:"countriesThatCanCallInternationally"`
-	CountriesThatCanCallLocally                               []CountryIsoCode `bson:"countriesThatCanCallLocally" json:"countriesThatCanCallLocally"`
-	DateCreated                                               string           `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                                               string           `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                                               string           `bson:"dateUpdated" json:"dateUpdated"`
-	HasGrantedSupportAccess                                   bool             `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
-	IdCloudServicePbxFailover                                 string           `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
-	IdCloudServiceWebApp                                      string           `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
-	IdGTrunkTerminationGroup_Or_ValuesSeparatedByCommaIfOnPbx string           `bson:"idGTrunkTerminationGroup_Or_ValuesSeparatedByCommaIfOnPbx" json:"idGTrunkTerminationGroup_Or_ValuesSeparatedByCommaIfOnPbx"`
-	IdsCloudServicePbxs                                       []string         `bson:"idsCloudServicePbxs" json:"idsCloudServicePbxs"`
-	MailingAddress                                            MailingAddress   `bson:"mailingAddress" json:"mailingAddress"`
-	ReserveAccountsOnPhone                                    []int32          `bson:"reserveAccountsOnPhone" json:"reserveAccountsOnPhone"`
-	UbluxPartner                                              UbluxPartner     `bson:"ubluxPartner" json:"ubluxPartner"`
+	Id                                  string           `bson:"_id" json:"id"`
+	AccountSecrets                      AccountSecrets   `bson:"accountSecrets" json:"accountSecrets"`
+	AccountSettings                     AccountSettings  `bson:"accountSettings" json:"accountSettings"`
+	CompanyName                         string           `bson:"companyName" json:"companyName"`
+	CountriesThatCanCallInternationally []CountryIsoCode `bson:"countriesThatCanCallInternationally" json:"countriesThatCanCallInternationally"`
+	CountriesThatCanCallLocally         []CountryIsoCode `bson:"countriesThatCanCallLocally" json:"countriesThatCanCallLocally"`
+	DateCreated                         string           `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                         string           `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                         string           `bson:"dateUpdated" json:"dateUpdated"`
+	HasGrantedSupportAccess             bool             `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
+	IdCloudServicePbxFailover           string           `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
+	IdCloudServiceWebApp                string           `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
+	IdGTrunkTerminationGroup            string           `bson:"idGTrunkTerminationGroup" json:"idGTrunkTerminationGroup"`
+	IdsCloudServicePbxs                 []string         `bson:"idsCloudServicePbxs" json:"idsCloudServicePbxs"`
+	MailingAddress                      MailingAddress   `bson:"mailingAddress" json:"mailingAddress"`
+	ReserveAccountsOnPhone              []int32          `bson:"reserveAccountsOnPhone" json:"reserveAccountsOnPhone"`
+	UbluxPartner                        UbluxPartner     `bson:"ubluxPartner" json:"ubluxPartner"`
 }
 
 // Implementing interface IUbluxDocument
@@ -87,8 +89,8 @@ func BuildAccount(m map[string]interface{}, x *Account) {
 	if val, ok := m["idCloudServiceWebApp"]; ok && val != nil {
 		x.IdCloudServiceWebApp = val.(string)
 	}
-	if val, ok := m["idGTrunkTerminationGroup_Or_ValuesSeparatedByCommaIfOnPbx"]; ok && val != nil {
-		x.IdGTrunkTerminationGroup_Or_ValuesSeparatedByCommaIfOnPbx = val.(string)
+	if val, ok := m["idGTrunkTerminationGroup"]; ok && val != nil {
+		x.IdGTrunkTerminationGroup = val.(string)
 	}
 	if val, ok := m["idsCloudServicePbxs"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case
