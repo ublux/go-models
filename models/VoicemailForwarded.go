@@ -1,5 +1,6 @@
 package models
 
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
@@ -10,13 +11,13 @@ type VoicemailForwarded struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x VoicemailForwarded) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x VoicemailForwarded) GetDateDeleted() string {
+func (x VoicemailForwarded) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x VoicemailForwarded) GetDateUpdated() string {
+func (x VoicemailForwarded) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x VoicemailForwarded) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -27,17 +28,14 @@ func (x VoicemailForwarded) GetId() string {
 
 // BUILDER from bson map:
 func BuildVoicemailForwarded(m map[string]interface{}, x *VoicemailForwarded) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["durationInSeconds"]; ok && val != nil {
 		x.DurationInSeconds = val.(int32)
@@ -47,6 +45,9 @@ func BuildVoicemailForwarded(m map[string]interface{}, x *VoicemailForwarded) {
 	}
 	if val, ok := m["errorMessage"]; ok && val != nil {
 		x.ErrorMessage = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idExtensionForwarde"]; ok && val != nil {
 		x.IdExtensionForwarde = val.(string)

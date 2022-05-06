@@ -1,17 +1,18 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type VoipNumberPhone struct {
-	Id                           string         `bson:"_id" json:"id"`
 	City                         string         `bson:"city" json:"city"`
 	CountryIsoCode               CountryIsoCode `bson:"countryIsoCode" json:"countryIsoCode"`
-	DateCreated                  string         `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                  string         `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                  string         `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                  time.Time      `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                  time.Time      `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                  time.Time      `bson:"dateUpdated" json:"dateUpdated"`
 	Description                  string         `bson:"description" json:"description"`
 	FriendlyName                 string         `bson:"friendlyName" json:"friendlyName"`
+	Id                           string         `bson:"id" json:"id"`
 	IdAccount                    string         `bson:"idAccount" json:"idAccount"`
 	IdCustomerInfo               string         `bson:"idCustomerInfo" json:"idCustomerInfo"`
 	IdTrunkOrigination           string         `bson:"idTrunkOrigination" json:"idTrunkOrigination"`
@@ -34,13 +35,13 @@ type VoipNumberPhone struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x VoipNumberPhone) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x VoipNumberPhone) GetDateDeleted() string {
+func (x VoipNumberPhone) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x VoipNumberPhone) GetDateUpdated() string {
+func (x VoipNumberPhone) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x VoipNumberPhone) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -64,6 +65,9 @@ func (x VoipNumberPhone) GetIdTrunkOrigination() string {
 func (x VoipNumberPhone) GetIdVoipProvider() string {
 	return x.IdVoipProvider
 }
+func (x VoipNumberPhone) GetSID() string {
+	return x.SID
+}
 func (x VoipNumberPhone) GetRulesPhone() []RulePhone {
 	return x.RulesPhone
 }
@@ -81,9 +85,6 @@ func (x VoipNumberPhone) GetInjectFriendlyNameToCallerId() bool {
 }
 func (x VoipNumberPhone) GetRecordIncomingCalls() bool {
 	return x.RecordIncomingCalls
-}
-func (x VoipNumberPhone) GetSID() string {
-	return x.SID
 }
 func (x VoipNumberPhone) GetNumber() string {
 	return x.Number
@@ -126,9 +127,6 @@ func (x VoipNumberPhone) GetTimeZone() string {
 
 // BUILDER from bson map:
 func BuildVoipNumberPhone(m map[string]interface{}, x *VoipNumberPhone) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["city"]; ok && val != nil {
 		x.City = val.(string)
 	}
@@ -136,19 +134,22 @@ func BuildVoipNumberPhone(m map[string]interface{}, x *VoipNumberPhone) {
 		x.CountryIsoCode = CountryIsoCode("CountryIsoCode_" + val.(string))
 	} // is NOT readonly obtained from map
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

@@ -3,23 +3,23 @@ package models
 import . "github.com/ublux/go-models/enums"
 
 type PowerDialerAdvance struct {
-	ContactName                    string            `bson:"contactName" json:"contactName"`
-	CountryIsoCode                 CountryIsoCode    `bson:"countryIsoCode" json:"countryIsoCode"`
-	ErrorMessage                   string            `bson:"errorMessage" json:"errorMessage"`
-	IdCallFlow                     string            `bson:"idCallFlow" json:"idCallFlow"`
-	IdContact                      string            `bson:"idContact" json:"idContact"`
-	NumberOfAttempts               int32             `bson:"numberOfAttempts" json:"numberOfAttempts"`
-	PhoneNumberInternationalFormat string            `bson:"phoneNumberInternationalFormat" json:"phoneNumberInternationalFormat"`
-	PowerDialerStatus              PowerDialerStatus `bson:"powerDialerStatus" json:"powerDialerStatus"`
-	PowerDialerType                PowerDialerType   `bson:"powerDialerType" json:"powerDialerType"`
+	ContactName       string            `bson:"contactName" json:"contactName"`
+	CountryIsoCode    CountryIsoCode    `bson:"countryIsoCode" json:"countryIsoCode"`
+	ErrorMessage      string            `bson:"errorMessage" json:"errorMessage"`
+	IdCallFlow        string            `bson:"idCallFlow" json:"idCallFlow"`
+	IdContact         string            `bson:"idContact" json:"idContact"`
+	NumberOfAttempts  int32             `bson:"numberOfAttempts" json:"numberOfAttempts"`
+	PhoneNumber       string            `bson:"phoneNumber" json:"phoneNumber"`
+	PowerDialerStatus PowerDialerStatus `bson:"powerDialerStatus" json:"powerDialerStatus"`
+	PowerDialerType   PowerDialerType   `bson:"powerDialerType" json:"powerDialerType"`
 }
 
 // Implementing interface PowerDialer
 func (x PowerDialerAdvance) GetPowerDialerType() PowerDialerType {
 	return x.PowerDialerType
 }
-func (x PowerDialerAdvance) GetPhoneNumberInternationalFormat() string {
-	return x.PhoneNumberInternationalFormat
+func (x PowerDialerAdvance) GetPhoneNumber() string {
+	return x.PhoneNumber
 }
 func (x PowerDialerAdvance) GetCountryIsoCode() CountryIsoCode {
 	return x.CountryIsoCode
@@ -60,8 +60,8 @@ func BuildPowerDialerAdvance(m map[string]interface{}, x *PowerDialerAdvance) {
 	if val, ok := m["numberOfAttempts"]; ok && val != nil {
 		x.NumberOfAttempts = val.(int32)
 	}
-	if val, ok := m["phoneNumberInternationalFormat"]; ok && val != nil {
-		x.PhoneNumberInternationalFormat = val.(string)
+	if val, ok := m["phoneNumber"]; ok && val != nil {
+		x.PhoneNumber = val.(string)
 	}
 	if val, ok := m["powerDialerStatus"]; ok && val != nil {
 		x.PowerDialerStatus = PowerDialerStatus("PowerDialerStatus_" + val.(string))

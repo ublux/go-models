@@ -6,7 +6,8 @@ type CallIncoming interface {
 	IReferncesAccount
 
 	GetProviderSid() string
-	GetContact() Contact
 	GetIdVoipProvider() string
+	GetContact() Contact
 	GetIdVoipNumberPhone() string
+	GetFromInternationalFormat() string
 }

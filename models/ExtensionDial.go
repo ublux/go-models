@@ -1,15 +1,16 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type ExtensionDial struct {
-	Id                                       string                                   `bson:"_id" json:"id"`
-	DateCreated                              string                                   `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                              string                                   `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                              string                                   `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                              time.Time                                `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                              time.Time                                `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                              time.Time                                `bson:"dateUpdated" json:"dateUpdated"`
 	EventActionToExecuteIfCallIsNotAnswered  EventAction                              `bson:"eventActionToExecuteIfCallIsNotAnswered" json:"eventActionToExecuteIfCallIsNotAnswered"`
 	ExtensionType                            ExtensionType                            `bson:"extensionType" json:"extensionType"`
+	Id                                       string                                   `bson:"id" json:"id"`
 	IdAccount                                string                                   `bson:"idAccount" json:"idAccount"`
 	IdMusicOnHoldGroup                       string                                   `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
 	IdsLines                                 []string                                 `bson:"idsLines" json:"idsLines"`
@@ -20,13 +21,13 @@ type ExtensionDial struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionDial) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x ExtensionDial) GetDateDeleted() string {
+func (x ExtensionDial) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x ExtensionDial) GetDateUpdated() string {
+func (x ExtensionDial) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x ExtensionDial) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -58,17 +59,14 @@ func (x ExtensionDial) GetInjectExtensionNameToCallerId() bool {
 
 // BUILDER from bson map:
 func BuildExtensionDial(m map[string]interface{}, x *ExtensionDial) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["eventActionToExecuteIfCallIsNotAnswered"]; ok && val != nil {
 		// determine type to build
@@ -89,6 +87,9 @@ func BuildExtensionDial(m map[string]interface{}, x *ExtensionDial) {
 		}
 	}
 	x.ExtensionType = ExtensionType_Dial // readonly property
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)
 	}

@@ -1,14 +1,15 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type ExtensionQueue struct {
-	Id                                                 string                                             `bson:"_id" json:"id"`
-	DateCreated                                        string                                             `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                                        string                                             `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                                        string                                             `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                                        time.Time                                          `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                                        time.Time                                          `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                                        time.Time                                          `bson:"dateUpdated" json:"dateUpdated"`
 	ExtensionType                                      ExtensionType                                      `bson:"extensionType" json:"extensionType"`
+	Id                                                 string                                             `bson:"id" json:"id"`
 	IdAccount                                          string                                             `bson:"idAccount" json:"idAccount"`
 	IdExtensionIfTimeout                               string                                             `bson:"idExtensionIfTimeout" json:"idExtensionIfTimeout"`
 	IdMusicOnHoldGroup                                 string                                             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
@@ -26,13 +27,13 @@ type ExtensionQueue struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionQueue) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x ExtensionQueue) GetDateDeleted() string {
+func (x ExtensionQueue) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x ExtensionQueue) GetDateUpdated() string {
+func (x ExtensionQueue) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x ExtensionQueue) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -64,19 +65,19 @@ func (x ExtensionQueue) GetInjectExtensionNameToCallerId() bool {
 
 // BUILDER from bson map:
 func BuildExtensionQueue(m map[string]interface{}, x *ExtensionQueue) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	x.ExtensionType = ExtensionType_Queue // readonly property
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)
 	}

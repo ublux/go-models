@@ -1,15 +1,16 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type TrunkTermination struct {
-	Id                         string           `bson:"_id" json:"id"`
 	CountryIsoCodesThatCanCall []CountryIsoCode `bson:"countryIsoCodesThatCanCall" json:"countryIsoCodesThatCanCall"`
-	DateCreated                string           `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                string           `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                string           `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                time.Time        `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                time.Time        `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                time.Time        `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName               string           `bson:"friendlyName" json:"friendlyName"`
+	Id                         string           `bson:"id" json:"id"`
 	IdTrunkTerminationExisting string           `bson:"idTrunkTerminationExisting" json:"idTrunkTerminationExisting"`
 	IdVoipProvider             string           `bson:"idVoipProvider" json:"idVoipProvider"`
 	Password                   string           `bson:"password" json:"password"`
@@ -19,13 +20,13 @@ type TrunkTermination struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x TrunkTermination) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x TrunkTermination) GetDateDeleted() string {
+func (x TrunkTermination) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x TrunkTermination) GetDateUpdated() string {
+func (x TrunkTermination) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x TrunkTermination) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -38,9 +39,6 @@ func (x TrunkTermination) GetId() string {
 
 // BUILDER from bson map:
 func BuildTrunkTermination(m map[string]interface{}, x *TrunkTermination) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["countryIsoCodesThatCanCall"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case
 			for _, val = range array {
@@ -49,16 +47,19 @@ func BuildTrunkTermination(m map[string]interface{}, x *TrunkTermination) {
 		}
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idTrunkTerminationExisting"]; ok && val != nil {
 		x.IdTrunkTerminationExisting = val.(string)

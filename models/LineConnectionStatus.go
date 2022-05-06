@@ -1,14 +1,16 @@
 package models
 
+import "time"
+
 type LineConnectionStatus struct {
-	DateConnected string `bson:"dateConnected" json:"dateConnected"`
-	Id            string `bson:"id" json:"id"`
-	IpLAN         string `bson:"ipLAN" json:"ipLAN"`
-	IpWAN         string `bson:"ipWAN" json:"ipWAN"`
-	IsConnected   bool   `bson:"isConnected" json:"isConnected"`
-	PortLAN       int32  `bson:"portLAN" json:"portLAN"`
-	PortWAN       int32  `bson:"portWAN" json:"portWAN"`
-	UserAgent     string `bson:"userAgent" json:"userAgent"`
+	DateConnected time.Time `bson:"dateConnected" json:"dateConnected"`
+	Id            string    `bson:"id" json:"id"`
+	IpLAN         string    `bson:"ipLAN" json:"ipLAN"`
+	IpWAN         string    `bson:"ipWAN" json:"ipWAN"`
+	IsConnected   bool      `bson:"isConnected" json:"isConnected"`
+	PortLAN       int32     `bson:"portLAN" json:"portLAN"`
+	PortWAN       int32     `bson:"portWAN" json:"portWAN"`
+	UserAgent     string    `bson:"userAgent" json:"userAgent"`
 }
 
 // Implementing interface UbluxSubDocument
@@ -19,7 +21,7 @@ func (x LineConnectionStatus) GetId() string {
 // BUILDER from bson map:
 func BuildLineConnectionStatus(m map[string]interface{}, x *LineConnectionStatus) {
 	if val, ok := m["dateConnected"]; ok && val != nil {
-		x.DateConnected = val.(string)
+		x.DateConnected = val.(time.Time)
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)

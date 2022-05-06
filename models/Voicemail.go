@@ -1,16 +1,17 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Voicemail struct {
-	Id                               string        `bson:"_id" json:"id"`
-	DateCreated                      string        `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                      string        `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                      string        `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                      time.Time     `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                      time.Time     `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                      time.Time     `bson:"dateUpdated" json:"dateUpdated"`
 	DurationInSeconds                int32         `bson:"durationInSeconds" json:"durationInSeconds"`
 	Email                            string        `bson:"email" json:"email"`
 	ErrorMessage                     string        `bson:"errorMessage" json:"errorMessage"`
+	Id                               string        `bson:"id" json:"id"`
 	IdsLinesThatCanListenToVoicemail []string      `bson:"idsLinesThatCanListenToVoicemail" json:"idsLinesThatCanListenToVoicemail"`
 	VoicemailMp3                     StoredFile    `bson:"voicemailMp3" json:"voicemailMp3"`
 	VoicemailType                    VoicemailType `bson:"voicemailType" json:"voicemailType"`
@@ -18,13 +19,13 @@ type Voicemail struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x Voicemail) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x Voicemail) GetDateDeleted() string {
+func (x Voicemail) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x Voicemail) GetDateUpdated() string {
+func (x Voicemail) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x Voicemail) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -37,17 +38,14 @@ func (x Voicemail) GetId() string {
 
 // BUILDER from bson map:
 func BuildVoicemail(m map[string]interface{}, x *Voicemail) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["durationInSeconds"]; ok && val != nil {
 		x.DurationInSeconds = val.(int32)
@@ -57,6 +55,9 @@ func BuildVoicemail(m map[string]interface{}, x *Voicemail) {
 	}
 	if val, ok := m["errorMessage"]; ok && val != nil {
 		x.ErrorMessage = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idsLinesThatCanListenToVoicemail"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case

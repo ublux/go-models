@@ -1,14 +1,15 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type TrunkOriginationForward struct {
-	Id                        string               `bson:"_id" json:"id"`
-	DateCreated               string               `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted               string               `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated               string               `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated               time.Time            `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted               time.Time            `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated               time.Time            `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName              string               `bson:"friendlyName" json:"friendlyName"`
+	Id                        string               `bson:"id" json:"id"`
 	IdCloudServicePbx         string               `bson:"idCloudServicePbx" json:"idCloudServicePbx"`
 	IdCloudServicePbxFailover string               `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
 	IdsVoipNumbers            []string             `bson:"idsVoipNumbers" json:"idsVoipNumbers"`
@@ -20,13 +21,13 @@ type TrunkOriginationForward struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x TrunkOriginationForward) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x TrunkOriginationForward) GetDateDeleted() string {
+func (x TrunkOriginationForward) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x TrunkOriginationForward) GetDateUpdated() string {
+func (x TrunkOriginationForward) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x TrunkOriginationForward) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -62,20 +63,20 @@ func (x TrunkOriginationForward) GetFriendlyName() string {
 
 // BUILDER from bson map:
 func BuildTrunkOriginationForward(m map[string]interface{}, x *TrunkOriginationForward) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idCloudServicePbx"]; ok && val != nil {
 		x.IdCloudServicePbx = val.(string)

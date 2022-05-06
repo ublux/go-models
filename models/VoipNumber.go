@@ -11,13 +11,13 @@ type VoipNumber interface {
 	GetIdCustomerInfo() string
 	GetIdTrunkOrigination() string
 	GetIdVoipProvider() string
+	GetSID() string
 	GetRulesPhone() []RulePhone
 	GetRulesSms() []RuleSms
 	GetRulesFax() []RuleFax
 	GetVoipNumberType() VoipNumberType
 	GetInjectFriendlyNameToCallerId() bool
 	GetRecordIncomingCalls() bool
-	GetSID() string
 	GetNumber() string
 	GetFriendlyName() string
 	GetDescription() string

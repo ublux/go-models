@@ -1,15 +1,16 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type ExtensionVoicemail struct {
-	Id                               string        `bson:"_id" json:"id"`
-	DateCreated                      string        `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                      string        `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                      string        `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                      time.Time     `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                      time.Time     `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                      time.Time     `bson:"dateUpdated" json:"dateUpdated"`
 	Email                            []string      `bson:"email" json:"email"`
 	ExtensionType                    ExtensionType `bson:"extensionType" json:"extensionType"`
+	Id                               string        `bson:"id" json:"id"`
 	IdAccount                        string        `bson:"idAccount" json:"idAccount"`
 	IdAudio                          string        `bson:"idAudio" json:"idAudio"`
 	IdMusicOnHoldGroup               string        `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
@@ -21,13 +22,13 @@ type ExtensionVoicemail struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionVoicemail) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x ExtensionVoicemail) GetDateDeleted() string {
+func (x ExtensionVoicemail) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x ExtensionVoicemail) GetDateUpdated() string {
+func (x ExtensionVoicemail) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x ExtensionVoicemail) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -59,17 +60,14 @@ func (x ExtensionVoicemail) GetInjectExtensionNameToCallerId() bool {
 
 // BUILDER from bson map:
 func BuildExtensionVoicemail(m map[string]interface{}, x *ExtensionVoicemail) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["email"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case
@@ -81,6 +79,9 @@ func BuildExtensionVoicemail(m map[string]interface{}, x *ExtensionVoicemail) {
 		}
 	}
 	x.ExtensionType = ExtensionType_Voicemail // readonly property
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)
 	}

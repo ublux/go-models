@@ -1,24 +1,26 @@
 package models
 
+import "time"
+
 type BlackListPhoneNumber struct {
-	Id                           string `bson:"_id" json:"id"`
-	DateCreated                  string `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                  string `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                  string `bson:"dateUpdated" json:"dateUpdated"`
-	FriendlyName                 string `bson:"friendlyName" json:"friendlyName"`
-	IdAccount                    string `bson:"idAccount" json:"idAccount"`
-	IdAudioToPlayIfCallIsBlocked string `bson:"idAudioToPlayIfCallIsBlocked" json:"idAudioToPlayIfCallIsBlocked"`
-	PhoneNumber                  string `bson:"phoneNumber" json:"phoneNumber"`
+	DateCreated                  time.Time `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                  time.Time `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                  time.Time `bson:"dateUpdated" json:"dateUpdated"`
+	FriendlyName                 string    `bson:"friendlyName" json:"friendlyName"`
+	Id                           string    `bson:"id" json:"id"`
+	IdAccount                    string    `bson:"idAccount" json:"idAccount"`
+	IdAudioToPlayIfCallIsBlocked string    `bson:"idAudioToPlayIfCallIsBlocked" json:"idAudioToPlayIfCallIsBlocked"`
+	PhoneNumber                  string    `bson:"phoneNumber" json:"phoneNumber"`
 }
 
 // Implementing interface IUbluxDocument
-func (x BlackListPhoneNumber) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x BlackListPhoneNumber) GetDateDeleted() string {
+func (x BlackListPhoneNumber) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x BlackListPhoneNumber) GetDateUpdated() string {
+func (x BlackListPhoneNumber) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x BlackListPhoneNumber) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -36,20 +38,20 @@ func (x BlackListPhoneNumber) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildBlackListPhoneNumber(m map[string]interface{}, x *BlackListPhoneNumber) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

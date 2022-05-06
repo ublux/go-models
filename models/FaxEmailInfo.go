@@ -1,14 +1,15 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 
 type FaxEmailInfo struct {
-	Id                                                    string               `bson:"_id" json:"id"`
-	DateCreated                                           string               `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                                           string               `bson:"dateDeleted" json:"dateDeleted"`
-	DateIdentificationTokenCreated                        string               `bson:"dateIdentificationTokenCreated" json:"dateIdentificationTokenCreated"`
-	DateUpdated                                           string               `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                                           time.Time            `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                                           time.Time            `bson:"dateDeleted" json:"dateDeleted"`
+	DateIdentificationTokenCreated                        time.Time            `bson:"dateIdentificationTokenCreated" json:"dateIdentificationTokenCreated"`
+	DateUpdated                                           time.Time            `bson:"dateUpdated" json:"dateUpdated"`
 	HaveWeSentEmailExplainingUserHasToWaitForConfirmation bool                 `bson:"haveWeSentEmailExplainingUserHasToWaitForConfirmation" json:"haveWeSentEmailExplainingUserHasToWaitForConfirmation"`
+	Id                                                    string               `bson:"id" json:"id"`
 	IdAccount                                             string               `bson:"idAccount" json:"idAccount"`
 	IdentificationToken                                   int32                `bson:"identificationToken" json:"identificationToken"`
 	IdLineThatValidatedEmail                              string               `bson:"idLineThatValidatedEmail" json:"idLineThatValidatedEmail"`
@@ -18,13 +19,13 @@ type FaxEmailInfo struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x FaxEmailInfo) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x FaxEmailInfo) GetDateDeleted() string {
+func (x FaxEmailInfo) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x FaxEmailInfo) GetDateUpdated() string {
+func (x FaxEmailInfo) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x FaxEmailInfo) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -42,23 +43,23 @@ func (x FaxEmailInfo) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildFaxEmailInfo(m map[string]interface{}, x *FaxEmailInfo) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateIdentificationTokenCreated"]; ok && val != nil {
-		x.DateIdentificationTokenCreated = val.(string)
+		x.DateIdentificationTokenCreated = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["haveWeSentEmailExplainingUserHasToWaitForConfirmation"]; ok && val != nil {
 		x.HaveWeSentEmailExplainingUserHasToWaitForConfirmation = val.(bool)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

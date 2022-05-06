@@ -1,16 +1,17 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type PowerDialerGroup struct {
-	Id                              string                 `bson:"_id" json:"id"`
-	DateCreated                     string                 `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                     string                 `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                     string                 `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                     time.Time              `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                     time.Time              `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                     time.Time              `bson:"dateUpdated" json:"dateUpdated"`
 	Description                     string                 `bson:"description" json:"description"`
 	ErrorMessage                    string                 `bson:"errorMessage" json:"errorMessage"`
 	FriendlyName                    string                 `bson:"friendlyName" json:"friendlyName"`
+	Id                              string                 `bson:"id" json:"id"`
 	IdAccount                       string                 `bson:"idAccount" json:"idAccount"`
 	IdCallerIdMask                  string                 `bson:"idCallerIdMask" json:"idCallerIdMask"`
 	IdCallFlow                      string                 `bson:"idCallFlow" json:"idCallFlow"`
@@ -23,13 +24,13 @@ type PowerDialerGroup struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x PowerDialerGroup) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x PowerDialerGroup) GetDateDeleted() string {
+func (x PowerDialerGroup) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x PowerDialerGroup) GetDateUpdated() string {
+func (x PowerDialerGroup) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x PowerDialerGroup) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -47,17 +48,14 @@ func (x PowerDialerGroup) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildPowerDialerGroup(m map[string]interface{}, x *PowerDialerGroup) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)
@@ -67,6 +65,9 @@ func BuildPowerDialerGroup(m map[string]interface{}, x *PowerDialerGroup) {
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

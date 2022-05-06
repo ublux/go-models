@@ -1,27 +1,28 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type WebHook struct {
-	Id           string       `bson:"_id" json:"id"`
-	DateCreated  string       `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted  string       `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated  string       `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated  time.Time    `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted  time.Time    `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated  time.Time    `bson:"dateUpdated" json:"dateUpdated"`
 	Headers      []string     `bson:"headers" json:"headers"`
+	Id           string       `bson:"id" json:"id"`
 	IdAccount    string       `bson:"idAccount" json:"idAccount"`
 	Url          string       `bson:"url" json:"url"`
 	WebHookEvent WebHookEvent `bson:"webHookEvent" json:"webHookEvent"`
 }
 
 // Implementing interface IUbluxDocument
-func (x WebHook) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x WebHook) GetDateDeleted() string {
+func (x WebHook) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x WebHook) GetDateUpdated() string {
+func (x WebHook) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x WebHook) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -34,17 +35,14 @@ func (x WebHook) GetId() string {
 
 // BUILDER from bson map:
 func BuildWebHook(m map[string]interface{}, x *WebHook) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["headers"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case
@@ -54,6 +52,9 @@ func BuildWebHook(m map[string]interface{}, x *WebHook) {
 				}
 			}
 		}
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

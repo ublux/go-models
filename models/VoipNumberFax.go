@@ -1,17 +1,18 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type VoipNumberFax struct {
-	Id                           string         `bson:"_id" json:"id"`
 	City                         string         `bson:"city" json:"city"`
 	CountryIsoCode               CountryIsoCode `bson:"countryIsoCode" json:"countryIsoCode"`
-	DateCreated                  string         `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                  string         `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                  string         `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                  time.Time      `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                  time.Time      `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                  time.Time      `bson:"dateUpdated" json:"dateUpdated"`
 	Description                  string         `bson:"description" json:"description"`
 	FriendlyName                 string         `bson:"friendlyName" json:"friendlyName"`
+	Id                           string         `bson:"id" json:"id"`
 	IdAccount                    string         `bson:"idAccount" json:"idAccount"`
 	IdCustomerInfo               string         `bson:"idCustomerInfo" json:"idCustomerInfo"`
 	IdTrunkOrigination           string         `bson:"idTrunkOrigination" json:"idTrunkOrigination"`
@@ -34,13 +35,13 @@ type VoipNumberFax struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x VoipNumberFax) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x VoipNumberFax) GetDateDeleted() string {
+func (x VoipNumberFax) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x VoipNumberFax) GetDateUpdated() string {
+func (x VoipNumberFax) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x VoipNumberFax) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -64,6 +65,9 @@ func (x VoipNumberFax) GetIdTrunkOrigination() string {
 func (x VoipNumberFax) GetIdVoipProvider() string {
 	return x.IdVoipProvider
 }
+func (x VoipNumberFax) GetSID() string {
+	return x.SID
+}
 func (x VoipNumberFax) GetRulesPhone() []RulePhone {
 	return x.RulesPhone
 }
@@ -81,9 +85,6 @@ func (x VoipNumberFax) GetInjectFriendlyNameToCallerId() bool {
 }
 func (x VoipNumberFax) GetRecordIncomingCalls() bool {
 	return x.RecordIncomingCalls
-}
-func (x VoipNumberFax) GetSID() string {
-	return x.SID
 }
 func (x VoipNumberFax) GetNumber() string {
 	return x.Number
@@ -126,9 +127,6 @@ func (x VoipNumberFax) GetTimeZone() string {
 
 // BUILDER from bson map:
 func BuildVoipNumberFax(m map[string]interface{}, x *VoipNumberFax) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["city"]; ok && val != nil {
 		x.City = val.(string)
 	}
@@ -136,19 +134,22 @@ func BuildVoipNumberFax(m map[string]interface{}, x *VoipNumberFax) {
 		x.CountryIsoCode = CountryIsoCode("CountryIsoCode_" + val.(string))
 	} // is NOT readonly obtained from map
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

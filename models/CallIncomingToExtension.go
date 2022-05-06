@@ -1,24 +1,26 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type CallIncomingToExtension struct {
-	Id                        string                     `bson:"_id" json:"id"`
 	CallType                  CallType                   `bson:"callType" json:"callType"`
 	ChannelVariables          ChannelVariables           `bson:"channelVariables" json:"channelVariables"`
 	ChildCalls                []ChildCall                `bson:"childCalls" json:"childCalls"`
 	Contact                   Contact                    `bson:"contact" json:"contact"`
-	DateCreated               string                     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted               string                     `bson:"dateDeleted" json:"dateDeleted"`
-	DateEnded                 string                     `bson:"dateEnded" json:"dateEnded"`
-	DateUpdated               string                     `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated               time.Time                  `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted               time.Time                  `bson:"dateDeleted" json:"dateDeleted"`
+	DateEnded                 time.Time                  `bson:"dateEnded" json:"dateEnded"`
+	DateUpdated               time.Time                  `bson:"dateUpdated" json:"dateUpdated"`
 	DigitsSent                []string                   `bson:"digitsSent" json:"digitsSent"`
 	DisabledVideo             bool                       `bson:"disabledVideo" json:"disabledVideo"`
 	ExtensionFriendlyName     string                     `bson:"extensionFriendlyName" json:"extensionFriendlyName"`
 	ExtensionNumber           string                     `bson:"extensionNumber" json:"extensionNumber"`
 	From                      string                     `bson:"from" json:"from"`
 	FromCountry               CountryIsoCode             `bson:"fromCountry" json:"fromCountry"`
+	FromInternationalFormat   string                     `bson:"fromInternationalFormat" json:"fromInternationalFormat"`
+	Id                        string                     `bson:"id" json:"id"`
 	IdAccount                 string                     `bson:"idAccount" json:"idAccount"`
 	IdExtension               string                     `bson:"idExtension" json:"idExtension"`
 	IdLineThatAnswered        string                     `bson:"idLineThatAnswered" json:"idLineThatAnswered"`
@@ -38,13 +40,13 @@ type CallIncomingToExtension struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x CallIncomingToExtension) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x CallIncomingToExtension) GetDateDeleted() string {
+func (x CallIncomingToExtension) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x CallIncomingToExtension) GetDateUpdated() string {
+func (x CallIncomingToExtension) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x CallIncomingToExtension) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -62,14 +64,17 @@ func (x CallIncomingToExtension) GetIdAccount() string {
 func (x CallIncomingToExtension) GetProviderSid() string {
 	return x.ProviderSid
 }
-func (x CallIncomingToExtension) GetContact() Contact {
-	return x.Contact
-}
 func (x CallIncomingToExtension) GetIdVoipProvider() string {
 	return x.IdVoipProvider
 }
+func (x CallIncomingToExtension) GetContact() Contact {
+	return x.Contact
+}
 func (x CallIncomingToExtension) GetIdVoipNumberPhone() string {
 	return x.IdVoipNumberPhone
+}
+func (x CallIncomingToExtension) GetFromInternationalFormat() string {
+	return x.FromInternationalFormat
 }
 
 // Implementing interface Call
@@ -82,7 +87,7 @@ func (x CallIncomingToExtension) GetChannelVariables() ChannelVariables {
 func (x CallIncomingToExtension) GetChildCalls() []ChildCall {
 	return x.ChildCalls
 }
-func (x CallIncomingToExtension) GetDateEnded() string {
+func (x CallIncomingToExtension) GetDateEnded() time.Time {
 	return x.DateEnded
 }
 func (x CallIncomingToExtension) GetStatus() string {
@@ -126,9 +131,6 @@ func (x CallIncomingToExtension) GetIsInternational() bool {
 
 // BUILDER from bson map:
 func BuildCallIncomingToExtension(m map[string]interface{}, x *CallIncomingToExtension) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	x.CallType = CallType_IncomingToExtension // readonly property
 	if val, ok := m["channelVariables"]; ok && val != nil {
 		BuildChannelVariables(val.(map[string]interface{}), &x.ChannelVariables)
@@ -171,16 +173,16 @@ func BuildCallIncomingToExtension(m map[string]interface{}, x *CallIncomingToExt
 		BuildContact(val.(map[string]interface{}), &x.Contact)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateEnded"]; ok && val != nil {
-		x.DateEnded = val.(string)
+		x.DateEnded = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["digitsSent"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case
@@ -206,6 +208,12 @@ func BuildCallIncomingToExtension(m map[string]interface{}, x *CallIncomingToExt
 	if val, ok := m["fromCountry"]; ok && val != nil {
 		x.FromCountry = CountryIsoCode("FromCountry_" + val.(string))
 	} // is NOT readonly obtained from map
+	if val, ok := m["fromInternationalFormat"]; ok && val != nil {
+		x.FromInternationalFormat = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)
 	}

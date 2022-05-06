@@ -1,10 +1,11 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type UbluxSession struct {
-	ExpirationDate string       `bson:"expirationDate" json:"expirationDate"`
+	ExpirationDate time.Time    `bson:"expirationDate" json:"expirationDate"`
 	IdAccount      string       `bson:"idAccount" json:"idAccount"`
 	IdentityType   IdentityType `bson:"identityType" json:"identityType"`
 	IdIdentity     string       `bson:"idIdentity" json:"idIdentity"`
@@ -19,7 +20,7 @@ func (x UbluxSession) GetIdAccount() string {
 // BUILDER from bson map:
 func BuildUbluxSession(m map[string]interface{}, x *UbluxSession) {
 	if val, ok := m["expirationDate"]; ok && val != nil {
-		x.ExpirationDate = val.(string)
+		x.ExpirationDate = val.(time.Time)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

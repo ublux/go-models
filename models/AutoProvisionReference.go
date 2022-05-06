@@ -1,23 +1,25 @@
 package models
 
+import "time"
+
 type AutoProvisionReference struct {
-	Id                    string `bson:"_id" json:"id"`
-	DateCreated           string `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted           string `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated           string `bson:"dateUpdated" json:"dateUpdated"`
-	IdPhone               string `bson:"idPhone" json:"idPhone"`
-	IdPhoneToExchangeWith string `bson:"idPhoneToExchangeWith" json:"idPhoneToExchangeWith"`
-	RequestedDisconnect   bool   `bson:"requestedDisconnect" json:"requestedDisconnect"`
+	DateCreated           time.Time `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted           time.Time `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated           time.Time `bson:"dateUpdated" json:"dateUpdated"`
+	Id                    string    `bson:"id" json:"id"`
+	IdPhone               string    `bson:"idPhone" json:"idPhone"`
+	IdPhoneToExchangeWith string    `bson:"idPhoneToExchangeWith" json:"idPhoneToExchangeWith"`
+	RequestedDisconnect   bool      `bson:"requestedDisconnect" json:"requestedDisconnect"`
 }
 
 // Implementing interface IUbluxDocument
-func (x AutoProvisionReference) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x AutoProvisionReference) GetDateDeleted() string {
+func (x AutoProvisionReference) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x AutoProvisionReference) GetDateUpdated() string {
+func (x AutoProvisionReference) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x AutoProvisionReference) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -30,17 +32,17 @@ func (x AutoProvisionReference) GetId() string {
 
 // BUILDER from bson map:
 func BuildAutoProvisionReference(m map[string]interface{}, x *AutoProvisionReference) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idPhone"]; ok && val != nil {
 		x.IdPhone = val.(string)

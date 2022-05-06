@@ -2,6 +2,8 @@ package models
 
 import . "github.com/ublux/go-models/enums"
 
+import "time"
+
 type Call interface {
 	IUbluxDocument
 	IUbluxDocumentId
@@ -12,7 +14,7 @@ type Call interface {
 	GetChannelVariables() ChannelVariables
 	GetChildCalls() []ChildCall
 	GetContact() Contact
-	GetDateEnded() string
+	GetDateEnded() time.Time
 	GetStatus() string
 	GetSecondsItTookToAnswer() int32
 	GetTimesWhenCallPlacedOnHold() []TimeWhenCallPlacedOnHold

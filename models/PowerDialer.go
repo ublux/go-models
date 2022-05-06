@@ -4,7 +4,7 @@ import . "github.com/ublux/go-models/enums"
 
 type PowerDialer interface {
 	GetPowerDialerType() PowerDialerType
-	GetPhoneNumberInternationalFormat() string
+	GetPhoneNumber() string
 	GetCountryIsoCode() CountryIsoCode
 	GetIdContact() string
 	GetPowerDialerStatus() PowerDialerStatus

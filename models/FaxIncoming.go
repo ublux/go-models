@@ -1,13 +1,15 @@
 package models
 
+import "time"
+
 type FaxIncoming struct {
-	Id              string     `bson:"_id" json:"id"`
-	DateCreated     string     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted     string     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated     string     `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated     time.Time  `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted     time.Time  `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated     time.Time  `bson:"dateUpdated" json:"dateUpdated"`
 	ErrorMessage    string     `bson:"errorMessage" json:"errorMessage"`
 	FaxStatus       string     `bson:"faxStatus" json:"faxStatus"`
 	From            string     `bson:"from" json:"from"`
+	Id              string     `bson:"id" json:"id"`
 	IdAccount       string     `bson:"idAccount" json:"idAccount"`
 	IdVoipNumberFax string     `bson:"idVoipNumberFax" json:"idVoipNumberFax"`
 	NumPages        int32      `bson:"numPages" json:"numPages"`
@@ -16,13 +18,13 @@ type FaxIncoming struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x FaxIncoming) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x FaxIncoming) GetDateDeleted() string {
+func (x FaxIncoming) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x FaxIncoming) GetDateUpdated() string {
+func (x FaxIncoming) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x FaxIncoming) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -40,17 +42,14 @@ func (x FaxIncoming) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildFaxIncoming(m map[string]interface{}, x *FaxIncoming) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["errorMessage"]; ok && val != nil {
 		x.ErrorMessage = val.(string)
@@ -60,6 +59,9 @@ func BuildFaxIncoming(m map[string]interface{}, x *FaxIncoming) {
 	}
 	if val, ok := m["from"]; ok && val != nil {
 		x.From = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

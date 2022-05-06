@@ -1,24 +1,26 @@
 package models
 
+import "time"
+
 type CallFlow struct {
-	Id           string `bson:"_id" json:"id"`
-	DateCreated  string `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted  string `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated  string `bson:"dateUpdated" json:"dateUpdated"`
-	Description  string `bson:"description" json:"description"`
-	FriendlyName string `bson:"friendlyName" json:"friendlyName"`
-	IdAccount    string `bson:"idAccount" json:"idAccount"`
-	XmlTree      string `bson:"xmlTree" json:"xmlTree"`
+	DateCreated  time.Time `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted  time.Time `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated  time.Time `bson:"dateUpdated" json:"dateUpdated"`
+	Description  string    `bson:"description" json:"description"`
+	FriendlyName string    `bson:"friendlyName" json:"friendlyName"`
+	Id           string    `bson:"id" json:"id"`
+	IdAccount    string    `bson:"idAccount" json:"idAccount"`
+	XmlTree      string    `bson:"xmlTree" json:"xmlTree"`
 }
 
 // Implementing interface IUbluxDocument
-func (x CallFlow) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x CallFlow) GetDateDeleted() string {
+func (x CallFlow) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x CallFlow) GetDateUpdated() string {
+func (x CallFlow) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x CallFlow) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -36,23 +38,23 @@ func (x CallFlow) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildCallFlow(m map[string]interface{}, x *CallFlow) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

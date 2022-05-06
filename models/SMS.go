@@ -1,29 +1,31 @@
 package models
 
+import "time"
+
 type SMS struct {
-	Id                      string  `bson:"_id" json:"id"`
-	Body                    string  `bson:"body" json:"body"`
-	Contact                 Contact `bson:"contact" json:"contact"`
-	DateCreated             string  `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted             string  `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated             string  `bson:"dateUpdated" json:"dateUpdated"`
-	FromInternationalFormat string  `bson:"fromInternationalFormat" json:"fromInternationalFormat"`
-	IdAccount               string  `bson:"idAccount" json:"idAccount"`
-	IdVoipNumber            string  `bson:"idVoipNumber" json:"idVoipNumber"`
-	IsIncoming              bool    `bson:"isIncoming" json:"isIncoming"`
-	NumSegments             int32   `bson:"numSegments" json:"numSegments"`
-	Status                  string  `bson:"status" json:"status"`
-	ToInternationalFormat   string  `bson:"toInternationalFormat" json:"toInternationalFormat"`
+	Body         string    `bson:"body" json:"body"`
+	Contact      Contact   `bson:"contact" json:"contact"`
+	DateCreated  time.Time `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted  time.Time `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated  time.Time `bson:"dateUpdated" json:"dateUpdated"`
+	From         string    `bson:"from" json:"from"`
+	Id           string    `bson:"id" json:"id"`
+	IdAccount    string    `bson:"idAccount" json:"idAccount"`
+	IdVoipNumber string    `bson:"idVoipNumber" json:"idVoipNumber"`
+	IsIncoming   bool      `bson:"isIncoming" json:"isIncoming"`
+	NumSegments  int32     `bson:"numSegments" json:"numSegments"`
+	Status       string    `bson:"status" json:"status"`
+	To           string    `bson:"to" json:"to"`
 }
 
 // Implementing interface IUbluxDocument
-func (x SMS) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x SMS) GetDateDeleted() string {
+func (x SMS) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x SMS) GetDateUpdated() string {
+func (x SMS) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x SMS) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -41,9 +43,6 @@ func (x SMS) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildSMS(m map[string]interface{}, x *SMS) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["body"]; ok && val != nil {
 		x.Body = val.(string)
 	}
@@ -51,16 +50,19 @@ func BuildSMS(m map[string]interface{}, x *SMS) {
 		BuildContact(val.(map[string]interface{}), &x.Contact)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
-	if val, ok := m["fromInternationalFormat"]; ok && val != nil {
-		x.FromInternationalFormat = val.(string)
+	if val, ok := m["from"]; ok && val != nil {
+		x.From = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)
@@ -77,7 +79,7 @@ func BuildSMS(m map[string]interface{}, x *SMS) {
 	if val, ok := m["status"]; ok && val != nil {
 		x.Status = val.(string)
 	}
-	if val, ok := m["toInternationalFormat"]; ok && val != nil {
-		x.ToInternationalFormat = val.(string)
+	if val, ok := m["to"]; ok && val != nil {
+		x.To = val.(string)
 	}
 }

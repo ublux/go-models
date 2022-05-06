@@ -1,24 +1,25 @@
 package models
 
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type AirNetworksProvince struct {
-	Id          string   `bson:"_id" json:"id"`
-	DateCreated string   `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted string   `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated string   `bson:"dateUpdated" json:"dateUpdated"`
-	Name        string   `bson:"name" json:"name"`
-	Populations []string `bson:"populations" json:"populations"`
+	DateCreated time.Time `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted time.Time `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated time.Time `bson:"dateUpdated" json:"dateUpdated"`
+	Id          string    `bson:"id" json:"id"`
+	Name        string    `bson:"name" json:"name"`
+	Populations []string  `bson:"populations" json:"populations"`
 }
 
 // Implementing interface IUbluxDocument
-func (x AirNetworksProvince) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x AirNetworksProvince) GetDateDeleted() string {
+func (x AirNetworksProvince) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x AirNetworksProvince) GetDateUpdated() string {
+func (x AirNetworksProvince) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x AirNetworksProvince) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -31,17 +32,17 @@ func (x AirNetworksProvince) GetId() string {
 
 // BUILDER from bson map:
 func BuildAirNetworksProvince(m map[string]interface{}, x *AirNetworksProvince) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["name"]; ok && val != nil {
 		x.Name = val.(string)

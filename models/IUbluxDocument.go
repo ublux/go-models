@@ -1,9 +1,11 @@
 package models
 
+import "time"
+
 type IUbluxDocument interface {
 	IUbluxDocumentId
 
-	GetDateCreated() string
-	GetDateDeleted() string
-	GetDateUpdated() string
+	GetDateDeleted() time.Time
+	GetDateCreated() time.Time
+	GetDateUpdated() time.Time
 }

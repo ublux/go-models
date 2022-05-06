@@ -1,21 +1,20 @@
 package models
 
-import (
-	. "github.com/ublux/go-models/enums"
-	"go.mongodb.org/mongo-driver/bson/primitive"
-)
+import . "github.com/ublux/go-models/enums"
+import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Account struct {
-	Id                                  string           `bson:"_id" json:"id"`
 	AccountSecrets                      AccountSecrets   `bson:"accountSecrets" json:"accountSecrets"`
 	AccountSettings                     AccountSettings  `bson:"accountSettings" json:"accountSettings"`
 	CompanyName                         string           `bson:"companyName" json:"companyName"`
 	CountriesThatCanCallInternationally []CountryIsoCode `bson:"countriesThatCanCallInternationally" json:"countriesThatCanCallInternationally"`
 	CountriesThatCanCallLocally         []CountryIsoCode `bson:"countriesThatCanCallLocally" json:"countriesThatCanCallLocally"`
-	DateCreated                         string           `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                         string           `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                         string           `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                         time.Time        `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                         time.Time        `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                         time.Time        `bson:"dateUpdated" json:"dateUpdated"`
 	HasGrantedSupportAccess             bool             `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
+	Id                                  string           `bson:"id" json:"id"`
 	IdCloudServicePbxFailover           string           `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
 	IdCloudServiceWebApp                string           `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
 	IdGTrunkTerminationGroup            string           `bson:"idGTrunkTerminationGroup" json:"idGTrunkTerminationGroup"`
@@ -26,13 +25,13 @@ type Account struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x Account) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x Account) GetDateDeleted() string {
+func (x Account) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x Account) GetDateUpdated() string {
+func (x Account) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x Account) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -45,9 +44,6 @@ func (x Account) GetId() string {
 
 // BUILDER from bson map:
 func BuildAccount(m map[string]interface{}, x *Account) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["accountSecrets"]; ok && val != nil {
 		BuildAccountSecrets(val.(map[string]interface{}), &x.AccountSecrets)
 	}
@@ -72,16 +68,19 @@ func BuildAccount(m map[string]interface{}, x *Account) {
 		}
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["hasGrantedSupportAccess"]; ok && val != nil {
 		x.HasGrantedSupportAccess = val.(bool)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idCloudServicePbxFailover"]; ok && val != nil {
 		x.IdCloudServicePbxFailover = val.(string)

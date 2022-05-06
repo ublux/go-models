@@ -1,15 +1,16 @@
 package models
 
+import "time"
 import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Identity struct {
-	Id                           string       `bson:"_id" json:"id"`
 	AllowConnectingFromIpRegex   string       `bson:"allowConnectingFromIpRegex" json:"allowConnectingFromIpRegex"`
-	DateAuthenticated            string       `bson:"dateAuthenticated" json:"dateAuthenticated"`
-	DateCreated                  string       `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                  string       `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                  string       `bson:"dateUpdated" json:"dateUpdated"`
+	DateAuthenticated            time.Time    `bson:"dateAuthenticated" json:"dateAuthenticated"`
+	DateCreated                  time.Time    `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                  time.Time    `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                  time.Time    `bson:"dateUpdated" json:"dateUpdated"`
+	Id                           string       `bson:"id" json:"id"`
 	IdAccount                    string       `bson:"idAccount" json:"idAccount"`
 	IdentityType                 IdentityType `bson:"identityType" json:"identityType"`
 	IpAddressWhereAuthenticated  string       `bson:"ipAddressWhereAuthenticated" json:"ipAddressWhereAuthenticated"`
@@ -20,13 +21,13 @@ type Identity struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x Identity) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x Identity) GetDateDeleted() string {
+func (x Identity) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x Identity) GetDateUpdated() string {
+func (x Identity) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x Identity) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -44,23 +45,23 @@ func (x Identity) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildIdentity(m map[string]interface{}, x *Identity) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["allowConnectingFromIpRegex"]; ok && val != nil {
 		x.AllowConnectingFromIpRegex = val.(string)
 	}
 	if val, ok := m["dateAuthenticated"]; ok && val != nil {
-		x.DateAuthenticated = val.(string)
+		x.DateAuthenticated = val.(time.Time)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

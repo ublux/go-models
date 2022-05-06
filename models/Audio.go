@@ -1,27 +1,29 @@
 package models
 
+import "time"
+
 type Audio struct {
-	Id                string     `bson:"_id" json:"id"`
 	AudioMp3          StoredFile `bson:"audioMp3" json:"audioMp3"`
 	AudioSln          StoredFile `bson:"audioSln" json:"audioSln"`
 	AudioWav          StoredFile `bson:"audioWav" json:"audioWav"`
-	DateCreated       string     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted       string     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated       string     `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated       time.Time  `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted       time.Time  `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated       time.Time  `bson:"dateUpdated" json:"dateUpdated"`
 	Description       string     `bson:"description" json:"description"`
 	DurationInSeconds int32      `bson:"durationInSeconds" json:"durationInSeconds"`
 	FriendlyName      string     `bson:"friendlyName" json:"friendlyName"`
+	Id                string     `bson:"id" json:"id"`
 	IdAccount         string     `bson:"idAccount" json:"idAccount"`
 }
 
 // Implementing interface IUbluxDocument
-func (x Audio) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x Audio) GetDateDeleted() string {
+func (x Audio) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x Audio) GetDateUpdated() string {
+func (x Audio) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x Audio) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -39,9 +41,6 @@ func (x Audio) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildAudio(m map[string]interface{}, x *Audio) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["audioMp3"]; ok && val != nil {
 		BuildStoredFile(val.(map[string]interface{}), &x.AudioMp3)
 	}
@@ -52,13 +51,13 @@ func BuildAudio(m map[string]interface{}, x *Audio) {
 		BuildStoredFile(val.(map[string]interface{}), &x.AudioWav)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)
@@ -68,6 +67,9 @@ func BuildAudio(m map[string]interface{}, x *Audio) {
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

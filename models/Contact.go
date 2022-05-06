@@ -1,17 +1,18 @@
 package models
 
+import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Contact struct {
-	Id             string          `bson:"_id" json:"id"`
 	Company        string          `bson:"company" json:"company"`
 	ContactEmails  []ContactEmail  `bson:"contactEmails" json:"contactEmails"`
 	ContactNumbers []ContactNumber `bson:"contactNumbers" json:"contactNumbers"`
-	DateCreated    string          `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted    string          `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated    string          `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated    time.Time       `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted    time.Time       `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated    time.Time       `bson:"dateUpdated" json:"dateUpdated"`
 	FirstName      string          `bson:"firstName" json:"firstName"`
 	Hash           string          `bson:"hash" json:"hash"`
+	Id             string          `bson:"id" json:"id"`
 	IdAccount      string          `bson:"idAccount" json:"idAccount"`
 	JobTittle      string          `bson:"jobTittle" json:"jobTittle"`
 	LastName       string          `bson:"lastName" json:"lastName"`
@@ -20,13 +21,13 @@ type Contact struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x Contact) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x Contact) GetDateDeleted() string {
+func (x Contact) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x Contact) GetDateUpdated() string {
+func (x Contact) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x Contact) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -44,9 +45,6 @@ func (x Contact) GetIdAccount() string {
 
 // BUILDER from bson map:
 func BuildContact(m map[string]interface{}, x *Contact) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["company"]; ok && val != nil {
 		x.Company = val.(string)
 	}
@@ -73,19 +71,22 @@ func BuildContact(m map[string]interface{}, x *Contact) {
 		}
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
 	}
 	if val, ok := m["firstName"]; ok && val != nil {
 		x.FirstName = val.(string)
 	}
 	if val, ok := m["hash"]; ok && val != nil {
 		x.Hash = val.(string)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

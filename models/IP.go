@@ -1,23 +1,25 @@
 package models
 
+import "time"
+
 type IP struct {
-	Id          string `bson:"_id" json:"id"`
-	DateCreated string `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted string `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated string `bson:"dateUpdated" json:"dateUpdated"`
-	IdIdentity  string `bson:"idIdentity" json:"idIdentity"`
-	IpOrigin    string `bson:"ipOrigin" json:"ipOrigin"`
-	IsBlack     bool   `bson:"isBlack" json:"isBlack"`
+	DateCreated time.Time `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted time.Time `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated time.Time `bson:"dateUpdated" json:"dateUpdated"`
+	Id          string    `bson:"id" json:"id"`
+	IdIdentity  string    `bson:"idIdentity" json:"idIdentity"`
+	IpOrigin    string    `bson:"ipOrigin" json:"ipOrigin"`
+	IsBlack     bool      `bson:"isBlack" json:"isBlack"`
 }
 
 // Implementing interface IUbluxDocument
-func (x IP) GetDateCreated() string {
-	return x.DateCreated
-}
-func (x IP) GetDateDeleted() string {
+func (x IP) GetDateDeleted() time.Time {
 	return x.DateDeleted
 }
-func (x IP) GetDateUpdated() string {
+func (x IP) GetDateCreated() time.Time {
+	return x.DateCreated
+}
+func (x IP) GetDateUpdated() time.Time {
 	return x.DateUpdated
 }
 
@@ -30,17 +32,17 @@ func (x IP) GetId() string {
 
 // BUILDER from bson map:
 func BuildIP(m map[string]interface{}, x *IP) {
-	if val, ok := m["_id"]; ok && val != nil {
-		x.Id = val.(string)
-	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(string)
+		x.DateCreated = val.(time.Time)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(string)
+		x.DateDeleted = val.(time.Time)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(string)
+		x.DateUpdated = val.(time.Time)
+	}
+	if val, ok := m["id"]; ok && val != nil {
+		x.Id = val.(string)
 	}
 	if val, ok := m["idIdentity"]; ok && val != nil {
 		x.IdIdentity = val.(string)
