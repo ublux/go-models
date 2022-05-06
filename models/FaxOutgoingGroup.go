@@ -1,30 +1,29 @@
 package models
 
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type FaxOutgoingGroup struct {
-	ContainsError            bool          `bson:"containsError" json:"containsError"`
-	DateCreated              time.Time     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted              time.Time     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated              time.Time     `bson:"dateUpdated" json:"dateUpdated"`
-	FaxEmail                 FaxEmail      `bson:"faxEmail" json:"faxEmail"`
-	FaxesOutgoing            []FaxOutgoing `bson:"faxesOutgoing" json:"faxesOutgoing"`
-	From                     string        `bson:"from" json:"from"`
-	Id                       string        `bson:"id" json:"id"`
-	IdAccount                string        `bson:"idAccount" json:"idAccount"`
-	IdVoipNumberFax          string        `bson:"idVoipNumberFax" json:"idVoipNumberFax"`
-	SendConfirmationToEmails []string      `bson:"sendConfirmationToEmails" json:"sendConfirmationToEmails"`
+	ContainsError            bool               `bson:"containsError" json:"containsError"`
+	DateCreated              primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted              primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated              primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	FaxEmail                 FaxEmail           `bson:"faxEmail" json:"faxEmail"`
+	FaxesOutgoing            []FaxOutgoing      `bson:"faxesOutgoing" json:"faxesOutgoing"`
+	From                     string             `bson:"from" json:"from"`
+	Id                       string             `bson:"id" json:"id"`
+	IdAccount                string             `bson:"idAccount" json:"idAccount"`
+	IdVoipNumberFax          string             `bson:"idVoipNumberFax" json:"idVoipNumberFax"`
+	SendConfirmationToEmails []string           `bson:"sendConfirmationToEmails" json:"sendConfirmationToEmails"`
 }
 
 // Implementing interface IUbluxDocument
-func (x FaxOutgoingGroup) GetDateDeleted() time.Time {
+func (x FaxOutgoingGroup) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x FaxOutgoingGroup) GetDateCreated() time.Time {
+func (x FaxOutgoingGroup) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x FaxOutgoingGroup) GetDateUpdated() time.Time {
+func (x FaxOutgoingGroup) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -46,13 +45,13 @@ func BuildFaxOutgoingGroup(m map[string]interface{}, x *FaxOutgoingGroup) {
 		x.ContainsError = val.(bool)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["faxEmail"]; ok && val != nil {
 		BuildFaxEmail(val.(map[string]interface{}), &x.FaxEmail)

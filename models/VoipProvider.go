@@ -1,31 +1,31 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type VoipProvider struct {
-	AccessToken    string         `bson:"accessToken" json:"accessToken"`
-	Country        CountryIsoCode `bson:"country" json:"country"`
-	DateCreated    time.Time      `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted    time.Time      `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated    time.Time      `bson:"dateUpdated" json:"dateUpdated"`
-	FriendlyName   string         `bson:"friendlyName" json:"friendlyName"`
-	Id             string         `bson:"id" json:"id"`
-	OwnerAccountId string         `bson:"ownerAccountId" json:"ownerAccountId"`
-	SID            string         `bson:"sID" json:"sID"`
-	Status         string         `bson:"status" json:"status"`
-	UbluxPartner   UbluxPartner   `bson:"ubluxPartner" json:"ubluxPartner"`
-	VoipCompany    VoipCompany    `bson:"voipCompany" json:"voipCompany"`
+	AccessToken    string             `bson:"accessToken" json:"accessToken"`
+	Country        CountryIsoCode     `bson:"country" json:"country"`
+	DateCreated    primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted    primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	FriendlyName   string             `bson:"friendlyName" json:"friendlyName"`
+	Id             string             `bson:"id" json:"id"`
+	OwnerAccountId string             `bson:"ownerAccountId" json:"ownerAccountId"`
+	SID            string             `bson:"sID" json:"sID"`
+	Status         string             `bson:"status" json:"status"`
+	UbluxPartner   UbluxPartner       `bson:"ubluxPartner" json:"ubluxPartner"`
+	VoipCompany    VoipCompany        `bson:"voipCompany" json:"voipCompany"`
 }
 
 // Implementing interface IUbluxDocument
-func (x VoipProvider) GetDateDeleted() time.Time {
+func (x VoipProvider) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x VoipProvider) GetDateCreated() time.Time {
+func (x VoipProvider) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x VoipProvider) GetDateUpdated() time.Time {
+func (x VoipProvider) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -45,13 +45,13 @@ func BuildVoipProvider(m map[string]interface{}, x *VoipProvider) {
 		x.Country = CountryIsoCode("Country_" + val.(string))
 	} // is NOT readonly obtained from map
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)

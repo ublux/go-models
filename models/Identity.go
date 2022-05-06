@@ -1,33 +1,32 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type Identity struct {
-	AllowConnectingFromIpRegex   string       `bson:"allowConnectingFromIpRegex" json:"allowConnectingFromIpRegex"`
-	DateAuthenticated            time.Time    `bson:"dateAuthenticated" json:"dateAuthenticated"`
-	DateCreated                  time.Time    `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                  time.Time    `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                  time.Time    `bson:"dateUpdated" json:"dateUpdated"`
-	Id                           string       `bson:"id" json:"id"`
-	IdAccount                    string       `bson:"idAccount" json:"idAccount"`
-	IdentityType                 IdentityType `bson:"identityType" json:"identityType"`
-	IpAddressWhereAuthenticated  string       `bson:"ipAddressWhereAuthenticated" json:"ipAddressWhereAuthenticated"`
-	Password                     string       `bson:"password" json:"password"`
-	PreventConnectingIfIpChanges bool         `bson:"preventConnectingIfIpChanges" json:"preventConnectingIfIpChanges"`
-	UbluxRoles                   []UbluxRole  `bson:"ubluxRoles" json:"ubluxRoles"`
-	Username                     string       `bson:"username" json:"username"`
+	AllowConnectingFromIpRegex   string             `bson:"allowConnectingFromIpRegex" json:"allowConnectingFromIpRegex"`
+	DateAuthenticated            primitive.DateTime `bson:"dateAuthenticated" json:"dateAuthenticated"`
+	DateCreated                  primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                  primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                  primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	Id                           string             `bson:"id" json:"id"`
+	IdAccount                    string             `bson:"idAccount" json:"idAccount"`
+	IdentityType                 IdentityType       `bson:"identityType" json:"identityType"`
+	IpAddressWhereAuthenticated  string             `bson:"ipAddressWhereAuthenticated" json:"ipAddressWhereAuthenticated"`
+	Password                     string             `bson:"password" json:"password"`
+	PreventConnectingIfIpChanges bool               `bson:"preventConnectingIfIpChanges" json:"preventConnectingIfIpChanges"`
+	UbluxRoles                   []UbluxRole        `bson:"ubluxRoles" json:"ubluxRoles"`
+	Username                     string             `bson:"username" json:"username"`
 }
 
 // Implementing interface IUbluxDocument
-func (x Identity) GetDateDeleted() time.Time {
+func (x Identity) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x Identity) GetDateCreated() time.Time {
+func (x Identity) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x Identity) GetDateUpdated() time.Time {
+func (x Identity) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -49,16 +48,16 @@ func BuildIdentity(m map[string]interface{}, x *Identity) {
 		x.AllowConnectingFromIpRegex = val.(string)
 	}
 	if val, ok := m["dateAuthenticated"]; ok && val != nil {
-		x.DateAuthenticated = val.(time.Time)
+		x.DateAuthenticated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)

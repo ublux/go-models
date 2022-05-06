@@ -1,25 +1,25 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type IP struct {
-	DateCreated time.Time `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted time.Time `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated time.Time `bson:"dateUpdated" json:"dateUpdated"`
-	Id          string    `bson:"id" json:"id"`
-	IdIdentity  string    `bson:"idIdentity" json:"idIdentity"`
-	IpOrigin    string    `bson:"ipOrigin" json:"ipOrigin"`
-	IsBlack     bool      `bson:"isBlack" json:"isBlack"`
+	DateCreated primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	Id          string             `bson:"id" json:"id"`
+	IdIdentity  string             `bson:"idIdentity" json:"idIdentity"`
+	IpOrigin    string             `bson:"ipOrigin" json:"ipOrigin"`
+	IsBlack     bool               `bson:"isBlack" json:"isBlack"`
 }
 
 // Implementing interface IUbluxDocument
-func (x IP) GetDateDeleted() time.Time {
+func (x IP) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x IP) GetDateCreated() time.Time {
+func (x IP) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x IP) GetDateUpdated() time.Time {
+func (x IP) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -33,13 +33,13 @@ func (x IP) GetId() string {
 // BUILDER from bson map:
 func BuildIP(m map[string]interface{}, x *IP) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)

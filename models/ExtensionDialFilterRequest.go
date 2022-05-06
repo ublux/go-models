@@ -1,60 +1,60 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
 type ExtensionDialFilterRequest struct {
-	DateCreated_EQ                                                                                     time.Time       `bson:"dateCreated_EQ" json:"dateCreated_EQ"`
-	DateCreated_GTE                                                                                    time.Time       `bson:"dateCreated_GTE" json:"dateCreated_GTE"`
-	DateCreated_LTE                                                                                    time.Time       `bson:"dateCreated_LTE" json:"dateCreated_LTE"`
-	DateUpdated_EQ                                                                                     time.Time       `bson:"dateUpdated_EQ" json:"dateUpdated_EQ"`
-	DateUpdated_GTE                                                                                    time.Time       `bson:"dateUpdated_GTE" json:"dateUpdated_GTE"`
-	DateUpdated_LTE                                                                                    time.Time       `bson:"dateUpdated_LTE" json:"dateUpdated_LTE"`
-	EventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ                                         EventActionType `bson:"eventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ" json:"eventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ"`
-	ExtensionType_EQ                                                                                   ExtensionType   `bson:"extensionType_EQ" json:"extensionType_EQ"`
-	Id_CON                                                                                             string          `bson:"id_CON" json:"id_CON"`
-	Id_EQ                                                                                              string          `bson:"id_EQ" json:"id_EQ"`
-	Id_REG                                                                                             string          `bson:"id_REG" json:"id_REG"`
-	IdMusicOnHoldGroup_CON                                                                             string          `bson:"idMusicOnHoldGroup_CON" json:"idMusicOnHoldGroup_CON"`
-	IdMusicOnHoldGroup_EQ                                                                              string          `bson:"idMusicOnHoldGroup_EQ" json:"idMusicOnHoldGroup_EQ"`
-	IdMusicOnHoldGroup_REG                                                                             string          `bson:"idMusicOnHoldGroup_REG" json:"idMusicOnHoldGroup_REG"`
-	IdsLines_CON                                                                                       string          `bson:"idsLines_CON" json:"idsLines_CON"`
-	IdsLines_EQ                                                                                        string          `bson:"idsLines_EQ" json:"idsLines_EQ"`
-	IdsLines_REG                                                                                       string          `bson:"idsLines_REG" json:"idsLines_REG"`
-	InjectExtensionNameToCallerId_EQ                                                                   bool            `bson:"injectExtensionNameToCallerId_EQ" json:"injectExtensionNameToCallerId_EQ"`
-	Number_CON                                                                                         string          `bson:"number_CON" json:"number_CON"`
-	Number_EQ                                                                                          string          `bson:"number_EQ" json:"number_EQ"`
-	Number_REG                                                                                         string          `bson:"number_REG" json:"number_REG"`
-	RingTimeInSeconds_EQ                                                                               int32           `bson:"ringTimeInSeconds_EQ" json:"ringTimeInSeconds_EQ"`
-	RingTimeInSeconds_GTE                                                                              int32           `bson:"ringTimeInSeconds_GTE" json:"ringTimeInSeconds_GTE"`
-	RingTimeInSeconds_LTE                                                                              int32           `bson:"ringTimeInSeconds_LTE" json:"ringTimeInSeconds_LTE"`
-	SendEmailNotificationIfCallIsNotAnswered_Email_CON                                                 string          `bson:"sendEmailNotificationIfCallIsNotAnswered_Email_CON" json:"sendEmailNotificationIfCallIsNotAnswered_Email_CON"`
-	SendEmailNotificationIfCallIsNotAnswered_Email_EQ                                                  string          `bson:"sendEmailNotificationIfCallIsNotAnswered_Email_EQ" json:"sendEmailNotificationIfCallIsNotAnswered_Email_EQ"`
-	SendEmailNotificationIfCallIsNotAnswered_Email_REG                                                 string          `bson:"sendEmailNotificationIfCallIsNotAnswered_Email_REG" json:"sendEmailNotificationIfCallIsNotAnswered_Email_REG"`
-	SendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_EQ  int32           `bson:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_EQ" json:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_EQ"`
-	SendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_GTE int32           `bson:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_GTE" json:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_GTE"`
-	SendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_LTE int32           `bson:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_LTE" json:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_LTE"`
+	DateCreated_EQ                                                                                     primitive.DateTime `bson:"dateCreated_EQ" json:"dateCreated_EQ"`
+	DateCreated_GTE                                                                                    primitive.DateTime `bson:"dateCreated_GTE" json:"dateCreated_GTE"`
+	DateCreated_LTE                                                                                    primitive.DateTime `bson:"dateCreated_LTE" json:"dateCreated_LTE"`
+	DateUpdated_EQ                                                                                     primitive.DateTime `bson:"dateUpdated_EQ" json:"dateUpdated_EQ"`
+	DateUpdated_GTE                                                                                    primitive.DateTime `bson:"dateUpdated_GTE" json:"dateUpdated_GTE"`
+	DateUpdated_LTE                                                                                    primitive.DateTime `bson:"dateUpdated_LTE" json:"dateUpdated_LTE"`
+	EventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ                                         EventActionType    `bson:"eventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ" json:"eventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ"`
+	ExtensionType_EQ                                                                                   ExtensionType      `bson:"extensionType_EQ" json:"extensionType_EQ"`
+	Id_CON                                                                                             string             `bson:"id_CON" json:"id_CON"`
+	Id_EQ                                                                                              string             `bson:"id_EQ" json:"id_EQ"`
+	Id_REG                                                                                             string             `bson:"id_REG" json:"id_REG"`
+	IdMusicOnHoldGroup_CON                                                                             string             `bson:"idMusicOnHoldGroup_CON" json:"idMusicOnHoldGroup_CON"`
+	IdMusicOnHoldGroup_EQ                                                                              string             `bson:"idMusicOnHoldGroup_EQ" json:"idMusicOnHoldGroup_EQ"`
+	IdMusicOnHoldGroup_REG                                                                             string             `bson:"idMusicOnHoldGroup_REG" json:"idMusicOnHoldGroup_REG"`
+	IdsLines_CON                                                                                       string             `bson:"idsLines_CON" json:"idsLines_CON"`
+	IdsLines_EQ                                                                                        string             `bson:"idsLines_EQ" json:"idsLines_EQ"`
+	IdsLines_REG                                                                                       string             `bson:"idsLines_REG" json:"idsLines_REG"`
+	InjectExtensionNameToCallerId_EQ                                                                   bool               `bson:"injectExtensionNameToCallerId_EQ" json:"injectExtensionNameToCallerId_EQ"`
+	Number_CON                                                                                         string             `bson:"number_CON" json:"number_CON"`
+	Number_EQ                                                                                          string             `bson:"number_EQ" json:"number_EQ"`
+	Number_REG                                                                                         string             `bson:"number_REG" json:"number_REG"`
+	RingTimeInSeconds_EQ                                                                               int32              `bson:"ringTimeInSeconds_EQ" json:"ringTimeInSeconds_EQ"`
+	RingTimeInSeconds_GTE                                                                              int32              `bson:"ringTimeInSeconds_GTE" json:"ringTimeInSeconds_GTE"`
+	RingTimeInSeconds_LTE                                                                              int32              `bson:"ringTimeInSeconds_LTE" json:"ringTimeInSeconds_LTE"`
+	SendEmailNotificationIfCallIsNotAnswered_Email_CON                                                 string             `bson:"sendEmailNotificationIfCallIsNotAnswered_Email_CON" json:"sendEmailNotificationIfCallIsNotAnswered_Email_CON"`
+	SendEmailNotificationIfCallIsNotAnswered_Email_EQ                                                  string             `bson:"sendEmailNotificationIfCallIsNotAnswered_Email_EQ" json:"sendEmailNotificationIfCallIsNotAnswered_Email_EQ"`
+	SendEmailNotificationIfCallIsNotAnswered_Email_REG                                                 string             `bson:"sendEmailNotificationIfCallIsNotAnswered_Email_REG" json:"sendEmailNotificationIfCallIsNotAnswered_Email_REG"`
+	SendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_EQ  int32              `bson:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_EQ" json:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_EQ"`
+	SendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_GTE int32              `bson:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_GTE" json:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_GTE"`
+	SendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_LTE int32              `bson:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_LTE" json:"sendEmailNotificationIfCallIsNotAnswered_PreventSendingNotificationIfCallLastsLessThanNSeconds_LTE"`
 }
 
 // BUILDER from bson map:
 func BuildExtensionDialFilterRequest(m map[string]interface{}, x *ExtensionDialFilterRequest) {
 	if val, ok := m["dateCreated_EQ"]; ok && val != nil {
-		x.DateCreated_EQ = val.(time.Time)
+		x.DateCreated_EQ = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateCreated_GTE"]; ok && val != nil {
-		x.DateCreated_GTE = val.(time.Time)
+		x.DateCreated_GTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateCreated_LTE"]; ok && val != nil {
-		x.DateCreated_LTE = val.(time.Time)
+		x.DateCreated_LTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated_EQ"]; ok && val != nil {
-		x.DateUpdated_EQ = val.(time.Time)
+		x.DateUpdated_EQ = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated_GTE"]; ok && val != nil {
-		x.DateUpdated_GTE = val.(time.Time)
+		x.DateUpdated_GTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated_LTE"]; ok && val != nil {
-		x.DateUpdated_LTE = val.(time.Time)
+		x.DateUpdated_LTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["eventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ"]; ok && val != nil {
 		x.EventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ = EventActionType("EventActionToExecuteIfCallIsNotAnswered_EventActionType_EQ_" + val.(string))

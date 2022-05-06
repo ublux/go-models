@@ -1,47 +1,46 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type VoipNumberPhone struct {
-	City                         string         `bson:"city" json:"city"`
-	CountryIsoCode               CountryIsoCode `bson:"countryIsoCode" json:"countryIsoCode"`
-	DateCreated                  time.Time      `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                  time.Time      `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                  time.Time      `bson:"dateUpdated" json:"dateUpdated"`
-	Description                  string         `bson:"description" json:"description"`
-	FriendlyName                 string         `bson:"friendlyName" json:"friendlyName"`
-	Id                           string         `bson:"id" json:"id"`
-	IdAccount                    string         `bson:"idAccount" json:"idAccount"`
-	IdCustomerInfo               string         `bson:"idCustomerInfo" json:"idCustomerInfo"`
-	IdTrunkOrigination           string         `bson:"idTrunkOrigination" json:"idTrunkOrigination"`
-	IdVoipProvider               string         `bson:"idVoipProvider" json:"idVoipProvider"`
-	InjectFriendlyNameToCallerId bool           `bson:"injectFriendlyNameToCallerId" json:"injectFriendlyNameToCallerId"`
-	IsSmsEnabled                 bool           `bson:"isSmsEnabled" json:"isSmsEnabled"`
-	IsTollFree                   bool           `bson:"isTollFree" json:"isTollFree"`
-	IsVoiceEnabled               bool           `bson:"isVoiceEnabled" json:"isVoiceEnabled"`
-	IsWhatsappEnabled            bool           `bson:"isWhatsappEnabled" json:"isWhatsappEnabled"`
-	Language                     Language       `bson:"language" json:"language"`
-	Number                       string         `bson:"number" json:"number"`
-	RecordIncomingCalls          bool           `bson:"recordIncomingCalls" json:"recordIncomingCalls"`
-	RulesFax                     []RuleFax      `bson:"rulesFax" json:"rulesFax"`
-	RulesPhone                   []RulePhone    `bson:"rulesPhone" json:"rulesPhone"`
-	RulesSms                     []RuleSms      `bson:"rulesSms" json:"rulesSms"`
-	SID                          string         `bson:"sID" json:"sID"`
-	State                        string         `bson:"state" json:"state"`
-	TimeZone                     string         `bson:"timeZone" json:"timeZone"`
-	VoipNumberType               VoipNumberType `bson:"voipNumberType" json:"voipNumberType"`
+	City                         string             `bson:"city" json:"city"`
+	CountryIsoCode               CountryIsoCode     `bson:"countryIsoCode" json:"countryIsoCode"`
+	DateCreated                  primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                  primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                  primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	Description                  string             `bson:"description" json:"description"`
+	FriendlyName                 string             `bson:"friendlyName" json:"friendlyName"`
+	Id                           string             `bson:"id" json:"id"`
+	IdAccount                    string             `bson:"idAccount" json:"idAccount"`
+	IdCustomerInfo               string             `bson:"idCustomerInfo" json:"idCustomerInfo"`
+	IdTrunkOrigination           string             `bson:"idTrunkOrigination" json:"idTrunkOrigination"`
+	IdVoipProvider               string             `bson:"idVoipProvider" json:"idVoipProvider"`
+	InjectFriendlyNameToCallerId bool               `bson:"injectFriendlyNameToCallerId" json:"injectFriendlyNameToCallerId"`
+	IsSmsEnabled                 bool               `bson:"isSmsEnabled" json:"isSmsEnabled"`
+	IsTollFree                   bool               `bson:"isTollFree" json:"isTollFree"`
+	IsVoiceEnabled               bool               `bson:"isVoiceEnabled" json:"isVoiceEnabled"`
+	IsWhatsappEnabled            bool               `bson:"isWhatsappEnabled" json:"isWhatsappEnabled"`
+	Language                     Language           `bson:"language" json:"language"`
+	Number                       string             `bson:"number" json:"number"`
+	RecordIncomingCalls          bool               `bson:"recordIncomingCalls" json:"recordIncomingCalls"`
+	RulesFax                     []RuleFax          `bson:"rulesFax" json:"rulesFax"`
+	RulesPhone                   []RulePhone        `bson:"rulesPhone" json:"rulesPhone"`
+	RulesSms                     []RuleSms          `bson:"rulesSms" json:"rulesSms"`
+	SID                          string             `bson:"sID" json:"sID"`
+	State                        string             `bson:"state" json:"state"`
+	TimeZone                     string             `bson:"timeZone" json:"timeZone"`
+	VoipNumberType               VoipNumberType     `bson:"voipNumberType" json:"voipNumberType"`
 }
 
 // Implementing interface IUbluxDocument
-func (x VoipNumberPhone) GetDateDeleted() time.Time {
+func (x VoipNumberPhone) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x VoipNumberPhone) GetDateCreated() time.Time {
+func (x VoipNumberPhone) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x VoipNumberPhone) GetDateUpdated() time.Time {
+func (x VoipNumberPhone) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -134,13 +133,13 @@ func BuildVoipNumberPhone(m map[string]interface{}, x *VoipNumberPhone) {
 		x.CountryIsoCode = CountryIsoCode("CountryIsoCode_" + val.(string))
 	} // is NOT readonly obtained from map
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)

@@ -1,15 +1,14 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type UbluxSession struct {
-	ExpirationDate time.Time    `bson:"expirationDate" json:"expirationDate"`
-	IdAccount      string       `bson:"idAccount" json:"idAccount"`
-	IdentityType   IdentityType `bson:"identityType" json:"identityType"`
-	IdIdentity     string       `bson:"idIdentity" json:"idIdentity"`
-	UbluxRoles     []UbluxRole  `bson:"ubluxRoles" json:"ubluxRoles"`
+	ExpirationDate primitive.DateTime `bson:"expirationDate" json:"expirationDate"`
+	IdAccount      string             `bson:"idAccount" json:"idAccount"`
+	IdentityType   IdentityType       `bson:"identityType" json:"identityType"`
+	IdIdentity     string             `bson:"idIdentity" json:"idIdentity"`
+	UbluxRoles     []UbluxRole        `bson:"ubluxRoles" json:"ubluxRoles"`
 }
 
 // Implementing interface IReferncesAccount
@@ -20,7 +19,7 @@ func (x UbluxSession) GetIdAccount() string {
 // BUILDER from bson map:
 func BuildUbluxSession(m map[string]interface{}, x *UbluxSession) {
 	if val, ok := m["expirationDate"]; ok && val != nil {
-		x.ExpirationDate = val.(time.Time)
+		x.ExpirationDate = val.(primitive.DateTime)
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)

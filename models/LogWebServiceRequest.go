@@ -1,13 +1,13 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
 type LogWebServiceRequest struct {
 	Charge                 uint32                 `bson:"charge" json:"charge"`
-	DateCreated            time.Time              `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted            time.Time              `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated            time.Time              `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated            primitive.DateTime     `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted            primitive.DateTime     `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated            primitive.DateTime     `bson:"dateUpdated" json:"dateUpdated"`
 	HttpMethod             string                 `bson:"httpMethod" json:"httpMethod"`
 	HttpResponseStatusCode HttpResponseStatusCode `bson:"httpResponseStatusCode" json:"httpResponseStatusCode"`
 	Id                     string                 `bson:"id" json:"id"`
@@ -27,13 +27,13 @@ type LogWebServiceRequest struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x LogWebServiceRequest) GetDateDeleted() time.Time {
+func (x LogWebServiceRequest) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x LogWebServiceRequest) GetDateCreated() time.Time {
+func (x LogWebServiceRequest) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x LogWebServiceRequest) GetDateUpdated() time.Time {
+func (x LogWebServiceRequest) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -50,13 +50,13 @@ func BuildLogWebServiceRequest(m map[string]interface{}, x *LogWebServiceRequest
 		x.Charge = val.(uint32)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["httpMethod"]; ok && val != nil {
 		x.HttpMethod = val.(string)

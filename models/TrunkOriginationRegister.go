@@ -1,13 +1,12 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type TrunkOriginationRegister struct {
-	DateCreated               time.Time            `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted               time.Time            `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated               time.Time            `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated               primitive.DateTime   `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted               primitive.DateTime   `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated               primitive.DateTime   `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName              string               `bson:"friendlyName" json:"friendlyName"`
 	Id                        string               `bson:"id" json:"id"`
 	IdCloudServicePbx         string               `bson:"idCloudServicePbx" json:"idCloudServicePbx"`
@@ -23,13 +22,13 @@ type TrunkOriginationRegister struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x TrunkOriginationRegister) GetDateDeleted() time.Time {
+func (x TrunkOriginationRegister) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x TrunkOriginationRegister) GetDateCreated() time.Time {
+func (x TrunkOriginationRegister) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x TrunkOriginationRegister) GetDateUpdated() time.Time {
+func (x TrunkOriginationRegister) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -66,13 +65,13 @@ func (x TrunkOriginationRegister) GetFriendlyName() string {
 // BUILDER from bson map:
 func BuildTrunkOriginationRegister(m map[string]interface{}, x *TrunkOriginationRegister) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)

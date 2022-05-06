@@ -1,32 +1,31 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type TrunkTermination struct {
-	CountryIsoCodesThatCanCall []CountryIsoCode `bson:"countryIsoCodesThatCanCall" json:"countryIsoCodesThatCanCall"`
-	DateCreated                time.Time        `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                time.Time        `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                time.Time        `bson:"dateUpdated" json:"dateUpdated"`
-	FriendlyName               string           `bson:"friendlyName" json:"friendlyName"`
-	Id                         string           `bson:"id" json:"id"`
-	IdTrunkTerminationExisting string           `bson:"idTrunkTerminationExisting" json:"idTrunkTerminationExisting"`
-	IdVoipProvider             string           `bson:"idVoipProvider" json:"idVoipProvider"`
-	Password                   string           `bson:"password" json:"password"`
-	SID                        string           `bson:"sID" json:"sID"`
-	TerminationUri             string           `bson:"terminationUri" json:"terminationUri"`
-	Username                   string           `bson:"username" json:"username"`
+	CountryIsoCodesThatCanCall []CountryIsoCode   `bson:"countryIsoCodesThatCanCall" json:"countryIsoCodesThatCanCall"`
+	DateCreated                primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	FriendlyName               string             `bson:"friendlyName" json:"friendlyName"`
+	Id                         string             `bson:"id" json:"id"`
+	IdTrunkTerminationExisting string             `bson:"idTrunkTerminationExisting" json:"idTrunkTerminationExisting"`
+	IdVoipProvider             string             `bson:"idVoipProvider" json:"idVoipProvider"`
+	Password                   string             `bson:"password" json:"password"`
+	SID                        string             `bson:"sID" json:"sID"`
+	TerminationUri             string             `bson:"terminationUri" json:"terminationUri"`
+	Username                   string             `bson:"username" json:"username"`
 }
 
 // Implementing interface IUbluxDocument
-func (x TrunkTermination) GetDateDeleted() time.Time {
+func (x TrunkTermination) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x TrunkTermination) GetDateCreated() time.Time {
+func (x TrunkTermination) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x TrunkTermination) GetDateUpdated() time.Time {
+func (x TrunkTermination) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -47,13 +46,13 @@ func BuildTrunkTermination(m map[string]interface{}, x *TrunkTermination) {
 		}
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)

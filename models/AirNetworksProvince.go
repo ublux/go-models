@@ -1,25 +1,24 @@
 package models
 
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type AirNetworksProvince struct {
-	DateCreated time.Time `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted time.Time `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated time.Time `bson:"dateUpdated" json:"dateUpdated"`
-	Id          string    `bson:"id" json:"id"`
-	Name        string    `bson:"name" json:"name"`
-	Populations []string  `bson:"populations" json:"populations"`
+	DateCreated primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	Id          string             `bson:"id" json:"id"`
+	Name        string             `bson:"name" json:"name"`
+	Populations []string           `bson:"populations" json:"populations"`
 }
 
 // Implementing interface IUbluxDocument
-func (x AirNetworksProvince) GetDateDeleted() time.Time {
+func (x AirNetworksProvince) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x AirNetworksProvince) GetDateCreated() time.Time {
+func (x AirNetworksProvince) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x AirNetworksProvince) GetDateUpdated() time.Time {
+func (x AirNetworksProvince) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -33,13 +32,13 @@ func (x AirNetworksProvince) GetId() string {
 // BUILDER from bson map:
 func BuildAirNetworksProvince(m map[string]interface{}, x *AirNetworksProvince) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)

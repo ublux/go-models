@@ -1,18 +1,18 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
 type LogWebServiceRequestFilterRequest struct {
 	Charge_EQ                       uint32                 `bson:"charge_EQ" json:"charge_EQ"`
 	Charge_GTE                      uint32                 `bson:"charge_GTE" json:"charge_GTE"`
 	Charge_LTE                      uint32                 `bson:"charge_LTE" json:"charge_LTE"`
-	DateCreated_EQ                  time.Time              `bson:"dateCreated_EQ" json:"dateCreated_EQ"`
-	DateCreated_GTE                 time.Time              `bson:"dateCreated_GTE" json:"dateCreated_GTE"`
-	DateCreated_LTE                 time.Time              `bson:"dateCreated_LTE" json:"dateCreated_LTE"`
-	DateUpdated_EQ                  time.Time              `bson:"dateUpdated_EQ" json:"dateUpdated_EQ"`
-	DateUpdated_GTE                 time.Time              `bson:"dateUpdated_GTE" json:"dateUpdated_GTE"`
-	DateUpdated_LTE                 time.Time              `bson:"dateUpdated_LTE" json:"dateUpdated_LTE"`
+	DateCreated_EQ                  primitive.DateTime     `bson:"dateCreated_EQ" json:"dateCreated_EQ"`
+	DateCreated_GTE                 primitive.DateTime     `bson:"dateCreated_GTE" json:"dateCreated_GTE"`
+	DateCreated_LTE                 primitive.DateTime     `bson:"dateCreated_LTE" json:"dateCreated_LTE"`
+	DateUpdated_EQ                  primitive.DateTime     `bson:"dateUpdated_EQ" json:"dateUpdated_EQ"`
+	DateUpdated_GTE                 primitive.DateTime     `bson:"dateUpdated_GTE" json:"dateUpdated_GTE"`
+	DateUpdated_LTE                 primitive.DateTime     `bson:"dateUpdated_LTE" json:"dateUpdated_LTE"`
 	HttpMethod_CON                  string                 `bson:"httpMethod_CON" json:"httpMethod_CON"`
 	HttpMethod_EQ                   string                 `bson:"httpMethod_EQ" json:"httpMethod_EQ"`
 	HttpMethod_REG                  string                 `bson:"httpMethod_REG" json:"httpMethod_REG"`
@@ -45,9 +45,9 @@ type LogWebServiceRequestFilterRequest struct {
 	ResponseTime_GTE                int32                  `bson:"responseTime_GTE" json:"responseTime_GTE"`
 	ResponseTime_LTE                int32                  `bson:"responseTime_LTE" json:"responseTime_LTE"`
 	SaveQueryString_EQ              bool                   `bson:"saveQueryString_EQ" json:"saveQueryString_EQ"`
-	UbluxSession_ExpirationDate_EQ  time.Time              `bson:"ubluxSession_ExpirationDate_EQ" json:"ubluxSession_ExpirationDate_EQ"`
-	UbluxSession_ExpirationDate_GTE time.Time              `bson:"ubluxSession_ExpirationDate_GTE" json:"ubluxSession_ExpirationDate_GTE"`
-	UbluxSession_ExpirationDate_LTE time.Time              `bson:"ubluxSession_ExpirationDate_LTE" json:"ubluxSession_ExpirationDate_LTE"`
+	UbluxSession_ExpirationDate_EQ  primitive.DateTime     `bson:"ubluxSession_ExpirationDate_EQ" json:"ubluxSession_ExpirationDate_EQ"`
+	UbluxSession_ExpirationDate_GTE primitive.DateTime     `bson:"ubluxSession_ExpirationDate_GTE" json:"ubluxSession_ExpirationDate_GTE"`
+	UbluxSession_ExpirationDate_LTE primitive.DateTime     `bson:"ubluxSession_ExpirationDate_LTE" json:"ubluxSession_ExpirationDate_LTE"`
 	UbluxSession_IdAccount_CON      string                 `bson:"ubluxSession_IdAccount_CON" json:"ubluxSession_IdAccount_CON"`
 	UbluxSession_IdAccount_EQ       string                 `bson:"ubluxSession_IdAccount_EQ" json:"ubluxSession_IdAccount_EQ"`
 	UbluxSession_IdAccount_REG      string                 `bson:"ubluxSession_IdAccount_REG" json:"ubluxSession_IdAccount_REG"`
@@ -73,22 +73,22 @@ func BuildLogWebServiceRequestFilterRequest(m map[string]interface{}, x *LogWebS
 		x.Charge_LTE = val.(uint32)
 	}
 	if val, ok := m["dateCreated_EQ"]; ok && val != nil {
-		x.DateCreated_EQ = val.(time.Time)
+		x.DateCreated_EQ = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateCreated_GTE"]; ok && val != nil {
-		x.DateCreated_GTE = val.(time.Time)
+		x.DateCreated_GTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateCreated_LTE"]; ok && val != nil {
-		x.DateCreated_LTE = val.(time.Time)
+		x.DateCreated_LTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated_EQ"]; ok && val != nil {
-		x.DateUpdated_EQ = val.(time.Time)
+		x.DateUpdated_EQ = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated_GTE"]; ok && val != nil {
-		x.DateUpdated_GTE = val.(time.Time)
+		x.DateUpdated_GTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated_LTE"]; ok && val != nil {
-		x.DateUpdated_LTE = val.(time.Time)
+		x.DateUpdated_LTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["httpMethod_CON"]; ok && val != nil {
 		x.HttpMethod_CON = val.(string)
@@ -187,13 +187,13 @@ func BuildLogWebServiceRequestFilterRequest(m map[string]interface{}, x *LogWebS
 		x.SaveQueryString_EQ = val.(bool)
 	}
 	if val, ok := m["ubluxSession_ExpirationDate_EQ"]; ok && val != nil {
-		x.UbluxSession_ExpirationDate_EQ = val.(time.Time)
+		x.UbluxSession_ExpirationDate_EQ = val.(primitive.DateTime)
 	}
 	if val, ok := m["ubluxSession_ExpirationDate_GTE"]; ok && val != nil {
-		x.UbluxSession_ExpirationDate_GTE = val.(time.Time)
+		x.UbluxSession_ExpirationDate_GTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["ubluxSession_ExpirationDate_LTE"]; ok && val != nil {
-		x.UbluxSession_ExpirationDate_LTE = val.(time.Time)
+		x.UbluxSession_ExpirationDate_LTE = val.(primitive.DateTime)
 	}
 	if val, ok := m["ubluxSession_IdAccount_CON"]; ok && val != nil {
 		x.UbluxSession_IdAccount_CON = val.(string)

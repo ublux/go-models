@@ -1,32 +1,31 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type CloudServicePbx struct {
-	CloudServiceType CloudServiceType `bson:"cloudServiceType" json:"cloudServiceType"`
-	CountryIsoCode   CountryIsoCode   `bson:"countryIsoCode" json:"countryIsoCode"`
-	DateCreated      time.Time        `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted      time.Time        `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated      time.Time        `bson:"dateUpdated" json:"dateUpdated"`
-	ExternalIps      []string         `bson:"externalIps" json:"externalIps"`
-	Id               string           `bson:"id" json:"id"`
-	IdIdentity       string           `bson:"idIdentity" json:"idIdentity"`
-	IsFailover       bool             `bson:"isFailover" json:"isFailover"`
-	IsHealthy        bool             `bson:"isHealthy" json:"isHealthy"`
-	Localnet         string           `bson:"localnet" json:"localnet"`
-	NAT              bool             `bson:"nAT" json:"nAT"`
+	CloudServiceType CloudServiceType   `bson:"cloudServiceType" json:"cloudServiceType"`
+	CountryIsoCode   CountryIsoCode     `bson:"countryIsoCode" json:"countryIsoCode"`
+	DateCreated      primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted      primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated      primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	ExternalIps      []string           `bson:"externalIps" json:"externalIps"`
+	Id               string             `bson:"id" json:"id"`
+	IdIdentity       string             `bson:"idIdentity" json:"idIdentity"`
+	IsFailover       bool               `bson:"isFailover" json:"isFailover"`
+	IsHealthy        bool               `bson:"isHealthy" json:"isHealthy"`
+	Localnet         string             `bson:"localnet" json:"localnet"`
+	NAT              bool               `bson:"nAT" json:"nAT"`
 }
 
 // Implementing interface IUbluxDocument
-func (x CloudServicePbx) GetDateDeleted() time.Time {
+func (x CloudServicePbx) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x CloudServicePbx) GetDateCreated() time.Time {
+func (x CloudServicePbx) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x CloudServicePbx) GetDateUpdated() time.Time {
+func (x CloudServicePbx) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -70,13 +69,13 @@ func BuildCloudServicePbx(m map[string]interface{}, x *CloudServicePbx) {
 		x.CountryIsoCode = CountryIsoCode("CountryIsoCode_" + val.(string))
 	} // is NOT readonly obtained from map
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["externalIps"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case

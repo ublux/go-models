@@ -1,32 +1,31 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type ExtensionConference struct {
-	AnnounceParticipants          bool          `bson:"announceParticipants" json:"announceParticipants"`
-	DateCreated                   time.Time     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                   time.Time     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                   time.Time     `bson:"dateUpdated" json:"dateUpdated"`
-	ExtensionType                 ExtensionType `bson:"extensionType" json:"extensionType"`
-	Id                            string        `bson:"id" json:"id"`
-	IdAccount                     string        `bson:"idAccount" json:"idAccount"`
-	IdMusicOnHoldGroup            string        `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
-	IdsAudiosWhenOneParticipant   []string      `bson:"idsAudiosWhenOneParticipant" json:"idsAudiosWhenOneParticipant"`
-	InjectExtensionNameToCallerId bool          `bson:"injectExtensionNameToCallerId" json:"injectExtensionNameToCallerId"`
-	Number                        string        `bson:"number" json:"number"`
-	Pin                           string        `bson:"pin" json:"pin"`
+	AnnounceParticipants          bool               `bson:"announceParticipants" json:"announceParticipants"`
+	DateCreated                   primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                   primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                   primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	ExtensionType                 ExtensionType      `bson:"extensionType" json:"extensionType"`
+	Id                            string             `bson:"id" json:"id"`
+	IdAccount                     string             `bson:"idAccount" json:"idAccount"`
+	IdMusicOnHoldGroup            string             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
+	IdsAudiosWhenOneParticipant   []string           `bson:"idsAudiosWhenOneParticipant" json:"idsAudiosWhenOneParticipant"`
+	InjectExtensionNameToCallerId bool               `bson:"injectExtensionNameToCallerId" json:"injectExtensionNameToCallerId"`
+	Number                        string             `bson:"number" json:"number"`
+	Pin                           string             `bson:"pin" json:"pin"`
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionConference) GetDateDeleted() time.Time {
+func (x ExtensionConference) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x ExtensionConference) GetDateCreated() time.Time {
+func (x ExtensionConference) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x ExtensionConference) GetDateUpdated() time.Time {
+func (x ExtensionConference) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -62,13 +61,13 @@ func BuildExtensionConference(m map[string]interface{}, x *ExtensionConference) 
 		x.AnnounceParticipants = val.(bool)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	x.ExtensionType = ExtensionType_Conference // readonly property
 	if val, ok := m["id"]; ok && val != nil {

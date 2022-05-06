@@ -1,37 +1,36 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Account struct {
-	AccountSecrets                      AccountSecrets   `bson:"accountSecrets" json:"accountSecrets"`
-	AccountSettings                     AccountSettings  `bson:"accountSettings" json:"accountSettings"`
-	CompanyName                         string           `bson:"companyName" json:"companyName"`
-	CountriesThatCanCallInternationally []CountryIsoCode `bson:"countriesThatCanCallInternationally" json:"countriesThatCanCallInternationally"`
-	CountriesThatCanCallLocally         []CountryIsoCode `bson:"countriesThatCanCallLocally" json:"countriesThatCanCallLocally"`
-	DateCreated                         time.Time        `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                         time.Time        `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                         time.Time        `bson:"dateUpdated" json:"dateUpdated"`
-	HasGrantedSupportAccess             bool             `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
-	Id                                  string           `bson:"id" json:"id"`
-	IdCloudServicePbxFailover           string           `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
-	IdCloudServiceWebApp                string           `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
-	IdGTrunkTerminationGroup            string           `bson:"idGTrunkTerminationGroup" json:"idGTrunkTerminationGroup"`
-	IdsCloudServicePbxs                 []string         `bson:"idsCloudServicePbxs" json:"idsCloudServicePbxs"`
-	MailingAddress                      MailingAddress   `bson:"mailingAddress" json:"mailingAddress"`
-	ReserveAccountsOnPhone              []int32          `bson:"reserveAccountsOnPhone" json:"reserveAccountsOnPhone"`
-	UbluxPartner                        UbluxPartner     `bson:"ubluxPartner" json:"ubluxPartner"`
+	AccountSecrets                      AccountSecrets     `bson:"accountSecrets" json:"accountSecrets"`
+	AccountSettings                     AccountSettings    `bson:"accountSettings" json:"accountSettings"`
+	CompanyName                         string             `bson:"companyName" json:"companyName"`
+	CountriesThatCanCallInternationally []CountryIsoCode   `bson:"countriesThatCanCallInternationally" json:"countriesThatCanCallInternationally"`
+	CountriesThatCanCallLocally         []CountryIsoCode   `bson:"countriesThatCanCallLocally" json:"countriesThatCanCallLocally"`
+	DateCreated                         primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                         primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                         primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	HasGrantedSupportAccess             bool               `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
+	Id                                  string             `bson:"id" json:"id"`
+	IdCloudServicePbxFailover           string             `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
+	IdCloudServiceWebApp                string             `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
+	IdGTrunkTerminationGroup            string             `bson:"idGTrunkTerminationGroup" json:"idGTrunkTerminationGroup"`
+	IdsCloudServicePbxs                 []string           `bson:"idsCloudServicePbxs" json:"idsCloudServicePbxs"`
+	MailingAddress                      MailingAddress     `bson:"mailingAddress" json:"mailingAddress"`
+	ReserveAccountsOnPhone              []int32            `bson:"reserveAccountsOnPhone" json:"reserveAccountsOnPhone"`
+	UbluxPartner                        UbluxPartner       `bson:"ubluxPartner" json:"ubluxPartner"`
 }
 
 // Implementing interface IUbluxDocument
-func (x Account) GetDateDeleted() time.Time {
+func (x Account) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x Account) GetDateCreated() time.Time {
+func (x Account) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x Account) GetDateUpdated() time.Time {
+func (x Account) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -68,13 +67,13 @@ func BuildAccount(m map[string]interface{}, x *Account) {
 		}
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["hasGrantedSupportAccess"]; ok && val != nil {
 		x.HasGrantedSupportAccess = val.(bool)

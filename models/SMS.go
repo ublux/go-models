@@ -1,31 +1,31 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type SMS struct {
-	Body         string    `bson:"body" json:"body"`
-	Contact      Contact   `bson:"contact" json:"contact"`
-	DateCreated  time.Time `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted  time.Time `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated  time.Time `bson:"dateUpdated" json:"dateUpdated"`
-	From         string    `bson:"from" json:"from"`
-	Id           string    `bson:"id" json:"id"`
-	IdAccount    string    `bson:"idAccount" json:"idAccount"`
-	IdVoipNumber string    `bson:"idVoipNumber" json:"idVoipNumber"`
-	IsIncoming   bool      `bson:"isIncoming" json:"isIncoming"`
-	NumSegments  int32     `bson:"numSegments" json:"numSegments"`
-	Status       string    `bson:"status" json:"status"`
-	To           string    `bson:"to" json:"to"`
+	Body         string             `bson:"body" json:"body"`
+	Contact      Contact            `bson:"contact" json:"contact"`
+	DateCreated  primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted  primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated  primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	From         string             `bson:"from" json:"from"`
+	Id           string             `bson:"id" json:"id"`
+	IdAccount    string             `bson:"idAccount" json:"idAccount"`
+	IdVoipNumber string             `bson:"idVoipNumber" json:"idVoipNumber"`
+	IsIncoming   bool               `bson:"isIncoming" json:"isIncoming"`
+	NumSegments  int32              `bson:"numSegments" json:"numSegments"`
+	Status       string             `bson:"status" json:"status"`
+	To           string             `bson:"to" json:"to"`
 }
 
 // Implementing interface IUbluxDocument
-func (x SMS) GetDateDeleted() time.Time {
+func (x SMS) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x SMS) GetDateCreated() time.Time {
+func (x SMS) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x SMS) GetDateUpdated() time.Time {
+func (x SMS) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -50,13 +50,13 @@ func BuildSMS(m map[string]interface{}, x *SMS) {
 		BuildContact(val.(map[string]interface{}), &x.Contact)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["from"]; ok && val != nil {
 		x.From = val.(string)

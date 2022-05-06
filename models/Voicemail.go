@@ -1,31 +1,30 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type Voicemail struct {
-	DateCreated                      time.Time     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                      time.Time     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                      time.Time     `bson:"dateUpdated" json:"dateUpdated"`
-	DurationInSeconds                int32         `bson:"durationInSeconds" json:"durationInSeconds"`
-	Email                            string        `bson:"email" json:"email"`
-	ErrorMessage                     string        `bson:"errorMessage" json:"errorMessage"`
-	Id                               string        `bson:"id" json:"id"`
-	IdsLinesThatCanListenToVoicemail []string      `bson:"idsLinesThatCanListenToVoicemail" json:"idsLinesThatCanListenToVoicemail"`
-	VoicemailMp3                     StoredFile    `bson:"voicemailMp3" json:"voicemailMp3"`
-	VoicemailType                    VoicemailType `bson:"voicemailType" json:"voicemailType"`
-	VoicemailWav                     StoredFile    `bson:"voicemailWav" json:"voicemailWav"`
+	DateCreated                      primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                      primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                      primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	DurationInSeconds                int32              `bson:"durationInSeconds" json:"durationInSeconds"`
+	Email                            string             `bson:"email" json:"email"`
+	ErrorMessage                     string             `bson:"errorMessage" json:"errorMessage"`
+	Id                               string             `bson:"id" json:"id"`
+	IdsLinesThatCanListenToVoicemail []string           `bson:"idsLinesThatCanListenToVoicemail" json:"idsLinesThatCanListenToVoicemail"`
+	VoicemailMp3                     StoredFile         `bson:"voicemailMp3" json:"voicemailMp3"`
+	VoicemailType                    VoicemailType      `bson:"voicemailType" json:"voicemailType"`
+	VoicemailWav                     StoredFile         `bson:"voicemailWav" json:"voicemailWav"`
 }
 
 // Implementing interface IUbluxDocument
-func (x Voicemail) GetDateDeleted() time.Time {
+func (x Voicemail) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x Voicemail) GetDateCreated() time.Time {
+func (x Voicemail) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x Voicemail) GetDateUpdated() time.Time {
+func (x Voicemail) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -39,13 +38,13 @@ func (x Voicemail) GetId() string {
 // BUILDER from bson map:
 func BuildVoicemail(m map[string]interface{}, x *Voicemail) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["durationInSeconds"]; ok && val != nil {
 		x.DurationInSeconds = val.(int32)

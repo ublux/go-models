@@ -1,7 +1,6 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type CallIncomingToCallFlow struct {
@@ -9,10 +8,10 @@ type CallIncomingToCallFlow struct {
 	ChannelVariables          ChannelVariables           `bson:"channelVariables" json:"channelVariables"`
 	ChildCalls                []ChildCall                `bson:"childCalls" json:"childCalls"`
 	Contact                   Contact                    `bson:"contact" json:"contact"`
-	DateCreated               time.Time                  `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted               time.Time                  `bson:"dateDeleted" json:"dateDeleted"`
-	DateEnded                 time.Time                  `bson:"dateEnded" json:"dateEnded"`
-	DateUpdated               time.Time                  `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated               primitive.DateTime         `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted               primitive.DateTime         `bson:"dateDeleted" json:"dateDeleted"`
+	DateEnded                 primitive.DateTime         `bson:"dateEnded" json:"dateEnded"`
+	DateUpdated               primitive.DateTime         `bson:"dateUpdated" json:"dateUpdated"`
 	DigitsSent                []string                   `bson:"digitsSent" json:"digitsSent"`
 	DisabledVideo             bool                       `bson:"disabledVideo" json:"disabledVideo"`
 	From                      string                     `bson:"from" json:"from"`
@@ -35,13 +34,13 @@ type CallIncomingToCallFlow struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x CallIncomingToCallFlow) GetDateDeleted() time.Time {
+func (x CallIncomingToCallFlow) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x CallIncomingToCallFlow) GetDateCreated() time.Time {
+func (x CallIncomingToCallFlow) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x CallIncomingToCallFlow) GetDateUpdated() time.Time {
+func (x CallIncomingToCallFlow) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -82,7 +81,7 @@ func (x CallIncomingToCallFlow) GetChannelVariables() ChannelVariables {
 func (x CallIncomingToCallFlow) GetChildCalls() []ChildCall {
 	return x.ChildCalls
 }
-func (x CallIncomingToCallFlow) GetDateEnded() time.Time {
+func (x CallIncomingToCallFlow) GetDateEnded() primitive.DateTime {
 	return x.DateEnded
 }
 func (x CallIncomingToCallFlow) GetStatus() string {
@@ -168,16 +167,16 @@ func BuildCallIncomingToCallFlow(m map[string]interface{}, x *CallIncomingToCall
 		BuildContact(val.(map[string]interface{}), &x.Contact)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateEnded"]; ok && val != nil {
-		x.DateEnded = val.(time.Time)
+		x.DateEnded = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["digitsSent"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case

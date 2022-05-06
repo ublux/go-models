@@ -2,7 +2,7 @@ package models
 
 import . "github.com/ublux/go-models/enums"
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Call interface {
 	IUbluxDocument
@@ -14,7 +14,7 @@ type Call interface {
 	GetChannelVariables() ChannelVariables
 	GetChildCalls() []ChildCall
 	GetContact() Contact
-	GetDateEnded() time.Time
+	GetDateEnded() primitive.DateTime
 	GetStatus() string
 	GetSecondsItTookToAnswer() int32
 	GetTimesWhenCallPlacedOnHold() []TimeWhenCallPlacedOnHold

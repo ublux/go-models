@@ -14,5 +14,3 @@ func BuildAccountSecrets(m map[string]interface{}, x *AccountSecrets) {
 		x.PinSpy = val.(string)
 	}
 }
-
-

@@ -1,26 +1,26 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type CallerIdMask struct {
-	DateCreated            time.Time `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted            time.Time `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated            time.Time `bson:"dateUpdated" json:"dateUpdated"`
-	FriendlyName           string    `bson:"friendlyName" json:"friendlyName"`
-	Id                     string    `bson:"id" json:"id"`
-	IdAccount              string    `bson:"idAccount" json:"idAccount"`
-	PhoneNumber            string    `bson:"phoneNumber" json:"phoneNumber"`
-	RandomVerificationCode string    `bson:"randomVerificationCode" json:"randomVerificationCode"`
+	DateCreated            primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted            primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated            primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	FriendlyName           string             `bson:"friendlyName" json:"friendlyName"`
+	Id                     string             `bson:"id" json:"id"`
+	IdAccount              string             `bson:"idAccount" json:"idAccount"`
+	PhoneNumber            string             `bson:"phoneNumber" json:"phoneNumber"`
+	RandomVerificationCode string             `bson:"randomVerificationCode" json:"randomVerificationCode"`
 }
 
 // Implementing interface IUbluxDocument
-func (x CallerIdMask) GetDateDeleted() time.Time {
+func (x CallerIdMask) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x CallerIdMask) GetDateCreated() time.Time {
+func (x CallerIdMask) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x CallerIdMask) GetDateUpdated() time.Time {
+func (x CallerIdMask) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -39,13 +39,13 @@ func (x CallerIdMask) GetIdAccount() string {
 // BUILDER from bson map:
 func BuildCallerIdMask(m map[string]interface{}, x *CallerIdMask) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)

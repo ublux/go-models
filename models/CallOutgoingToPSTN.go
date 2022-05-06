@@ -1,7 +1,6 @@
 package models
 
 import . "github.com/ublux/go-models/enums"
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type CallOutgoingToPSTN struct {
@@ -10,10 +9,10 @@ type CallOutgoingToPSTN struct {
 	ChildCalls                []ChildCall                `bson:"childCalls" json:"childCalls"`
 	Contact                   Contact                    `bson:"contact" json:"contact"`
 	Country                   CountryIsoCode             `bson:"country" json:"country"`
-	DateCreated               time.Time                  `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted               time.Time                  `bson:"dateDeleted" json:"dateDeleted"`
-	DateEnded                 time.Time                  `bson:"dateEnded" json:"dateEnded"`
-	DateUpdated               time.Time                  `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated               primitive.DateTime         `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted               primitive.DateTime         `bson:"dateDeleted" json:"dateDeleted"`
+	DateEnded                 primitive.DateTime         `bson:"dateEnded" json:"dateEnded"`
+	DateUpdated               primitive.DateTime         `bson:"dateUpdated" json:"dateUpdated"`
 	DigitsSent                []string                   `bson:"digitsSent" json:"digitsSent"`
 	DisabledVideo             bool                       `bson:"disabledVideo" json:"disabledVideo"`
 	From                      string                     `bson:"from" json:"from"`
@@ -34,13 +33,13 @@ type CallOutgoingToPSTN struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x CallOutgoingToPSTN) GetDateDeleted() time.Time {
+func (x CallOutgoingToPSTN) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x CallOutgoingToPSTN) GetDateCreated() time.Time {
+func (x CallOutgoingToPSTN) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x CallOutgoingToPSTN) GetDateUpdated() time.Time {
+func (x CallOutgoingToPSTN) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -72,7 +71,7 @@ func (x CallOutgoingToPSTN) GetChannelVariables() ChannelVariables {
 func (x CallOutgoingToPSTN) GetChildCalls() []ChildCall {
 	return x.ChildCalls
 }
-func (x CallOutgoingToPSTN) GetDateEnded() time.Time {
+func (x CallOutgoingToPSTN) GetDateEnded() primitive.DateTime {
 	return x.DateEnded
 }
 func (x CallOutgoingToPSTN) GetStatus() string {
@@ -161,16 +160,16 @@ func BuildCallOutgoingToPSTN(m map[string]interface{}, x *CallOutgoingToPSTN) {
 		x.Country = CountryIsoCode("Country_" + val.(string))
 	} // is NOT readonly obtained from map
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateEnded"]; ok && val != nil {
-		x.DateEnded = val.(time.Time)
+		x.DateEnded = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["digitsSent"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case

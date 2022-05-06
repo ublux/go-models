@@ -1,25 +1,25 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type AutoProvisionReference struct {
-	DateCreated           time.Time `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted           time.Time `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated           time.Time `bson:"dateUpdated" json:"dateUpdated"`
-	Id                    string    `bson:"id" json:"id"`
-	IdPhone               string    `bson:"idPhone" json:"idPhone"`
-	IdPhoneToExchangeWith string    `bson:"idPhoneToExchangeWith" json:"idPhoneToExchangeWith"`
-	RequestedDisconnect   bool      `bson:"requestedDisconnect" json:"requestedDisconnect"`
+	DateCreated           primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted           primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated           primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	Id                    string             `bson:"id" json:"id"`
+	IdPhone               string             `bson:"idPhone" json:"idPhone"`
+	IdPhoneToExchangeWith string             `bson:"idPhoneToExchangeWith" json:"idPhoneToExchangeWith"`
+	RequestedDisconnect   bool               `bson:"requestedDisconnect" json:"requestedDisconnect"`
 }
 
 // Implementing interface IUbluxDocument
-func (x AutoProvisionReference) GetDateDeleted() time.Time {
+func (x AutoProvisionReference) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x AutoProvisionReference) GetDateCreated() time.Time {
+func (x AutoProvisionReference) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x AutoProvisionReference) GetDateUpdated() time.Time {
+func (x AutoProvisionReference) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -33,13 +33,13 @@ func (x AutoProvisionReference) GetId() string {
 // BUILDER from bson map:
 func BuildAutoProvisionReference(m map[string]interface{}, x *AutoProvisionReference) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)

@@ -1,13 +1,12 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type ExtensionQueue struct {
-	DateCreated                                        time.Time                                          `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                                        time.Time                                          `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                                        time.Time                                          `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                                        primitive.DateTime                                 `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                                        primitive.DateTime                                 `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                                        primitive.DateTime                                 `bson:"dateUpdated" json:"dateUpdated"`
 	ExtensionType                                      ExtensionType                                      `bson:"extensionType" json:"extensionType"`
 	Id                                                 string                                             `bson:"id" json:"id"`
 	IdAccount                                          string                                             `bson:"idAccount" json:"idAccount"`
@@ -27,13 +26,13 @@ type ExtensionQueue struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionQueue) GetDateDeleted() time.Time {
+func (x ExtensionQueue) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x ExtensionQueue) GetDateCreated() time.Time {
+func (x ExtensionQueue) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x ExtensionQueue) GetDateUpdated() time.Time {
+func (x ExtensionQueue) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -66,13 +65,13 @@ func (x ExtensionQueue) GetInjectExtensionNameToCallerId() bool {
 // BUILDER from bson map:
 func BuildExtensionQueue(m map[string]interface{}, x *ExtensionQueue) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	x.ExtensionType = ExtensionType_Queue // readonly property
 	if val, ok := m["id"]; ok && val != nil {

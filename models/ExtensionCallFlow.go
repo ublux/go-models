@@ -1,31 +1,31 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
 type ExtensionCallFlow struct {
-	CallFlowLabel                 string        `bson:"callFlowLabel" json:"callFlowLabel"`
-	DateCreated                   time.Time     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                   time.Time     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                   time.Time     `bson:"dateUpdated" json:"dateUpdated"`
-	ExtensionType                 ExtensionType `bson:"extensionType" json:"extensionType"`
-	Id                            string        `bson:"id" json:"id"`
-	IdAccount                     string        `bson:"idAccount" json:"idAccount"`
-	IdCallFlow                    string        `bson:"idCallFlow" json:"idCallFlow"`
-	IdMusicOnHoldGroup            string        `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
-	InjectExtensionNameToCallerId bool          `bson:"injectExtensionNameToCallerId" json:"injectExtensionNameToCallerId"`
-	Number                        string        `bson:"number" json:"number"`
-	TimeZone                      string        `bson:"timeZone" json:"timeZone"`
+	CallFlowLabel                 string             `bson:"callFlowLabel" json:"callFlowLabel"`
+	DateCreated                   primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                   primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                   primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	ExtensionType                 ExtensionType      `bson:"extensionType" json:"extensionType"`
+	Id                            string             `bson:"id" json:"id"`
+	IdAccount                     string             `bson:"idAccount" json:"idAccount"`
+	IdCallFlow                    string             `bson:"idCallFlow" json:"idCallFlow"`
+	IdMusicOnHoldGroup            string             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
+	InjectExtensionNameToCallerId bool               `bson:"injectExtensionNameToCallerId" json:"injectExtensionNameToCallerId"`
+	Number                        string             `bson:"number" json:"number"`
+	TimeZone                      string             `bson:"timeZone" json:"timeZone"`
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionCallFlow) GetDateDeleted() time.Time {
+func (x ExtensionCallFlow) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x ExtensionCallFlow) GetDateCreated() time.Time {
+func (x ExtensionCallFlow) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x ExtensionCallFlow) GetDateUpdated() time.Time {
+func (x ExtensionCallFlow) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -61,13 +61,13 @@ func BuildExtensionCallFlow(m map[string]interface{}, x *ExtensionCallFlow) {
 		x.CallFlowLabel = val.(string)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	x.ExtensionType = ExtensionType_CallFlow // readonly property
 	if val, ok := m["id"]; ok && val != nil {

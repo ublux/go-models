@@ -1,11 +1,11 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type IUbluxDocument interface {
 	IUbluxDocumentId
 
-	GetDateDeleted() time.Time
-	GetDateCreated() time.Time
-	GetDateUpdated() time.Time
+	GetDateDeleted() primitive.DateTime
+	GetDateCreated() primitive.DateTime
+	GetDateUpdated() primitive.DateTime
 }

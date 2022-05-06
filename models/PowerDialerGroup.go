@@ -1,13 +1,12 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type PowerDialerGroup struct {
-	DateCreated                     time.Time              `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                     time.Time              `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                     time.Time              `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                     primitive.DateTime     `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                     primitive.DateTime     `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                     primitive.DateTime     `bson:"dateUpdated" json:"dateUpdated"`
 	Description                     string                 `bson:"description" json:"description"`
 	ErrorMessage                    string                 `bson:"errorMessage" json:"errorMessage"`
 	FriendlyName                    string                 `bson:"friendlyName" json:"friendlyName"`
@@ -24,13 +23,13 @@ type PowerDialerGroup struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x PowerDialerGroup) GetDateDeleted() time.Time {
+func (x PowerDialerGroup) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x PowerDialerGroup) GetDateCreated() time.Time {
+func (x PowerDialerGroup) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x PowerDialerGroup) GetDateUpdated() time.Time {
+func (x PowerDialerGroup) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -49,13 +48,13 @@ func (x PowerDialerGroup) GetIdAccount() string {
 // BUILDER from bson map:
 func BuildPowerDialerGroup(m map[string]interface{}, x *PowerDialerGroup) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["description"]; ok && val != nil {
 		x.Description = val.(string)

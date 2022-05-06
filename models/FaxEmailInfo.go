@@ -1,13 +1,13 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
 type FaxEmailInfo struct {
-	DateCreated                                           time.Time            `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                                           time.Time            `bson:"dateDeleted" json:"dateDeleted"`
-	DateIdentificationTokenCreated                        time.Time            `bson:"dateIdentificationTokenCreated" json:"dateIdentificationTokenCreated"`
-	DateUpdated                                           time.Time            `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                                           primitive.DateTime   `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                                           primitive.DateTime   `bson:"dateDeleted" json:"dateDeleted"`
+	DateIdentificationTokenCreated                        primitive.DateTime   `bson:"dateIdentificationTokenCreated" json:"dateIdentificationTokenCreated"`
+	DateUpdated                                           primitive.DateTime   `bson:"dateUpdated" json:"dateUpdated"`
 	HaveWeSentEmailExplainingUserHasToWaitForConfirmation bool                 `bson:"haveWeSentEmailExplainingUserHasToWaitForConfirmation" json:"haveWeSentEmailExplainingUserHasToWaitForConfirmation"`
 	Id                                                    string               `bson:"id" json:"id"`
 	IdAccount                                             string               `bson:"idAccount" json:"idAccount"`
@@ -19,13 +19,13 @@ type FaxEmailInfo struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x FaxEmailInfo) GetDateDeleted() time.Time {
+func (x FaxEmailInfo) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x FaxEmailInfo) GetDateCreated() time.Time {
+func (x FaxEmailInfo) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x FaxEmailInfo) GetDateUpdated() time.Time {
+func (x FaxEmailInfo) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -44,16 +44,16 @@ func (x FaxEmailInfo) GetIdAccount() string {
 // BUILDER from bson map:
 func BuildFaxEmailInfo(m map[string]interface{}, x *FaxEmailInfo) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateIdentificationTokenCreated"]; ok && val != nil {
-		x.DateIdentificationTokenCreated = val.(time.Time)
+		x.DateIdentificationTokenCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["haveWeSentEmailExplainingUserHasToWaitForConfirmation"]; ok && val != nil {
 		x.HaveWeSentEmailExplainingUserHasToWaitForConfirmation = val.(bool)

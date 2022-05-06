@@ -1,34 +1,33 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type ExtensionVoicemail struct {
-	DateCreated                      time.Time     `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                      time.Time     `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                      time.Time     `bson:"dateUpdated" json:"dateUpdated"`
-	Email                            []string      `bson:"email" json:"email"`
-	ExtensionType                    ExtensionType `bson:"extensionType" json:"extensionType"`
-	Id                               string        `bson:"id" json:"id"`
-	IdAccount                        string        `bson:"idAccount" json:"idAccount"`
-	IdAudio                          string        `bson:"idAudio" json:"idAudio"`
-	IdMusicOnHoldGroup               string        `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
-	IdsLinesThatCanListenToVoicemail []string      `bson:"idsLinesThatCanListenToVoicemail" json:"idsLinesThatCanListenToVoicemail"`
-	InjectExtensionNameToCallerId    bool          `bson:"injectExtensionNameToCallerId" json:"injectExtensionNameToCallerId"`
-	Number                           string        `bson:"number" json:"number"`
-	TextToSpeech                     string        `bson:"textToSpeech" json:"textToSpeech"`
-	TextToSpeechVoiceId              string        `bson:"textToSpeechVoiceId" json:"textToSpeechVoiceId"`
+	DateCreated                      primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                      primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                      primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	Email                            []string           `bson:"email" json:"email"`
+	ExtensionType                    ExtensionType      `bson:"extensionType" json:"extensionType"`
+	Id                               string             `bson:"id" json:"id"`
+	IdAccount                        string             `bson:"idAccount" json:"idAccount"`
+	IdAudio                          string             `bson:"idAudio" json:"idAudio"`
+	IdMusicOnHoldGroup               string             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
+	IdsLinesThatCanListenToVoicemail []string           `bson:"idsLinesThatCanListenToVoicemail" json:"idsLinesThatCanListenToVoicemail"`
+	InjectExtensionNameToCallerId    bool               `bson:"injectExtensionNameToCallerId" json:"injectExtensionNameToCallerId"`
+	Number                           string             `bson:"number" json:"number"`
+	TextToSpeech                     string             `bson:"textToSpeech" json:"textToSpeech"`
+	TextToSpeechVoiceId              string             `bson:"textToSpeechVoiceId" json:"textToSpeechVoiceId"`
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionVoicemail) GetDateDeleted() time.Time {
+func (x ExtensionVoicemail) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x ExtensionVoicemail) GetDateCreated() time.Time {
+func (x ExtensionVoicemail) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x ExtensionVoicemail) GetDateUpdated() time.Time {
+func (x ExtensionVoicemail) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -61,13 +60,13 @@ func (x ExtensionVoicemail) GetInjectExtensionNameToCallerId() bool {
 // BUILDER from bson map:
 func BuildExtensionVoicemail(m map[string]interface{}, x *ExtensionVoicemail) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["email"]; ok && val != nil {
 		if array, ok := (val).(primitive.A); ok { // array case

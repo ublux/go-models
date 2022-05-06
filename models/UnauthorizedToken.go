@@ -1,26 +1,26 @@
 package models
 
-import "time"
+import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type UnauthorizedToken struct {
-	DateCreated    time.Time `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted    time.Time `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated    time.Time `bson:"dateUpdated" json:"dateUpdated"`
-	ExpirationDate time.Time `bson:"expirationDate" json:"expirationDate"`
-	Id             string    `bson:"id" json:"id"`
-	IdAccount      string    `bson:"idAccount" json:"idAccount"`
-	IdIdentity     string    `bson:"idIdentity" json:"idIdentity"`
-	Jwt            string    `bson:"jwt" json:"jwt"`
+	DateCreated    primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted    primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	ExpirationDate primitive.DateTime `bson:"expirationDate" json:"expirationDate"`
+	Id             string             `bson:"id" json:"id"`
+	IdAccount      string             `bson:"idAccount" json:"idAccount"`
+	IdIdentity     string             `bson:"idIdentity" json:"idIdentity"`
+	Jwt            string             `bson:"jwt" json:"jwt"`
 }
 
 // Implementing interface IUbluxDocument
-func (x UnauthorizedToken) GetDateDeleted() time.Time {
+func (x UnauthorizedToken) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x UnauthorizedToken) GetDateCreated() time.Time {
+func (x UnauthorizedToken) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x UnauthorizedToken) GetDateUpdated() time.Time {
+func (x UnauthorizedToken) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -39,16 +39,16 @@ func (x UnauthorizedToken) GetIdAccount() string {
 // BUILDER from bson map:
 func BuildUnauthorizedToken(m map[string]interface{}, x *UnauthorizedToken) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["expirationDate"]; ok && val != nil {
-		x.ExpirationDate = val.(time.Time)
+		x.ExpirationDate = val.(primitive.DateTime)
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)

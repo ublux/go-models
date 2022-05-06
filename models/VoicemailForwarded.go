@@ -1,6 +1,5 @@
 package models
 
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 import . "github.com/ublux/go-models/enums"
 
@@ -11,13 +10,13 @@ type VoicemailForwarded struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x VoicemailForwarded) GetDateDeleted() time.Time {
+func (x VoicemailForwarded) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x VoicemailForwarded) GetDateCreated() time.Time {
+func (x VoicemailForwarded) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x VoicemailForwarded) GetDateUpdated() time.Time {
+func (x VoicemailForwarded) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -29,13 +28,13 @@ func (x VoicemailForwarded) GetId() string {
 // BUILDER from bson map:
 func BuildVoicemailForwarded(m map[string]interface{}, x *VoicemailForwarded) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["durationInSeconds"]; ok && val != nil {
 		x.DurationInSeconds = val.(int32)

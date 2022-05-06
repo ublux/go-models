@@ -1,33 +1,32 @@
 package models
 
-import "time"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Contact struct {
-	Company        string          `bson:"company" json:"company"`
-	ContactEmails  []ContactEmail  `bson:"contactEmails" json:"contactEmails"`
-	ContactNumbers []ContactNumber `bson:"contactNumbers" json:"contactNumbers"`
-	DateCreated    time.Time       `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted    time.Time       `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated    time.Time       `bson:"dateUpdated" json:"dateUpdated"`
-	FirstName      string          `bson:"firstName" json:"firstName"`
-	Hash           string          `bson:"hash" json:"hash"`
-	Id             string          `bson:"id" json:"id"`
-	IdAccount      string          `bson:"idAccount" json:"idAccount"`
-	JobTittle      string          `bson:"jobTittle" json:"jobTittle"`
-	LastName       string          `bson:"lastName" json:"lastName"`
-	Notes          string          `bson:"notes" json:"notes"`
-	Variables      []Variable      `bson:"variables" json:"variables"`
+	Company        string             `bson:"company" json:"company"`
+	ContactEmails  []ContactEmail     `bson:"contactEmails" json:"contactEmails"`
+	ContactNumbers []ContactNumber    `bson:"contactNumbers" json:"contactNumbers"`
+	DateCreated    primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted    primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	FirstName      string             `bson:"firstName" json:"firstName"`
+	Hash           string             `bson:"hash" json:"hash"`
+	Id             string             `bson:"id" json:"id"`
+	IdAccount      string             `bson:"idAccount" json:"idAccount"`
+	JobTittle      string             `bson:"jobTittle" json:"jobTittle"`
+	LastName       string             `bson:"lastName" json:"lastName"`
+	Notes          string             `bson:"notes" json:"notes"`
+	Variables      []Variable         `bson:"variables" json:"variables"`
 }
 
 // Implementing interface IUbluxDocument
-func (x Contact) GetDateDeleted() time.Time {
+func (x Contact) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x Contact) GetDateCreated() time.Time {
+func (x Contact) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x Contact) GetDateUpdated() time.Time {
+func (x Contact) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -71,13 +70,13 @@ func BuildContact(m map[string]interface{}, x *Contact) {
 		}
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["firstName"]; ok && val != nil {
 		x.FirstName = val.(string)

@@ -1,13 +1,12 @@
 package models
 
-import "time"
-import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
+import . "github.com/ublux/go-models/enums"
 
 type ExtensionDial struct {
-	DateCreated                              time.Time                                `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted                              time.Time                                `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated                              time.Time                                `bson:"dateUpdated" json:"dateUpdated"`
+	DateCreated                              primitive.DateTime                       `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted                              primitive.DateTime                       `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated                              primitive.DateTime                       `bson:"dateUpdated" json:"dateUpdated"`
 	EventActionToExecuteIfCallIsNotAnswered  EventAction                              `bson:"eventActionToExecuteIfCallIsNotAnswered" json:"eventActionToExecuteIfCallIsNotAnswered"`
 	ExtensionType                            ExtensionType                            `bson:"extensionType" json:"extensionType"`
 	Id                                       string                                   `bson:"id" json:"id"`
@@ -21,13 +20,13 @@ type ExtensionDial struct {
 }
 
 // Implementing interface IUbluxDocument
-func (x ExtensionDial) GetDateDeleted() time.Time {
+func (x ExtensionDial) GetDateDeleted() primitive.DateTime {
 	return x.DateDeleted
 }
-func (x ExtensionDial) GetDateCreated() time.Time {
+func (x ExtensionDial) GetDateCreated() primitive.DateTime {
 	return x.DateCreated
 }
-func (x ExtensionDial) GetDateUpdated() time.Time {
+func (x ExtensionDial) GetDateUpdated() primitive.DateTime {
 	return x.DateUpdated
 }
 
@@ -60,13 +59,13 @@ func (x ExtensionDial) GetInjectExtensionNameToCallerId() bool {
 // BUILDER from bson map:
 func BuildExtensionDial(m map[string]interface{}, x *ExtensionDial) {
 	if val, ok := m["dateCreated"]; ok && val != nil {
-		x.DateCreated = val.(time.Time)
+		x.DateCreated = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateDeleted"]; ok && val != nil {
-		x.DateDeleted = val.(time.Time)
+		x.DateDeleted = val.(primitive.DateTime)
 	}
 	if val, ok := m["dateUpdated"]; ok && val != nil {
-		x.DateUpdated = val.(time.Time)
+		x.DateUpdated = val.(primitive.DateTime)
 	}
 	if val, ok := m["eventActionToExecuteIfCallIsNotAnswered"]; ok && val != nil {
 		// determine type to build
