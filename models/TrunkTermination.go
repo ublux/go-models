@@ -9,7 +9,7 @@ type TrunkTermination struct {
 	DateDeleted                primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated                primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName               string             `bson:"friendlyName" json:"friendlyName"`
-	Id                         string             `bson:"id" json:"id"`
+	Id                         string             `bson:"_id" json:"id"`
 	IdTrunkTerminationExisting string             `bson:"idTrunkTerminationExisting" json:"idTrunkTerminationExisting"`
 	IdVoipProvider             string             `bson:"idVoipProvider" json:"idVoipProvider"`
 	Password                   string             `bson:"password" json:"password"`

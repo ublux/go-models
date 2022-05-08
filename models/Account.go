@@ -13,7 +13,7 @@ type Account struct {
 	DateDeleted                         primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated                         primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	HasGrantedSupportAccess             bool               `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
-	Id                                  string             `bson:"id" json:"id"`
+	Id                                  string             `bson:"_id" json:"id"`
 	IdCloudServicePbxFailover           string             `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
 	IdCloudServiceWebApp                string             `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
 	IdGTrunkTerminationGroup            string             `bson:"idGTrunkTerminationGroup" json:"idGTrunkTerminationGroup"`

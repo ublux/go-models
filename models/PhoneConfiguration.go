@@ -8,7 +8,7 @@ type PhoneConfiguration struct {
 	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	Description    string             `bson:"description" json:"description"`
 	FrienlyName    string             `bson:"frienlyName" json:"frienlyName"`
-	Id             string             `bson:"id" json:"id"`
+	Id             string             `bson:"_id" json:"id"`
 	IdAccount      string             `bson:"idAccount" json:"idAccount"`
 	IdLineKeyGroup string             `bson:"idLineKeyGroup" json:"idLineKeyGroup"`
 }

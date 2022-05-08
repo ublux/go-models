@@ -10,7 +10,7 @@ type CloudServicePbx struct {
 	DateDeleted      primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated      primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	ExternalIps      []string           `bson:"externalIps" json:"externalIps"`
-	Id               string             `bson:"id" json:"id"`
+	Id               string             `bson:"_id" json:"id"`
 	IdIdentity       string             `bson:"idIdentity" json:"idIdentity"`
 	IsFailover       bool               `bson:"isFailover" json:"isFailover"`
 	IsHealthy        bool               `bson:"isHealthy" json:"isHealthy"`

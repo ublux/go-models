@@ -9,7 +9,7 @@ type ExtensionConference struct {
 	DateDeleted                   primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated                   primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	ExtensionType                 ExtensionType      `bson:"extensionType" json:"extensionType"`
-	Id                            string             `bson:"id" json:"id"`
+	Id                            string             `bson:"_id" json:"id"`
 	IdAccount                     string             `bson:"idAccount" json:"idAccount"`
 	IdMusicOnHoldGroup            string             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
 	IdsAudiosWhenOneParticipant   []string           `bson:"idsAudiosWhenOneParticipant" json:"idsAudiosWhenOneParticipant"`

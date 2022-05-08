@@ -8,7 +8,7 @@ type TrunkOriginationRegister struct {
 	DateDeleted               primitive.DateTime   `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated               primitive.DateTime   `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName              string               `bson:"friendlyName" json:"friendlyName"`
-	Id                        string               `bson:"id" json:"id"`
+	Id                        string               `bson:"_id" json:"id"`
 	IdCloudServicePbx         string               `bson:"idCloudServicePbx" json:"idCloudServicePbx"`
 	IdCloudServicePbxFailover string               `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
 	IdsVoipNumbers            []string             `bson:"idsVoipNumbers" json:"idsVoipNumbers"`

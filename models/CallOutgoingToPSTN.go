@@ -17,7 +17,7 @@ type CallOutgoingToPSTN struct {
 	DisabledVideo             bool                       `bson:"disabledVideo" json:"disabledVideo"`
 	From                      string                     `bson:"from" json:"from"`
 	FromCountry               CountryIsoCode             `bson:"fromCountry" json:"fromCountry"`
-	Id                        string                     `bson:"id" json:"id"`
+	Id                        string                     `bson:"_id" json:"id"`
 	IdAccount                 string                     `bson:"idAccount" json:"idAccount"`
 	IdLineThatInitiatedCall   string                     `bson:"idLineThatInitiatedCall" json:"idLineThatInitiatedCall"`
 	IdTrunkTermination        string                     `bson:"idTrunkTermination" json:"idTrunkTermination"`

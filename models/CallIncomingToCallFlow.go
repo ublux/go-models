@@ -17,7 +17,7 @@ type CallIncomingToCallFlow struct {
 	From                      string                     `bson:"from" json:"from"`
 	FromCountry               CountryIsoCode             `bson:"fromCountry" json:"fromCountry"`
 	FromInternationalFormat   string                     `bson:"fromInternationalFormat" json:"fromInternationalFormat"`
-	Id                        string                     `bson:"id" json:"id"`
+	Id                        string                     `bson:"_id" json:"id"`
 	IdAccount                 string                     `bson:"idAccount" json:"idAccount"`
 	IdCallFlow                string                     `bson:"idCallFlow" json:"idCallFlow"`
 	IdVoicemail               string                     `bson:"idVoicemail" json:"idVoicemail"`

@@ -10,7 +10,7 @@ type VoipProvider struct {
 	DateDeleted    primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName   string             `bson:"friendlyName" json:"friendlyName"`
-	Id             string             `bson:"id" json:"id"`
+	Id             string             `bson:"_id" json:"id"`
 	OwnerAccountId string             `bson:"ownerAccountId" json:"ownerAccountId"`
 	ProviderId     string             `bson:"providerId" json:"providerId"`
 	Status         string             `bson:"status" json:"status"`

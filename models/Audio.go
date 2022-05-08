@@ -12,7 +12,7 @@ type Audio struct {
 	Description       string             `bson:"description" json:"description"`
 	DurationInSeconds int32              `bson:"durationInSeconds" json:"durationInSeconds"`
 	FriendlyName      string             `bson:"friendlyName" json:"friendlyName"`
-	Id                string             `bson:"id" json:"id"`
+	Id                string             `bson:"_id" json:"id"`
 	IdAccount         string             `bson:"idAccount" json:"idAccount"`
 }
 

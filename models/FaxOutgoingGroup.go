@@ -10,7 +10,7 @@ type FaxOutgoingGroup struct {
 	FaxEmail                 FaxEmail           `bson:"faxEmail" json:"faxEmail"`
 	FaxesOutgoing            []FaxOutgoing      `bson:"faxesOutgoing" json:"faxesOutgoing"`
 	From                     string             `bson:"from" json:"from"`
-	Id                       string             `bson:"id" json:"id"`
+	Id                       string             `bson:"_id" json:"id"`
 	IdAccount                string             `bson:"idAccount" json:"idAccount"`
 	IdVoipNumberFax          string             `bson:"idVoipNumberFax" json:"idVoipNumberFax"`
 	SendConfirmationToEmails []string           `bson:"sendConfirmationToEmails" json:"sendConfirmationToEmails"`

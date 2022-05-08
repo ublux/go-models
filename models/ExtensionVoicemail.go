@@ -9,7 +9,7 @@ type ExtensionVoicemail struct {
 	DateUpdated                      primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	Email                            []string           `bson:"email" json:"email"`
 	ExtensionType                    ExtensionType      `bson:"extensionType" json:"extensionType"`
-	Id                               string             `bson:"id" json:"id"`
+	Id                               string             `bson:"_id" json:"id"`
 	IdAccount                        string             `bson:"idAccount" json:"idAccount"`
 	IdAudio                          string             `bson:"idAudio" json:"idAudio"`
 	IdMusicOnHoldGroup               string             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`

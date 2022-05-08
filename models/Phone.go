@@ -7,7 +7,7 @@ type Phone struct {
 	DateDeleted          primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated          primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName         string             `bson:"friendlyName" json:"friendlyName"`
-	Id                   string             `bson:"id" json:"id"`
+	Id                   string             `bson:"_id" json:"id"`
 	IdAccount            string             `bson:"idAccount" json:"idAccount"`
 	IdCloudServicePbx    string             `bson:"idCloudServicePbx" json:"idCloudServicePbx"`
 	IdIdentityWebApp     string             `bson:"idIdentityWebApp" json:"idIdentityWebApp"`

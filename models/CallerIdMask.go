@@ -7,7 +7,7 @@ type CallerIdMask struct {
 	DateDeleted            primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated            primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName           string             `bson:"friendlyName" json:"friendlyName"`
-	Id                     string             `bson:"id" json:"id"`
+	Id                     string             `bson:"_id" json:"id"`
 	IdAccount              string             `bson:"idAccount" json:"idAccount"`
 	PhoneNumber            string             `bson:"phoneNumber" json:"phoneNumber"`
 	RandomVerificationCode string             `bson:"randomVerificationCode" json:"randomVerificationCode"`

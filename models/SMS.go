@@ -9,7 +9,7 @@ type SMS struct {
 	DateDeleted  primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated  primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	From         string             `bson:"from" json:"from"`
-	Id           string             `bson:"id" json:"id"`
+	Id           string             `bson:"_id" json:"id"`
 	IdAccount    string             `bson:"idAccount" json:"idAccount"`
 	IdVoipNumber string             `bson:"idVoipNumber" json:"idVoipNumber"`
 	IsIncoming   bool               `bson:"isIncoming" json:"isIncoming"`

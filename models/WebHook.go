@@ -8,7 +8,7 @@ type WebHook struct {
 	DateDeleted  primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated  primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	Headers      []string           `bson:"headers" json:"headers"`
-	Id           string             `bson:"id" json:"id"`
+	Id           string             `bson:"_id" json:"id"`
 	IdAccount    string             `bson:"idAccount" json:"idAccount"`
 	Url          string             `bson:"url" json:"url"`
 	WebHookEvent WebHookEvent       `bson:"webHookEvent" json:"webHookEvent"`

@@ -9,7 +9,7 @@ type FaxEmailInfo struct {
 	DateIdentificationTokenCreated                        primitive.DateTime   `bson:"dateIdentificationTokenCreated" json:"dateIdentificationTokenCreated"`
 	DateUpdated                                           primitive.DateTime   `bson:"dateUpdated" json:"dateUpdated"`
 	HaveWeSentEmailExplainingUserHasToWaitForConfirmation bool                 `bson:"haveWeSentEmailExplainingUserHasToWaitForConfirmation" json:"haveWeSentEmailExplainingUserHasToWaitForConfirmation"`
-	Id                                                    string               `bson:"id" json:"id"`
+	Id                                                    string               `bson:"_id" json:"id"`
 	IdAccount                                             string               `bson:"idAccount" json:"idAccount"`
 	IdentificationToken                                   int32                `bson:"identificationToken" json:"identificationToken"`
 	IdLineThatValidatedEmail                              string               `bson:"idLineThatValidatedEmail" json:"idLineThatValidatedEmail"`

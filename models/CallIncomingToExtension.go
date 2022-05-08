@@ -19,7 +19,7 @@ type CallIncomingToExtension struct {
 	From                      string                     `bson:"from" json:"from"`
 	FromCountry               CountryIsoCode             `bson:"fromCountry" json:"fromCountry"`
 	FromInternationalFormat   string                     `bson:"fromInternationalFormat" json:"fromInternationalFormat"`
-	Id                        string                     `bson:"id" json:"id"`
+	Id                        string                     `bson:"_id" json:"id"`
 	IdAccount                 string                     `bson:"idAccount" json:"idAccount"`
 	IdExtension               string                     `bson:"idExtension" json:"idExtension"`
 	IdLineThatAnswered        string                     `bson:"idLineThatAnswered" json:"idLineThatAnswered"`

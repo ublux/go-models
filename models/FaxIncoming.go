@@ -9,7 +9,7 @@ type FaxIncoming struct {
 	ErrorMessage    string             `bson:"errorMessage" json:"errorMessage"`
 	FaxStatus       string             `bson:"faxStatus" json:"faxStatus"`
 	From            string             `bson:"from" json:"from"`
-	Id              string             `bson:"id" json:"id"`
+	Id              string             `bson:"_id" json:"id"`
 	IdAccount       string             `bson:"idAccount" json:"idAccount"`
 	IdVoipNumberFax string             `bson:"idVoipNumberFax" json:"idVoipNumberFax"`
 	NumPages        int32              `bson:"numPages" json:"numPages"`

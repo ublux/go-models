@@ -6,7 +6,7 @@ type TrunkTerminationGroup struct {
 	DateCreated                           primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
 	DateDeleted                           primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated                           primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
-	Id                                    string             `bson:"id" json:"id"`
+	Id                                    string             `bson:"_id" json:"id"`
 	IdsTrunkTerminationsOrderedByPriority []string           `bson:"idsTrunkTerminationsOrderedByPriority" json:"idsTrunkTerminationsOrderedByPriority"`
 }
 

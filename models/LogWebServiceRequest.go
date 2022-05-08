@@ -11,7 +11,7 @@ type LogWebServiceRequest struct {
 	DateUpdated            primitive.DateTime     `bson:"dateUpdated" json:"dateUpdated"`
 	HttpMethod             string                 `bson:"httpMethod" json:"httpMethod"`
 	HttpResponseStatusCode HttpResponseStatusCode `bson:"httpResponseStatusCode" json:"httpResponseStatusCode"`
-	Id                     string                 `bson:"id" json:"id"`
+	Id                     string                 `bson:"_id" json:"id"`
 	IdentityChargeSum      uint64                 `bson:"identityChargeSum" json:"identityChargeSum"`
 	Ip                     string                 `bson:"ip" json:"ip"`
 	Penalty                uint32                 `bson:"penalty" json:"penalty"`

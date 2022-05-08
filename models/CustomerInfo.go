@@ -8,7 +8,7 @@ type CustomerInfo struct {
 	DateDeleted             primitive.DateTime      `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated             primitive.DateTime      `bson:"dateUpdated" json:"dateUpdated"`
 	FullName                string                  `bson:"fullName" json:"fullName"`
-	Id                      string                  `bson:"id" json:"id"`
+	Id                      string                  `bson:"_id" json:"id"`
 	IdAccount               string                  `bson:"idAccount" json:"idAccount"`
 	MailingAddress          MailingAddress          `bson:"mailingAddress" json:"mailingAddress"`
 }

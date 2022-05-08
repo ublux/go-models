@@ -9,7 +9,7 @@ type ExtensionCallFlow struct {
 	DateDeleted                   primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated                   primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	ExtensionType                 ExtensionType      `bson:"extensionType" json:"extensionType"`
-	Id                            string             `bson:"id" json:"id"`
+	Id                            string             `bson:"_id" json:"id"`
 	IdAccount                     string             `bson:"idAccount" json:"idAccount"`
 	IdCallFlow                    string             `bson:"idCallFlow" json:"idCallFlow"`
 	IdMusicOnHoldGroup            string             `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`

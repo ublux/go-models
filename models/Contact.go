@@ -11,7 +11,7 @@ type Contact struct {
 	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	FirstName      string             `bson:"firstName" json:"firstName"`
 	Hash           string             `bson:"hash" json:"hash"`
-	Id             string             `bson:"id" json:"id"`
+	Id             string             `bson:"_id" json:"id"`
 	IdAccount      string             `bson:"idAccount" json:"idAccount"`
 	JobTittle      string             `bson:"jobTittle" json:"jobTittle"`
 	LastName       string             `bson:"lastName" json:"lastName"`

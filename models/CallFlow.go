@@ -8,7 +8,7 @@ type CallFlow struct {
 	DateUpdated  primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	Description  string             `bson:"description" json:"description"`
 	FriendlyName string             `bson:"friendlyName" json:"friendlyName"`
-	Id           string             `bson:"id" json:"id"`
+	Id           string             `bson:"_id" json:"id"`
 	IdAccount    string             `bson:"idAccount" json:"idAccount"`
 	XmlTree      string             `bson:"xmlTree" json:"xmlTree"`
 }

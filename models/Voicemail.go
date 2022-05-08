@@ -10,7 +10,7 @@ type Voicemail struct {
 	DurationInSeconds                int32              `bson:"durationInSeconds" json:"durationInSeconds"`
 	Email                            string             `bson:"email" json:"email"`
 	ErrorMessage                     string             `bson:"errorMessage" json:"errorMessage"`
-	Id                               string             `bson:"id" json:"id"`
+	Id                               string             `bson:"_id" json:"id"`
 	IdsLinesThatCanListenToVoicemail []string           `bson:"idsLinesThatCanListenToVoicemail" json:"idsLinesThatCanListenToVoicemail"`
 	VoicemailMp3                     StoredFile         `bson:"voicemailMp3" json:"voicemailMp3"`
 	VoicemailType                    VoicemailType      `bson:"voicemailType" json:"voicemailType"`

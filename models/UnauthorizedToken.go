@@ -7,7 +7,7 @@ type UnauthorizedToken struct {
 	DateDeleted    primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	ExpirationDate primitive.DateTime `bson:"expirationDate" json:"expirationDate"`
-	Id             string             `bson:"id" json:"id"`
+	Id             string             `bson:"_id" json:"id"`
 	IdAccount      string             `bson:"idAccount" json:"idAccount"`
 	IdIdentity     string             `bson:"idIdentity" json:"idIdentity"`
 	Jwt            string             `bson:"jwt" json:"jwt"`

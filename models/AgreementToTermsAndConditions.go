@@ -9,7 +9,7 @@ type AgreementToTermsAndConditions struct {
 	DateUpdated                primitive.DateTime         `bson:"dateUpdated" json:"dateUpdated"`
 	Description                string                     `bson:"description" json:"description"`
 	HttpRequestHeaders         string                     `bson:"httpRequestHeaders" json:"httpRequestHeaders"`
-	Id                         string                     `bson:"id" json:"id"`
+	Id                         string                     `bson:"_id" json:"id"`
 	Ip                         string                     `bson:"ip" json:"ip"`
 	TermsAndConditionsCategory TermsAndConditionsCategory `bson:"termsAndConditionsCategory" json:"termsAndConditionsCategory"`
 	UbluxSession               UbluxSession               `bson:"ubluxSession" json:"ubluxSession"`

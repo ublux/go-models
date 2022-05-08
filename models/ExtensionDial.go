@@ -9,7 +9,7 @@ type ExtensionDial struct {
 	DateUpdated                              primitive.DateTime                       `bson:"dateUpdated" json:"dateUpdated"`
 	EventActionToExecuteIfCallIsNotAnswered  EventAction                              `bson:"eventActionToExecuteIfCallIsNotAnswered" json:"eventActionToExecuteIfCallIsNotAnswered"`
 	ExtensionType                            ExtensionType                            `bson:"extensionType" json:"extensionType"`
-	Id                                       string                                   `bson:"id" json:"id"`
+	Id                                       string                                   `bson:"_id" json:"id"`
 	IdAccount                                string                                   `bson:"idAccount" json:"idAccount"`
 	IdMusicOnHoldGroup                       string                                   `bson:"idMusicOnHoldGroup" json:"idMusicOnHoldGroup"`
 	IdsLines                                 []string                                 `bson:"idsLines" json:"idsLines"`

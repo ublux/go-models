@@ -10,7 +10,7 @@ type PowerDialerGroup struct {
 	Description                     string                 `bson:"description" json:"description"`
 	ErrorMessage                    string                 `bson:"errorMessage" json:"errorMessage"`
 	FriendlyName                    string                 `bson:"friendlyName" json:"friendlyName"`
-	Id                              string                 `bson:"id" json:"id"`
+	Id                              string                 `bson:"_id" json:"id"`
 	IdAccount                       string                 `bson:"idAccount" json:"idAccount"`
 	IdCallerIdMask                  string                 `bson:"idCallerIdMask" json:"idCallerIdMask"`
 	IdCallFlow                      string                 `bson:"idCallFlow" json:"idCallFlow"`
