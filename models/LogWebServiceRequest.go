@@ -5,6 +5,7 @@ import . "github.com/ublux/go-models/enums"
 
 type LogWebServiceRequest struct {
 	Charge                 uint32                 `bson:"charge" json:"charge"`
+	ConcurrentRequests     int32                  `bson:"concurrentRequests" json:"concurrentRequests"`
 	DateCreated            primitive.DateTime     `bson:"dateCreated" json:"dateCreated"`
 	DateDeleted            primitive.DateTime     `bson:"dateDeleted" json:"dateDeleted"`
 	DateUpdated            primitive.DateTime     `bson:"dateUpdated" json:"dateUpdated"`
@@ -48,6 +49,9 @@ func (x LogWebServiceRequest) GetId() string {
 func BuildLogWebServiceRequest(m map[string]interface{}, x *LogWebServiceRequest) {
 	if val, ok := m["charge"]; ok && val != nil {
 		x.Charge = val.(uint32)
+	}
+	if val, ok := m["concurrentRequests"]; ok && val != nil {
+		x.ConcurrentRequests = val.(int32)
 	}
 	if val, ok := m["dateCreated"]; ok && val != nil {
 		x.DateCreated = val.(primitive.DateTime)

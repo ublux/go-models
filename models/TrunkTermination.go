@@ -13,7 +13,7 @@ type TrunkTermination struct {
 	IdTrunkTerminationExisting string             `bson:"idTrunkTerminationExisting" json:"idTrunkTerminationExisting"`
 	IdVoipProvider             string             `bson:"idVoipProvider" json:"idVoipProvider"`
 	Password                   string             `bson:"password" json:"password"`
-	SID                        string             `bson:"sID" json:"sID"`
+	ProviderId                 string             `bson:"providerId" json:"providerId"`
 	TerminationUri             string             `bson:"terminationUri" json:"terminationUri"`
 	Username                   string             `bson:"username" json:"username"`
 }
@@ -69,8 +69,8 @@ func BuildTrunkTermination(m map[string]interface{}, x *TrunkTermination) {
 	if val, ok := m["password"]; ok && val != nil {
 		x.Password = val.(string)
 	}
-	if val, ok := m["sID"]; ok && val != nil {
-		x.SID = val.(string)
+	if val, ok := m["providerId"]; ok && val != nil {
+		x.ProviderId = val.(string)
 	}
 	if val, ok := m["terminationUri"]; ok && val != nil {
 		x.TerminationUri = val.(string)

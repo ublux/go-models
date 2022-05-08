@@ -12,7 +12,7 @@ type VoipProvider struct {
 	FriendlyName   string             `bson:"friendlyName" json:"friendlyName"`
 	Id             string             `bson:"id" json:"id"`
 	OwnerAccountId string             `bson:"ownerAccountId" json:"ownerAccountId"`
-	SID            string             `bson:"sID" json:"sID"`
+	ProviderId     string             `bson:"providerId" json:"providerId"`
 	Status         string             `bson:"status" json:"status"`
 	UbluxPartner   UbluxPartner       `bson:"ubluxPartner" json:"ubluxPartner"`
 	VoipCompany    VoipCompany        `bson:"voipCompany" json:"voipCompany"`
@@ -62,8 +62,8 @@ func BuildVoipProvider(m map[string]interface{}, x *VoipProvider) {
 	if val, ok := m["ownerAccountId"]; ok && val != nil {
 		x.OwnerAccountId = val.(string)
 	}
-	if val, ok := m["sID"]; ok && val != nil {
-		x.SID = val.(string)
+	if val, ok := m["providerId"]; ok && val != nil {
+		x.ProviderId = val.(string)
 	}
 	if val, ok := m["status"]; ok && val != nil {
 		x.Status = val.(string)

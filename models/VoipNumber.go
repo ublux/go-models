@@ -11,7 +11,7 @@ type VoipNumber interface {
 	GetIdCustomerInfo() string
 	GetIdTrunkOrigination() string
 	GetIdVoipProvider() string
-	GetSID() string
+	GetProviderId() string
 	GetRulesPhone() []RulePhone
 	GetRulesSms() []RuleSms
 	GetRulesFax() []RuleFax

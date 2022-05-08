@@ -7,6 +7,9 @@ type LogWebServiceRequestFilterRequest struct {
 	Charge_EQ                       uint32                 `bson:"charge_EQ" json:"charge_EQ"`
 	Charge_GTE                      uint32                 `bson:"charge_GTE" json:"charge_GTE"`
 	Charge_LTE                      uint32                 `bson:"charge_LTE" json:"charge_LTE"`
+	ConcurrentRequests_EQ           int32                  `bson:"concurrentRequests_EQ" json:"concurrentRequests_EQ"`
+	ConcurrentRequests_GTE          int32                  `bson:"concurrentRequests_GTE" json:"concurrentRequests_GTE"`
+	ConcurrentRequests_LTE          int32                  `bson:"concurrentRequests_LTE" json:"concurrentRequests_LTE"`
 	DateCreated_EQ                  primitive.DateTime     `bson:"dateCreated_EQ" json:"dateCreated_EQ"`
 	DateCreated_GTE                 primitive.DateTime     `bson:"dateCreated_GTE" json:"dateCreated_GTE"`
 	DateCreated_LTE                 primitive.DateTime     `bson:"dateCreated_LTE" json:"dateCreated_LTE"`
@@ -71,6 +74,15 @@ func BuildLogWebServiceRequestFilterRequest(m map[string]interface{}, x *LogWebS
 	}
 	if val, ok := m["charge_LTE"]; ok && val != nil {
 		x.Charge_LTE = val.(uint32)
+	}
+	if val, ok := m["concurrentRequests_EQ"]; ok && val != nil {
+		x.ConcurrentRequests_EQ = val.(int32)
+	}
+	if val, ok := m["concurrentRequests_GTE"]; ok && val != nil {
+		x.ConcurrentRequests_GTE = val.(int32)
+	}
+	if val, ok := m["concurrentRequests_LTE"]; ok && val != nil {
+		x.ConcurrentRequests_LTE = val.(int32)
 	}
 	if val, ok := m["dateCreated_EQ"]; ok && val != nil {
 		x.DateCreated_EQ = val.(primitive.DateTime)

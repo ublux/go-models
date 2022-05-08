@@ -12,6 +12,6 @@ type CloudService interface {
 	GetLocalnet() string
 	GetExternalIps() []string
 	GetIsFailover() bool
-	GetNAT() bool
+	GetNat() bool
 	GetIsHealthy() bool
 }

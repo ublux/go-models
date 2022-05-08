@@ -23,11 +23,11 @@ type VoipNumberFax struct {
 	IsWhatsappEnabled            bool               `bson:"isWhatsappEnabled" json:"isWhatsappEnabled"`
 	Language                     Language           `bson:"language" json:"language"`
 	Number                       string             `bson:"number" json:"number"`
+	ProviderId                   string             `bson:"providerId" json:"providerId"`
 	RecordIncomingCalls          bool               `bson:"recordIncomingCalls" json:"recordIncomingCalls"`
 	RulesFax                     []RuleFax          `bson:"rulesFax" json:"rulesFax"`
 	RulesPhone                   []RulePhone        `bson:"rulesPhone" json:"rulesPhone"`
 	RulesSms                     []RuleSms          `bson:"rulesSms" json:"rulesSms"`
-	SID                          string             `bson:"sID" json:"sID"`
 	State                        string             `bson:"state" json:"state"`
 	TimeZone                     string             `bson:"timeZone" json:"timeZone"`
 	VoipNumberType               VoipNumberType     `bson:"voipNumberType" json:"voipNumberType"`
@@ -64,8 +64,8 @@ func (x VoipNumberFax) GetIdTrunkOrigination() string {
 func (x VoipNumberFax) GetIdVoipProvider() string {
 	return x.IdVoipProvider
 }
-func (x VoipNumberFax) GetSID() string {
-	return x.SID
+func (x VoipNumberFax) GetProviderId() string {
+	return x.ProviderId
 }
 func (x VoipNumberFax) GetRulesPhone() []RulePhone {
 	return x.RulesPhone
@@ -183,6 +183,9 @@ func BuildVoipNumberFax(m map[string]interface{}, x *VoipNumberFax) {
 	if val, ok := m["number"]; ok && val != nil {
 		x.Number = val.(string)
 	}
+	if val, ok := m["providerId"]; ok && val != nil {
+		x.ProviderId = val.(string)
+	}
 	if val, ok := m["recordIncomingCalls"]; ok && val != nil {
 		x.RecordIncomingCalls = val.(bool)
 	}
@@ -218,9 +221,6 @@ func BuildVoipNumberFax(m map[string]interface{}, x *VoipNumberFax) {
 				}
 			}
 		}
-	}
-	if val, ok := m["sID"]; ok && val != nil {
-		x.SID = val.(string)
 	}
 	if val, ok := m["state"]; ok && val != nil {
 		x.State = val.(string)

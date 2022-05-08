@@ -13,7 +13,7 @@ type TrunkOriginationForward struct {
 	IdCloudServicePbxFailover string               `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
 	IdsVoipNumbers            []string             `bson:"idsVoipNumbers" json:"idsVoipNumbers"`
 	IdVoipProvider            string               `bson:"idVoipProvider" json:"idVoipProvider"`
-	SID                       string               `bson:"sID" json:"sID"`
+	ProviderId                string               `bson:"providerId" json:"providerId"`
 	SipUri                    string               `bson:"sipUri" json:"sipUri"`
 	SipUriFailover            string               `bson:"sipUriFailover" json:"sipUriFailover"`
 	TrunkOriginationType      TrunkOriginationType `bson:"trunkOriginationType" json:"trunkOriginationType"`
@@ -51,8 +51,8 @@ func (x TrunkOriginationForward) GetIdsVoipNumbers() []string {
 func (x TrunkOriginationForward) GetTrunkOriginationType() TrunkOriginationType {
 	return x.TrunkOriginationType
 }
-func (x TrunkOriginationForward) GetSID() string {
-	return x.SID
+func (x TrunkOriginationForward) GetProviderId() string {
+	return x.ProviderId
 }
 func (x TrunkOriginationForward) GetFriendlyName() string {
 	return x.FriendlyName
@@ -95,8 +95,8 @@ func BuildTrunkOriginationForward(m map[string]interface{}, x *TrunkOriginationF
 	if val, ok := m["idVoipProvider"]; ok && val != nil {
 		x.IdVoipProvider = val.(string)
 	}
-	if val, ok := m["sID"]; ok && val != nil {
-		x.SID = val.(string)
+	if val, ok := m["providerId"]; ok && val != nil {
+		x.ProviderId = val.(string)
 	}
 	if val, ok := m["sipUri"]; ok && val != nil {
 		x.SipUri = val.(string)

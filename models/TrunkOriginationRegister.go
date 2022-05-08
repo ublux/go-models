@@ -13,11 +13,11 @@ type TrunkOriginationRegister struct {
 	IdCloudServicePbxFailover string               `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
 	IdsVoipNumbers            []string             `bson:"idsVoipNumbers" json:"idsVoipNumbers"`
 	IdVoipProvider            string               `bson:"idVoipProvider" json:"idVoipProvider"`
+	ProviderId                string               `bson:"providerId" json:"providerId"`
 	Reg_host                  string               `bson:"reg_host" json:"reg_host"`
 	Reg_password              string               `bson:"reg_password" json:"reg_password"`
 	Reg_port                  int32                `bson:"reg_port" json:"reg_port"`
 	Reg_username              string               `bson:"reg_username" json:"reg_username"`
-	SID                       string               `bson:"sID" json:"sID"`
 	TrunkOriginationType      TrunkOriginationType `bson:"trunkOriginationType" json:"trunkOriginationType"`
 }
 
@@ -53,8 +53,8 @@ func (x TrunkOriginationRegister) GetIdsVoipNumbers() []string {
 func (x TrunkOriginationRegister) GetTrunkOriginationType() TrunkOriginationType {
 	return x.TrunkOriginationType
 }
-func (x TrunkOriginationRegister) GetSID() string {
-	return x.SID
+func (x TrunkOriginationRegister) GetProviderId() string {
+	return x.ProviderId
 }
 func (x TrunkOriginationRegister) GetFriendlyName() string {
 	return x.FriendlyName
@@ -97,6 +97,9 @@ func BuildTrunkOriginationRegister(m map[string]interface{}, x *TrunkOrigination
 	if val, ok := m["idVoipProvider"]; ok && val != nil {
 		x.IdVoipProvider = val.(string)
 	}
+	if val, ok := m["providerId"]; ok && val != nil {
+		x.ProviderId = val.(string)
+	}
 	if val, ok := m["reg_host"]; ok && val != nil {
 		x.Reg_host = val.(string)
 	}
@@ -108,9 +111,6 @@ func BuildTrunkOriginationRegister(m map[string]interface{}, x *TrunkOrigination
 	}
 	if val, ok := m["reg_username"]; ok && val != nil {
 		x.Reg_username = val.(string)
-	}
-	if val, ok := m["sID"]; ok && val != nil {
-		x.SID = val.(string)
 	}
 	x.TrunkOriginationType = TrunkOriginationType_Register // readonly property
 }

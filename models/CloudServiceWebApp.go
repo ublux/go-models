@@ -15,7 +15,7 @@ type CloudServiceWebApp struct {
 	IsFailover       bool               `bson:"isFailover" json:"isFailover"`
 	IsHealthy        bool               `bson:"isHealthy" json:"isHealthy"`
 	Localnet         string             `bson:"localnet" json:"localnet"`
-	NAT              bool               `bson:"nAT" json:"nAT"`
+	Nat              bool               `bson:"nat" json:"nat"`
 }
 
 // Implementing interface IUbluxDocument
@@ -53,8 +53,8 @@ func (x CloudServiceWebApp) GetExternalIps() []string {
 func (x CloudServiceWebApp) GetIsFailover() bool {
 	return x.IsFailover
 }
-func (x CloudServiceWebApp) GetNAT() bool {
-	return x.NAT
+func (x CloudServiceWebApp) GetNat() bool {
+	return x.Nat
 }
 func (x CloudServiceWebApp) GetIsHealthy() bool {
 	return x.IsHealthy
@@ -101,7 +101,7 @@ func BuildCloudServiceWebApp(m map[string]interface{}, x *CloudServiceWebApp) {
 	if val, ok := m["localnet"]; ok && val != nil {
 		x.Localnet = val.(string)
 	}
-	if val, ok := m["nAT"]; ok && val != nil {
-		x.NAT = val.(bool)
+	if val, ok := m["nat"]; ok && val != nil {
+		x.Nat = val.(bool)
 	}
 }

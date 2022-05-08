@@ -15,7 +15,7 @@ type CloudServicePbx struct {
 	IsFailover       bool               `bson:"isFailover" json:"isFailover"`
 	IsHealthy        bool               `bson:"isHealthy" json:"isHealthy"`
 	Localnet         string             `bson:"localnet" json:"localnet"`
-	NAT              bool               `bson:"nAT" json:"nAT"`
+	Nat              bool               `bson:"nat" json:"nat"`
 }
 
 // Implementing interface IUbluxDocument
@@ -53,8 +53,8 @@ func (x CloudServicePbx) GetExternalIps() []string {
 func (x CloudServicePbx) GetIsFailover() bool {
 	return x.IsFailover
 }
-func (x CloudServicePbx) GetNAT() bool {
-	return x.NAT
+func (x CloudServicePbx) GetNat() bool {
+	return x.Nat
 }
 func (x CloudServicePbx) GetIsHealthy() bool {
 	return x.IsHealthy
@@ -101,7 +101,7 @@ func BuildCloudServicePbx(m map[string]interface{}, x *CloudServicePbx) {
 	if val, ok := m["localnet"]; ok && val != nil {
 		x.Localnet = val.(string)
 	}
-	if val, ok := m["nAT"]; ok && val != nil {
-		x.NAT = val.(bool)
+	if val, ok := m["nat"]; ok && val != nil {
+		x.Nat = val.(bool)
 	}
 }

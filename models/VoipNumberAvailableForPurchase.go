@@ -24,12 +24,12 @@ type VoipNumberAvailableForPurchase struct {
 	Language                     Language           `bson:"language" json:"language"`
 	Number                       string             `bson:"number" json:"number"`
 	PendingToBeConfigured        bool               `bson:"pendingToBeConfigured" json:"pendingToBeConfigured"`
+	ProviderId                   string             `bson:"providerId" json:"providerId"`
 	RecordIncomingCalls          bool               `bson:"recordIncomingCalls" json:"recordIncomingCalls"`
 	RequiresCustomerInfo         bool               `bson:"requiresCustomerInfo" json:"requiresCustomerInfo"`
 	RulesFax                     []RuleFax          `bson:"rulesFax" json:"rulesFax"`
 	RulesPhone                   []RulePhone        `bson:"rulesPhone" json:"rulesPhone"`
 	RulesSms                     []RuleSms          `bson:"rulesSms" json:"rulesSms"`
-	SID                          string             `bson:"sID" json:"sID"`
 	State                        string             `bson:"state" json:"state"`
 	TimeZone                     string             `bson:"timeZone" json:"timeZone"`
 	VoipNumberType               VoipNumberType     `bson:"voipNumberType" json:"voipNumberType"`
@@ -66,8 +66,8 @@ func (x VoipNumberAvailableForPurchase) GetIdTrunkOrigination() string {
 func (x VoipNumberAvailableForPurchase) GetIdVoipProvider() string {
 	return x.IdVoipProvider
 }
-func (x VoipNumberAvailableForPurchase) GetSID() string {
-	return x.SID
+func (x VoipNumberAvailableForPurchase) GetProviderId() string {
+	return x.ProviderId
 }
 func (x VoipNumberAvailableForPurchase) GetRulesPhone() []RulePhone {
 	return x.RulesPhone
@@ -188,6 +188,9 @@ func BuildVoipNumberAvailableForPurchase(m map[string]interface{}, x *VoipNumber
 	if val, ok := m["pendingToBeConfigured"]; ok && val != nil {
 		x.PendingToBeConfigured = val.(bool)
 	}
+	if val, ok := m["providerId"]; ok && val != nil {
+		x.ProviderId = val.(string)
+	}
 	if val, ok := m["recordIncomingCalls"]; ok && val != nil {
 		x.RecordIncomingCalls = val.(bool)
 	}
@@ -226,9 +229,6 @@ func BuildVoipNumberAvailableForPurchase(m map[string]interface{}, x *VoipNumber
 				}
 			}
 		}
-	}
-	if val, ok := m["sID"]; ok && val != nil {
-		x.SID = val.(string)
 	}
 	if val, ok := m["state"]; ok && val != nil {
 		x.State = val.(string)

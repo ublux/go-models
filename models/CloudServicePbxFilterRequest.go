@@ -26,7 +26,7 @@ type CloudServicePbxFilterRequest struct {
 	Localnet_CON        string             `bson:"localnet_CON" json:"localnet_CON"`
 	Localnet_EQ         string             `bson:"localnet_EQ" json:"localnet_EQ"`
 	Localnet_REG        string             `bson:"localnet_REG" json:"localnet_REG"`
-	NAT_EQ              bool               `bson:"nAT_EQ" json:"nAT_EQ"`
+	Nat_EQ              bool               `bson:"nat_EQ" json:"nat_EQ"`
 }
 
 // BUILDER from bson map:
@@ -97,7 +97,7 @@ func BuildCloudServicePbxFilterRequest(m map[string]interface{}, x *CloudService
 	if val, ok := m["localnet_REG"]; ok && val != nil {
 		x.Localnet_REG = val.(string)
 	}
-	if val, ok := m["nAT_EQ"]; ok && val != nil {
-		x.NAT_EQ = val.(bool)
+	if val, ok := m["nat_EQ"]; ok && val != nil {
+		x.Nat_EQ = val.(bool)
 	}
 }
