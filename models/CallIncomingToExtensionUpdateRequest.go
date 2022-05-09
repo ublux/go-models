@@ -11,6 +11,9 @@ func (x CallIncomingToExtensionUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildCallIncomingToExtensionUpdateRequest(m map[string]interface{}, x *CallIncomingToExtensionUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

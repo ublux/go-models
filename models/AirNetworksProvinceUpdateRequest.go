@@ -11,6 +11,9 @@ func (x AirNetworksProvinceUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildAirNetworksProvinceUpdateRequest(m map[string]interface{}, x *AirNetworksProvinceUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

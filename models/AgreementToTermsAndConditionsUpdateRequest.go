@@ -11,6 +11,9 @@ func (x AgreementToTermsAndConditionsUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildAgreementToTermsAndConditionsUpdateRequest(m map[string]interface{}, x *AgreementToTermsAndConditionsUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

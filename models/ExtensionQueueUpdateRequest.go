@@ -26,6 +26,9 @@ func (x ExtensionQueueUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildExtensionQueueUpdateRequest(m map[string]interface{}, x *ExtensionQueueUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

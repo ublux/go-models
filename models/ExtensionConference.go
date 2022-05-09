@@ -70,6 +70,9 @@ func BuildExtensionConference(m map[string]interface{}, x *ExtensionConference) 
 		x.DateUpdated = val.(primitive.DateTime)
 	}
 	x.ExtensionType = ExtensionType_Conference // readonly property
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

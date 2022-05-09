@@ -23,6 +23,9 @@ func BuildLineConnectionStatus(m map[string]interface{}, x *LineConnectionStatus
 	if val, ok := m["dateConnected"]; ok && val != nil {
 		x.DateConnected = val.(primitive.DateTime)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

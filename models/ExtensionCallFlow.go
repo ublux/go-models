@@ -70,6 +70,9 @@ func BuildExtensionCallFlow(m map[string]interface{}, x *ExtensionCallFlow) {
 		x.DateUpdated = val.(primitive.DateTime)
 	}
 	x.ExtensionType = ExtensionType_CallFlow // readonly property
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

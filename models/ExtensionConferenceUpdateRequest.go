@@ -22,6 +22,9 @@ func BuildExtensionConferenceUpdateRequest(m map[string]interface{}, x *Extensio
 	if val, ok := m["announceParticipants"]; ok && val != nil {
 		x.AnnounceParticipants = val.(bool)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

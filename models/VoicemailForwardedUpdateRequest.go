@@ -11,6 +11,9 @@ func (x VoicemailForwardedUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildVoicemailForwardedUpdateRequest(m map[string]interface{}, x *VoicemailForwardedUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

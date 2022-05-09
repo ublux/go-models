@@ -20,6 +20,9 @@ func BuildPhoneConfigurationUpdateRequest(m map[string]interface{}, x *PhoneConf
 	if val, ok := m["frienlyName"]; ok && val != nil {
 		x.FrienlyName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

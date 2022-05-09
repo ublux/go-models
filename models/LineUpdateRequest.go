@@ -17,6 +17,9 @@ func BuildLineUpdateRequest(m map[string]interface{}, x *LineUpdateRequest) {
 	if val, ok := m["callerIdNumber"]; ok && val != nil {
 		x.CallerIdNumber = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

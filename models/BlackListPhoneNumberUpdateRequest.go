@@ -16,6 +16,9 @@ func BuildBlackListPhoneNumberUpdateRequest(m map[string]interface{}, x *BlackLi
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

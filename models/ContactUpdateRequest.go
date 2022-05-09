@@ -49,6 +49,9 @@ func BuildContactUpdateRequest(m map[string]interface{}, x *ContactUpdateRequest
 	if val, ok := m["firstName"]; ok && val != nil {
 		x.FirstName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

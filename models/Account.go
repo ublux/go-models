@@ -78,6 +78,9 @@ func BuildAccount(m map[string]interface{}, x *Account) {
 	if val, ok := m["hasGrantedSupportAccess"]; ok && val != nil {
 		x.HasGrantedSupportAccess = val.(bool)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

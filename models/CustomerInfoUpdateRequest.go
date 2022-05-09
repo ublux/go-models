@@ -16,6 +16,9 @@ func BuildCustomerInfoUpdateRequest(m map[string]interface{}, x *CustomerInfoUpd
 	if val, ok := m["fullName"]; ok && val != nil {
 		x.FullName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

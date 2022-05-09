@@ -74,6 +74,9 @@ func BuildExtensionQueue(m map[string]interface{}, x *ExtensionQueue) {
 		x.DateUpdated = val.(primitive.DateTime)
 	}
 	x.ExtensionType = ExtensionType_Queue // readonly property
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

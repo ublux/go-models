@@ -32,6 +32,9 @@ func BuildFaxOutgoing(m map[string]interface{}, x *FaxOutgoing) {
 	if val, ok := m["faxStatus"]; ok && val != nil {
 		x.FaxStatus = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

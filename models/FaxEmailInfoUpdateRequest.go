@@ -11,6 +11,9 @@ func (x FaxEmailInfoUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildFaxEmailInfoUpdateRequest(m map[string]interface{}, x *FaxEmailInfoUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

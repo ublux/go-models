@@ -11,6 +11,9 @@ func (x TrunkTerminationGroupUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildTrunkTerminationGroupUpdateRequest(m map[string]interface{}, x *TrunkTerminationGroupUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

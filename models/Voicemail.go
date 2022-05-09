@@ -55,6 +55,9 @@ func BuildVoicemail(m map[string]interface{}, x *Voicemail) {
 	if val, ok := m["errorMessage"]; ok && val != nil {
 		x.ErrorMessage = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

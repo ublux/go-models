@@ -19,6 +19,9 @@ func BuildPowerDialerGroupUpdateRequest(m map[string]interface{}, x *PowerDialer
 	if val, ok := m["friendlyName"]; ok && val != nil {
 		x.FriendlyName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

@@ -20,6 +20,9 @@ func BuildExtensionCallFlowUpdateRequest(m map[string]interface{}, x *ExtensionC
 	if val, ok := m["callFlowLabel"]; ok && val != nil {
 		x.CallFlowLabel = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

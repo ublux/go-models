@@ -13,6 +13,9 @@ func BuildFaxEmail(m map[string]interface{}, x *FaxEmail) {
 	if val, ok := m["from"]; ok && val != nil {
 		x.From = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

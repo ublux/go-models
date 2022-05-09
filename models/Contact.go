@@ -84,6 +84,9 @@ func BuildContact(m map[string]interface{}, x *Contact) {
 	if val, ok := m["hash"]; ok && val != nil {
 		x.Hash = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

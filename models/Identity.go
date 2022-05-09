@@ -59,6 +59,9 @@ func BuildIdentity(m map[string]interface{}, x *Identity) {
 	if val, ok := m["dateUpdated"]; ok && val != nil {
 		x.DateUpdated = val.(primitive.DateTime)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

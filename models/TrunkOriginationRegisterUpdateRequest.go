@@ -11,6 +11,9 @@ func (x TrunkOriginationRegisterUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildTrunkOriginationRegisterUpdateRequest(m map[string]interface{}, x *TrunkOriginationRegisterUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

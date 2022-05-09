@@ -58,6 +58,9 @@ func BuildFaxEmailInfo(m map[string]interface{}, x *FaxEmailInfo) {
 	if val, ok := m["haveWeSentEmailExplainingUserHasToWaitForConfirmation"]; ok && val != nil {
 		x.HaveWeSentEmailExplainingUserHasToWaitForConfirmation = val.(bool)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

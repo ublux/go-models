@@ -68,6 +68,9 @@ func BuildLogWebServiceRequest(m map[string]interface{}, x *LogWebServiceRequest
 	if val, ok := m["httpResponseStatusCode"]; ok && val != nil {
 		x.HttpResponseStatusCode = HttpResponseStatusCode("HttpResponseStatusCode_" + val.(string))
 	} // is NOT readonly obtained from map
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

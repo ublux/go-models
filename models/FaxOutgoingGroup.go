@@ -70,6 +70,9 @@ func BuildFaxOutgoingGroup(m map[string]interface{}, x *FaxOutgoingGroup) {
 	if val, ok := m["from"]; ok && val != nil {
 		x.From = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

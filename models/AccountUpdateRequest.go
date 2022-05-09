@@ -24,6 +24,9 @@ func BuildAccountUpdateRequest(m map[string]interface{}, x *AccountUpdateRequest
 	if val, ok := m["companyName"]; ok && val != nil {
 		x.CompanyName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

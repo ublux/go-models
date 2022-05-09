@@ -199,6 +199,9 @@ func BuildCallIncomingToCallFlow(m map[string]interface{}, x *CallIncomingToCall
 	if val, ok := m["fromInternationalFormat"]; ok && val != nil {
 		x.FromInternationalFormat = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

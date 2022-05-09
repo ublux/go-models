@@ -31,6 +31,9 @@ func BuildStoredFile(m map[string]interface{}, x *StoredFile) {
 	if val, ok := m["folderName"]; ok && val != nil {
 		x.FolderName = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

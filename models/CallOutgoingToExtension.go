@@ -195,6 +195,9 @@ func BuildCallOutgoingToExtension(m map[string]interface{}, x *CallOutgoingToExt
 	if val, ok := m["fromCountry"]; ok && val != nil {
 		x.FromCountry = CountryIsoCode("FromCountry_" + val.(string))
 	} // is NOT readonly obtained from map
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

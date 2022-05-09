@@ -11,6 +11,9 @@ func (x CloudServiceWebAppUpdateRequest) GetId() string {
 
 // BUILDER from bson map:
 func BuildCloudServiceWebAppUpdateRequest(m map[string]interface{}, x *CloudServiceWebAppUpdateRequest) {
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

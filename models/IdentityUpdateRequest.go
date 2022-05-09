@@ -20,6 +20,9 @@ func BuildIdentityUpdateRequest(m map[string]interface{}, x *IdentityUpdateReque
 	if val, ok := m["allowConnectingFromIpRegex"]; ok && val != nil {
 		x.AllowConnectingFromIpRegex = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

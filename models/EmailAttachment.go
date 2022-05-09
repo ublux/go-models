@@ -13,6 +13,9 @@ func BuildEmailAttachment(m map[string]interface{}, x *EmailAttachment) {
 	if val, ok := m["filePath"]; ok && val != nil {
 		x.FilePath = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}

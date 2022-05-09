@@ -50,6 +50,9 @@ func BuildAgreementToTermsAndConditions(m map[string]interface{}, x *AgreementTo
 	if val, ok := m["httpRequestHeaders"]; ok && val != nil {
 		x.HttpRequestHeaders = val.(string)
 	}
+	if val, ok := m["_id"]; ok && val != nil {
+		x.Id = val.(string)
+	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}
