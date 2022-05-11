@@ -10,7 +10,6 @@ type TrunkTermination struct {
 	DateUpdated                primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	FriendlyName               string             `bson:"friendlyName" json:"friendlyName"`
 	Id                         string             `bson:"_id" json:"id"`
-	IdTrunkTerminationExisting string             `bson:"idTrunkTerminationExisting" json:"idTrunkTerminationExisting"`
 	IdVoipProvider             string             `bson:"idVoipProvider" json:"idVoipProvider"`
 	Password                   string             `bson:"password" json:"password"`
 	ProviderId                 string             `bson:"providerId" json:"providerId"`
@@ -62,9 +61,6 @@ func BuildTrunkTermination(m map[string]interface{}, x *TrunkTermination) {
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
-	}
-	if val, ok := m["idTrunkTerminationExisting"]; ok && val != nil {
-		x.IdTrunkTerminationExisting = val.(string)
 	}
 	if val, ok := m["idVoipProvider"]; ok && val != nil {
 		x.IdVoipProvider = val.(string)

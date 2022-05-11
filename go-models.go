@@ -11,9 +11,6 @@ import (
 // https://stackoverflow.com/q/36703867/637142
 // Remove properties like IdAccount for client
 
-// rm -r /root/repos/go-models/models ; cp -r /tmp/output/models /root/repos/go-models/
-// rm -r /root/repos/go-models/enums ; cp -r /tmp/output/enums /root/repos/go-models/
-
 func Add(a, b int) int {
 	return a + b
 }

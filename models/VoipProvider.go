@@ -4,18 +4,18 @@ import . "github.com/ublux/go-models/enums"
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type VoipProvider struct {
-	AccessToken    string             `bson:"accessToken" json:"accessToken"`
-	Country        CountryIsoCode     `bson:"country" json:"country"`
-	DateCreated    primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
-	DateDeleted    primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
-	DateUpdated    primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
-	FriendlyName   string             `bson:"friendlyName" json:"friendlyName"`
-	Id             string             `bson:"_id" json:"id"`
-	OwnerAccountId string             `bson:"ownerAccountId" json:"ownerAccountId"`
-	ProviderId     string             `bson:"providerId" json:"providerId"`
-	Status         string             `bson:"status" json:"status"`
-	UbluxPartner   UbluxPartner       `bson:"ubluxPartner" json:"ubluxPartner"`
-	VoipCompany    VoipCompany        `bson:"voipCompany" json:"voipCompany"`
+	Country                CountryIsoCode     `bson:"country" json:"country"`
+	DateCreated            primitive.DateTime `bson:"dateCreated" json:"dateCreated"`
+	DateDeleted            primitive.DateTime `bson:"dateDeleted" json:"dateDeleted"`
+	DateUpdated            primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
+	FriendlyName           string             `bson:"friendlyName" json:"friendlyName"`
+	Id                     string             `bson:"_id" json:"id"`
+	ProviderAccessToken    string             `bson:"providerAccessToken" json:"providerAccessToken"`
+	ProviderAccountId      string             `bson:"providerAccountId" json:"providerAccountId"`
+	ProviderOwnerAccountId string             `bson:"providerOwnerAccountId" json:"providerOwnerAccountId"`
+	Status                 string             `bson:"status" json:"status"`
+	UbluxPartner           UbluxPartner       `bson:"ubluxPartner" json:"ubluxPartner"`
+	VoipCompany            VoipCompany        `bson:"voipCompany" json:"voipCompany"`
 }
 
 // Implementing interface IUbluxDocument
@@ -38,9 +38,6 @@ func (x VoipProvider) GetId() string {
 
 // BUILDER from bson map:
 func BuildVoipProvider(m map[string]interface{}, x *VoipProvider) {
-	if val, ok := m["accessToken"]; ok && val != nil {
-		x.AccessToken = val.(string)
-	}
 	if val, ok := m["country"]; ok && val != nil {
 		x.Country = CountryIsoCode("Country_" + val.(string))
 	} // is NOT readonly obtained from map
@@ -62,11 +59,14 @@ func BuildVoipProvider(m map[string]interface{}, x *VoipProvider) {
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
 	}
-	if val, ok := m["ownerAccountId"]; ok && val != nil {
-		x.OwnerAccountId = val.(string)
+	if val, ok := m["providerAccessToken"]; ok && val != nil {
+		x.ProviderAccessToken = val.(string)
 	}
-	if val, ok := m["providerId"]; ok && val != nil {
-		x.ProviderId = val.(string)
+	if val, ok := m["providerAccountId"]; ok && val != nil {
+		x.ProviderAccountId = val.(string)
+	}
+	if val, ok := m["providerOwnerAccountId"]; ok && val != nil {
+		x.ProviderOwnerAccountId = val.(string)
 	}
 	if val, ok := m["status"]; ok && val != nil {
 		x.Status = val.(string)
