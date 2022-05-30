@@ -6,7 +6,6 @@ type CloudService interface {
 	IUbluxDocument
 	IUbluxDocumentId
 
-	GetIdIdentity() string
 	GetCloudServiceType() CloudServiceType
 	GetCountryIsoCode() CountryIsoCode
 	GetLocalnet() string

@@ -11,6 +11,9 @@ type ContactFilterRequest struct {
 	ContactEmails_Email_EQ                       string             `bson:"contactEmails_Email_EQ" json:"contactEmails_Email_EQ"`
 	ContactEmails_Email_REG                      string             `bson:"contactEmails_Email_REG" json:"contactEmails_Email_REG"`
 	ContactEmails_Label_EQ                       LabelEmailType     `bson:"contactEmails_Label_EQ" json:"contactEmails_Label_EQ"`
+	ContactEmails_SearchIndex_CON                string             `bson:"contactEmails_SearchIndex_CON" json:"contactEmails_SearchIndex_CON"`
+	ContactEmails_SearchIndex_EQ                 string             `bson:"contactEmails_SearchIndex_EQ" json:"contactEmails_SearchIndex_EQ"`
+	ContactEmails_SearchIndex_REG                string             `bson:"contactEmails_SearchIndex_REG" json:"contactEmails_SearchIndex_REG"`
 	ContactNumbers_Label_EQ                      LabelNumber        `bson:"contactNumbers_Label_EQ" json:"contactNumbers_Label_EQ"`
 	ContactNumbers_Number_CON                    string             `bson:"contactNumbers_Number_CON" json:"contactNumbers_Number_CON"`
 	ContactNumbers_Number_EQ                     string             `bson:"contactNumbers_Number_EQ" json:"contactNumbers_Number_EQ"`
@@ -18,6 +21,9 @@ type ContactFilterRequest struct {
 	ContactNumbers_NumberInternationalFormat_CON string             `bson:"contactNumbers_NumberInternationalFormat_CON" json:"contactNumbers_NumberInternationalFormat_CON"`
 	ContactNumbers_NumberInternationalFormat_EQ  string             `bson:"contactNumbers_NumberInternationalFormat_EQ" json:"contactNumbers_NumberInternationalFormat_EQ"`
 	ContactNumbers_NumberInternationalFormat_REG string             `bson:"contactNumbers_NumberInternationalFormat_REG" json:"contactNumbers_NumberInternationalFormat_REG"`
+	ContactNumbers_SearchIndex_CON               string             `bson:"contactNumbers_SearchIndex_CON" json:"contactNumbers_SearchIndex_CON"`
+	ContactNumbers_SearchIndex_EQ                string             `bson:"contactNumbers_SearchIndex_EQ" json:"contactNumbers_SearchIndex_EQ"`
+	ContactNumbers_SearchIndex_REG               string             `bson:"contactNumbers_SearchIndex_REG" json:"contactNumbers_SearchIndex_REG"`
 	DateCreated_EQ                               primitive.DateTime `bson:"dateCreated_EQ" json:"dateCreated_EQ"`
 	DateCreated_GTE                              primitive.DateTime `bson:"dateCreated_GTE" json:"dateCreated_GTE"`
 	DateCreated_LTE                              primitive.DateTime `bson:"dateCreated_LTE" json:"dateCreated_LTE"`
@@ -33,6 +39,9 @@ type ContactFilterRequest struct {
 	Id_CON                                       string             `bson:"id_CON" json:"id_CON"`
 	Id_EQ                                        string             `bson:"id_EQ" json:"id_EQ"`
 	Id_REG                                       string             `bson:"id_REG" json:"id_REG"`
+	IdIdentityUser_CON                           string             `bson:"idIdentityUser_CON" json:"idIdentityUser_CON"`
+	IdIdentityUser_EQ                            string             `bson:"idIdentityUser_EQ" json:"idIdentityUser_EQ"`
+	IdIdentityUser_REG                           string             `bson:"idIdentityUser_REG" json:"idIdentityUser_REG"`
 	JobTittle_CON                                string             `bson:"jobTittle_CON" json:"jobTittle_CON"`
 	JobTittle_EQ                                 string             `bson:"jobTittle_EQ" json:"jobTittle_EQ"`
 	JobTittle_REG                                string             `bson:"jobTittle_REG" json:"jobTittle_REG"`
@@ -73,6 +82,15 @@ func BuildContactFilterRequest(m map[string]interface{}, x *ContactFilterRequest
 	if val, ok := m["contactEmails_Label_EQ"]; ok && val != nil {
 		x.ContactEmails_Label_EQ = LabelEmailType("ContactEmails_Label_EQ_" + val.(string))
 	} // is NOT readonly obtained from map
+	if val, ok := m["contactEmails_SearchIndex_CON"]; ok && val != nil {
+		x.ContactEmails_SearchIndex_CON = val.(string)
+	}
+	if val, ok := m["contactEmails_SearchIndex_EQ"]; ok && val != nil {
+		x.ContactEmails_SearchIndex_EQ = val.(string)
+	}
+	if val, ok := m["contactEmails_SearchIndex_REG"]; ok && val != nil {
+		x.ContactEmails_SearchIndex_REG = val.(string)
+	}
 	if val, ok := m["contactNumbers_Label_EQ"]; ok && val != nil {
 		x.ContactNumbers_Label_EQ = LabelNumber("ContactNumbers_Label_EQ_" + val.(string))
 	} // is NOT readonly obtained from map
@@ -93,6 +111,15 @@ func BuildContactFilterRequest(m map[string]interface{}, x *ContactFilterRequest
 	}
 	if val, ok := m["contactNumbers_NumberInternationalFormat_REG"]; ok && val != nil {
 		x.ContactNumbers_NumberInternationalFormat_REG = val.(string)
+	}
+	if val, ok := m["contactNumbers_SearchIndex_CON"]; ok && val != nil {
+		x.ContactNumbers_SearchIndex_CON = val.(string)
+	}
+	if val, ok := m["contactNumbers_SearchIndex_EQ"]; ok && val != nil {
+		x.ContactNumbers_SearchIndex_EQ = val.(string)
+	}
+	if val, ok := m["contactNumbers_SearchIndex_REG"]; ok && val != nil {
+		x.ContactNumbers_SearchIndex_REG = val.(string)
 	}
 	if val, ok := m["dateCreated_EQ"]; ok && val != nil {
 		x.DateCreated_EQ = val.(primitive.DateTime)
@@ -138,6 +165,15 @@ func BuildContactFilterRequest(m map[string]interface{}, x *ContactFilterRequest
 	}
 	if val, ok := m["id_REG"]; ok && val != nil {
 		x.Id_REG = val.(string)
+	}
+	if val, ok := m["idIdentityUser_CON"]; ok && val != nil {
+		x.IdIdentityUser_CON = val.(string)
+	}
+	if val, ok := m["idIdentityUser_EQ"]; ok && val != nil {
+		x.IdIdentityUser_EQ = val.(string)
+	}
+	if val, ok := m["idIdentityUser_REG"]; ok && val != nil {
+		x.IdIdentityUser_REG = val.(string)
 	}
 	if val, ok := m["jobTittle_CON"]; ok && val != nil {
 		x.JobTittle_CON = val.(string)

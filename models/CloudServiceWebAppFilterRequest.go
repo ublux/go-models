@@ -18,9 +18,6 @@ type CloudServiceWebAppFilterRequest struct {
 	Id_CON              string             `bson:"id_CON" json:"id_CON"`
 	Id_EQ               string             `bson:"id_EQ" json:"id_EQ"`
 	Id_REG              string             `bson:"id_REG" json:"id_REG"`
-	IdIdentity_CON      string             `bson:"idIdentity_CON" json:"idIdentity_CON"`
-	IdIdentity_EQ       string             `bson:"idIdentity_EQ" json:"idIdentity_EQ"`
-	IdIdentity_REG      string             `bson:"idIdentity_REG" json:"idIdentity_REG"`
 	IsFailover_EQ       bool               `bson:"isFailover_EQ" json:"isFailover_EQ"`
 	IsHealthy_EQ        bool               `bson:"isHealthy_EQ" json:"isHealthy_EQ"`
 	Localnet_CON        string             `bson:"localnet_CON" json:"localnet_CON"`
@@ -72,15 +69,6 @@ func BuildCloudServiceWebAppFilterRequest(m map[string]interface{}, x *CloudServ
 	}
 	if val, ok := m["id_REG"]; ok && val != nil {
 		x.Id_REG = val.(string)
-	}
-	if val, ok := m["idIdentity_CON"]; ok && val != nil {
-		x.IdIdentity_CON = val.(string)
-	}
-	if val, ok := m["idIdentity_EQ"]; ok && val != nil {
-		x.IdIdentity_EQ = val.(string)
-	}
-	if val, ok := m["idIdentity_REG"]; ok && val != nil {
-		x.IdIdentity_REG = val.(string)
 	}
 	if val, ok := m["isFailover_EQ"]; ok && val != nil {
 		x.IsFailover_EQ = val.(bool)

@@ -13,6 +13,7 @@ type Contact struct {
 	Hash           string             `bson:"hash" json:"hash"`
 	Id             string             `bson:"_id" json:"id"`
 	IdAccount      string             `bson:"idAccount" json:"idAccount"`
+	IdIdentityUser string             `bson:"idIdentityUser" json:"idIdentityUser"`
 	JobTittle      string             `bson:"jobTittle" json:"jobTittle"`
 	LastName       string             `bson:"lastName" json:"lastName"`
 	Notes          string             `bson:"notes" json:"notes"`
@@ -92,6 +93,9 @@ func BuildContact(m map[string]interface{}, x *Contact) {
 	}
 	if val, ok := m["idAccount"]; ok && val != nil {
 		x.IdAccount = val.(string)
+	}
+	if val, ok := m["idIdentityUser"]; ok && val != nil {
+		x.IdIdentityUser = val.(string)
 	}
 	if val, ok := m["jobTittle"]; ok && val != nil {
 		x.JobTittle = val.(string)

@@ -36,9 +36,6 @@ type PhoneFilterRequest struct {
 	Lines_LineConnectionStatus_DateConnected_EQ  primitive.DateTime `bson:"lines_LineConnectionStatus_DateConnected_EQ" json:"lines_LineConnectionStatus_DateConnected_EQ"`
 	Lines_LineConnectionStatus_DateConnected_GTE primitive.DateTime `bson:"lines_LineConnectionStatus_DateConnected_GTE" json:"lines_LineConnectionStatus_DateConnected_GTE"`
 	Lines_LineConnectionStatus_DateConnected_LTE primitive.DateTime `bson:"lines_LineConnectionStatus_DateConnected_LTE" json:"lines_LineConnectionStatus_DateConnected_LTE"`
-	Lines_LineConnectionStatus_Id_CON            string             `bson:"lines_LineConnectionStatus_Id_CON" json:"lines_LineConnectionStatus_Id_CON"`
-	Lines_LineConnectionStatus_Id_EQ             string             `bson:"lines_LineConnectionStatus_Id_EQ" json:"lines_LineConnectionStatus_Id_EQ"`
-	Lines_LineConnectionStatus_Id_REG            string             `bson:"lines_LineConnectionStatus_Id_REG" json:"lines_LineConnectionStatus_Id_REG"`
 	Lines_LineConnectionStatus_IpLAN_CON         string             `bson:"lines_LineConnectionStatus_IpLAN_CON" json:"lines_LineConnectionStatus_IpLAN_CON"`
 	Lines_LineConnectionStatus_IpLAN_EQ          string             `bson:"lines_LineConnectionStatus_IpLAN_EQ" json:"lines_LineConnectionStatus_IpLAN_EQ"`
 	Lines_LineConnectionStatus_IpLAN_REG         string             `bson:"lines_LineConnectionStatus_IpLAN_REG" json:"lines_LineConnectionStatus_IpLAN_REG"`
@@ -159,15 +156,6 @@ func BuildPhoneFilterRequest(m map[string]interface{}, x *PhoneFilterRequest) {
 	}
 	if val, ok := m["lines_LineConnectionStatus_DateConnected_LTE"]; ok && val != nil {
 		x.Lines_LineConnectionStatus_DateConnected_LTE = val.(primitive.DateTime)
-	}
-	if val, ok := m["lines_LineConnectionStatus_Id_CON"]; ok && val != nil {
-		x.Lines_LineConnectionStatus_Id_CON = val.(string)
-	}
-	if val, ok := m["lines_LineConnectionStatus_Id_EQ"]; ok && val != nil {
-		x.Lines_LineConnectionStatus_Id_EQ = val.(string)
-	}
-	if val, ok := m["lines_LineConnectionStatus_Id_REG"]; ok && val != nil {
-		x.Lines_LineConnectionStatus_Id_REG = val.(string)
 	}
 	if val, ok := m["lines_LineConnectionStatus_IpLAN_CON"]; ok && val != nil {
 		x.Lines_LineConnectionStatus_IpLAN_CON = val.(string)

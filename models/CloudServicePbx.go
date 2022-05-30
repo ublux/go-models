@@ -11,7 +11,6 @@ type CloudServicePbx struct {
 	DateUpdated      primitive.DateTime `bson:"dateUpdated" json:"dateUpdated"`
 	ExternalIps      []string           `bson:"externalIps" json:"externalIps"`
 	Id               string             `bson:"_id" json:"id"`
-	IdIdentity       string             `bson:"idIdentity" json:"idIdentity"`
 	IsFailover       bool               `bson:"isFailover" json:"isFailover"`
 	IsHealthy        bool               `bson:"isHealthy" json:"isHealthy"`
 	Localnet         string             `bson:"localnet" json:"localnet"`
@@ -35,9 +34,6 @@ func (x CloudServicePbx) GetId() string {
 }
 
 // Implementing interface CloudService
-func (x CloudServicePbx) GetIdIdentity() string {
-	return x.IdIdentity
-}
 func (x CloudServicePbx) GetCloudServiceType() CloudServiceType {
 	return x.CloudServiceType
 }
@@ -91,9 +87,6 @@ func BuildCloudServicePbx(m map[string]interface{}, x *CloudServicePbx) {
 	}
 	if val, ok := m["id"]; ok && val != nil {
 		x.Id = val.(string)
-	}
-	if val, ok := m["idIdentity"]; ok && val != nil {
-		x.IdIdentity = val.(string)
 	}
 	if val, ok := m["isFailover"]; ok && val != nil {
 		x.IsFailover = val.(bool)

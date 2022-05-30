@@ -66,7 +66,5 @@ func BuildPowerDialerSimple(m map[string]interface{}, x *PowerDialerSimple) {
 	if val, ok := m["powerDialerStatus"]; ok && val != nil {
 		x.PowerDialerStatus = PowerDialerStatus("PowerDialerStatus_" + val.(string))
 	} // is NOT readonly obtained from map
-	if val, ok := m["powerDialerType"]; ok && val != nil {
-		x.PowerDialerType = PowerDialerType("PowerDialerType_" + val.(string))
-	} // is NOT readonly obtained from map
+	x.PowerDialerType = PowerDialerType_Simple // readonly property
 }

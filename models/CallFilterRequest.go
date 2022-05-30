@@ -23,6 +23,9 @@ type CallFilterRequest struct {
 	Contact_ContactEmails_Email_EQ                                  string             `bson:"contact_ContactEmails_Email_EQ" json:"contact_ContactEmails_Email_EQ"`
 	Contact_ContactEmails_Email_REG                                 string             `bson:"contact_ContactEmails_Email_REG" json:"contact_ContactEmails_Email_REG"`
 	Contact_ContactEmails_Label_EQ                                  LabelEmailType     `bson:"contact_ContactEmails_Label_EQ" json:"contact_ContactEmails_Label_EQ"`
+	Contact_ContactEmails_SearchIndex_CON                           string             `bson:"contact_ContactEmails_SearchIndex_CON" json:"contact_ContactEmails_SearchIndex_CON"`
+	Contact_ContactEmails_SearchIndex_EQ                            string             `bson:"contact_ContactEmails_SearchIndex_EQ" json:"contact_ContactEmails_SearchIndex_EQ"`
+	Contact_ContactEmails_SearchIndex_REG                           string             `bson:"contact_ContactEmails_SearchIndex_REG" json:"contact_ContactEmails_SearchIndex_REG"`
 	Contact_ContactNumbers_Label_EQ                                 LabelNumber        `bson:"contact_ContactNumbers_Label_EQ" json:"contact_ContactNumbers_Label_EQ"`
 	Contact_ContactNumbers_Number_CON                               string             `bson:"contact_ContactNumbers_Number_CON" json:"contact_ContactNumbers_Number_CON"`
 	Contact_ContactNumbers_Number_EQ                                string             `bson:"contact_ContactNumbers_Number_EQ" json:"contact_ContactNumbers_Number_EQ"`
@@ -30,6 +33,9 @@ type CallFilterRequest struct {
 	Contact_ContactNumbers_NumberInternationalFormat_CON            string             `bson:"contact_ContactNumbers_NumberInternationalFormat_CON" json:"contact_ContactNumbers_NumberInternationalFormat_CON"`
 	Contact_ContactNumbers_NumberInternationalFormat_EQ             string             `bson:"contact_ContactNumbers_NumberInternationalFormat_EQ" json:"contact_ContactNumbers_NumberInternationalFormat_EQ"`
 	Contact_ContactNumbers_NumberInternationalFormat_REG            string             `bson:"contact_ContactNumbers_NumberInternationalFormat_REG" json:"contact_ContactNumbers_NumberInternationalFormat_REG"`
+	Contact_ContactNumbers_SearchIndex_CON                          string             `bson:"contact_ContactNumbers_SearchIndex_CON" json:"contact_ContactNumbers_SearchIndex_CON"`
+	Contact_ContactNumbers_SearchIndex_EQ                           string             `bson:"contact_ContactNumbers_SearchIndex_EQ" json:"contact_ContactNumbers_SearchIndex_EQ"`
+	Contact_ContactNumbers_SearchIndex_REG                          string             `bson:"contact_ContactNumbers_SearchIndex_REG" json:"contact_ContactNumbers_SearchIndex_REG"`
 	Contact_DateCreated_EQ                                          primitive.DateTime `bson:"contact_DateCreated_EQ" json:"contact_DateCreated_EQ"`
 	Contact_DateCreated_GTE                                         primitive.DateTime `bson:"contact_DateCreated_GTE" json:"contact_DateCreated_GTE"`
 	Contact_DateCreated_LTE                                         primitive.DateTime `bson:"contact_DateCreated_LTE" json:"contact_DateCreated_LTE"`
@@ -45,6 +51,9 @@ type CallFilterRequest struct {
 	Contact_Id_CON                                                  string             `bson:"contact_Id_CON" json:"contact_Id_CON"`
 	Contact_Id_EQ                                                   string             `bson:"contact_Id_EQ" json:"contact_Id_EQ"`
 	Contact_Id_REG                                                  string             `bson:"contact_Id_REG" json:"contact_Id_REG"`
+	Contact_IdIdentityUser_CON                                      string             `bson:"contact_IdIdentityUser_CON" json:"contact_IdIdentityUser_CON"`
+	Contact_IdIdentityUser_EQ                                       string             `bson:"contact_IdIdentityUser_EQ" json:"contact_IdIdentityUser_EQ"`
+	Contact_IdIdentityUser_REG                                      string             `bson:"contact_IdIdentityUser_REG" json:"contact_IdIdentityUser_REG"`
 	Contact_JobTittle_CON                                           string             `bson:"contact_JobTittle_CON" json:"contact_JobTittle_CON"`
 	Contact_JobTittle_EQ                                            string             `bson:"contact_JobTittle_EQ" json:"contact_JobTittle_EQ"`
 	Contact_JobTittle_REG                                           string             `bson:"contact_JobTittle_REG" json:"contact_JobTittle_REG"`
@@ -182,6 +191,15 @@ func BuildCallFilterRequest(m map[string]interface{}, x *CallFilterRequest) {
 	if val, ok := m["contact_ContactEmails_Label_EQ"]; ok && val != nil {
 		x.Contact_ContactEmails_Label_EQ = LabelEmailType("Contact_ContactEmails_Label_EQ_" + val.(string))
 	} // is NOT readonly obtained from map
+	if val, ok := m["contact_ContactEmails_SearchIndex_CON"]; ok && val != nil {
+		x.Contact_ContactEmails_SearchIndex_CON = val.(string)
+	}
+	if val, ok := m["contact_ContactEmails_SearchIndex_EQ"]; ok && val != nil {
+		x.Contact_ContactEmails_SearchIndex_EQ = val.(string)
+	}
+	if val, ok := m["contact_ContactEmails_SearchIndex_REG"]; ok && val != nil {
+		x.Contact_ContactEmails_SearchIndex_REG = val.(string)
+	}
 	if val, ok := m["contact_ContactNumbers_Label_EQ"]; ok && val != nil {
 		x.Contact_ContactNumbers_Label_EQ = LabelNumber("Contact_ContactNumbers_Label_EQ_" + val.(string))
 	} // is NOT readonly obtained from map
@@ -202,6 +220,15 @@ func BuildCallFilterRequest(m map[string]interface{}, x *CallFilterRequest) {
 	}
 	if val, ok := m["contact_ContactNumbers_NumberInternationalFormat_REG"]; ok && val != nil {
 		x.Contact_ContactNumbers_NumberInternationalFormat_REG = val.(string)
+	}
+	if val, ok := m["contact_ContactNumbers_SearchIndex_CON"]; ok && val != nil {
+		x.Contact_ContactNumbers_SearchIndex_CON = val.(string)
+	}
+	if val, ok := m["contact_ContactNumbers_SearchIndex_EQ"]; ok && val != nil {
+		x.Contact_ContactNumbers_SearchIndex_EQ = val.(string)
+	}
+	if val, ok := m["contact_ContactNumbers_SearchIndex_REG"]; ok && val != nil {
+		x.Contact_ContactNumbers_SearchIndex_REG = val.(string)
 	}
 	if val, ok := m["contact_DateCreated_EQ"]; ok && val != nil {
 		x.Contact_DateCreated_EQ = val.(primitive.DateTime)
@@ -247,6 +274,15 @@ func BuildCallFilterRequest(m map[string]interface{}, x *CallFilterRequest) {
 	}
 	if val, ok := m["contact_Id_REG"]; ok && val != nil {
 		x.Contact_Id_REG = val.(string)
+	}
+	if val, ok := m["contact_IdIdentityUser_CON"]; ok && val != nil {
+		x.Contact_IdIdentityUser_CON = val.(string)
+	}
+	if val, ok := m["contact_IdIdentityUser_EQ"]; ok && val != nil {
+		x.Contact_IdIdentityUser_EQ = val.(string)
+	}
+	if val, ok := m["contact_IdIdentityUser_REG"]; ok && val != nil {
+		x.Contact_IdIdentityUser_REG = val.(string)
 	}
 	if val, ok := m["contact_JobTittle_CON"]; ok && val != nil {
 		x.Contact_JobTittle_CON = val.(string)

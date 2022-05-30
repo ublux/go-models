@@ -15,7 +15,6 @@ type Account struct {
 	HasGrantedSupportAccess             bool               `bson:"hasGrantedSupportAccess" json:"hasGrantedSupportAccess"`
 	Id                                  string             `bson:"_id" json:"id"`
 	IdCloudServicePbxFailover           string             `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
-	IdCloudServiceWebApp                string             `bson:"idCloudServiceWebApp" json:"idCloudServiceWebApp"`
 	IdGTrunkTerminationGroup            string             `bson:"idGTrunkTerminationGroup" json:"idGTrunkTerminationGroup"`
 	IdsCloudServicePbxs                 []string           `bson:"idsCloudServicePbxs" json:"idsCloudServicePbxs"`
 	MailingAddress                      MailingAddress     `bson:"mailingAddress" json:"mailingAddress"`
@@ -86,9 +85,6 @@ func BuildAccount(m map[string]interface{}, x *Account) {
 	}
 	if val, ok := m["idCloudServicePbxFailover"]; ok && val != nil {
 		x.IdCloudServicePbxFailover = val.(string)
-	}
-	if val, ok := m["idCloudServiceWebApp"]; ok && val != nil {
-		x.IdCloudServiceWebApp = val.(string)
 	}
 	if val, ok := m["idGTrunkTerminationGroup"]; ok && val != nil {
 		x.IdGTrunkTerminationGroup = val.(string)

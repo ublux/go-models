@@ -6,6 +6,7 @@ type ContactNumber struct {
 	Label                     LabelNumber `bson:"label" json:"label"`
 	Number                    string      `bson:"number" json:"number"`
 	NumberInternationalFormat string      `bson:"numberInternationalFormat" json:"numberInternationalFormat"`
+	SearchIndex               string      `bson:"searchIndex" json:"searchIndex"`
 }
 
 // BUILDER from bson map:
@@ -18,5 +19,8 @@ func BuildContactNumber(m map[string]interface{}, x *ContactNumber) {
 	}
 	if val, ok := m["numberInternationalFormat"]; ok && val != nil {
 		x.NumberInternationalFormat = val.(string)
+	}
+	if val, ok := m["searchIndex"]; ok && val != nil {
+		x.SearchIndex = val.(string)
 	}
 }

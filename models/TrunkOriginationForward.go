@@ -11,7 +11,6 @@ type TrunkOriginationForward struct {
 	Id                        string               `bson:"_id" json:"id"`
 	IdCloudServicePbx         string               `bson:"idCloudServicePbx" json:"idCloudServicePbx"`
 	IdCloudServicePbxFailover string               `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
-	IdsVoipNumbers            []string             `bson:"idsVoipNumbers" json:"idsVoipNumbers"`
 	IdVoipProvider            string               `bson:"idVoipProvider" json:"idVoipProvider"`
 	ProviderId                string               `bson:"providerId" json:"providerId"`
 	SipUri                    string               `bson:"sipUri" json:"sipUri"`
@@ -44,9 +43,6 @@ func (x TrunkOriginationForward) GetIdCloudServicePbx() string {
 }
 func (x TrunkOriginationForward) GetIdCloudServicePbxFailover() string {
 	return x.IdCloudServicePbxFailover
-}
-func (x TrunkOriginationForward) GetIdsVoipNumbers() []string {
-	return x.IdsVoipNumbers
 }
 func (x TrunkOriginationForward) GetTrunkOriginationType() TrunkOriginationType {
 	return x.TrunkOriginationType
@@ -85,15 +81,6 @@ func BuildTrunkOriginationForward(m map[string]interface{}, x *TrunkOriginationF
 	}
 	if val, ok := m["idCloudServicePbxFailover"]; ok && val != nil {
 		x.IdCloudServicePbxFailover = val.(string)
-	}
-	if val, ok := m["idsVoipNumbers"]; ok && val != nil {
-		if array, ok := (val).(primitive.A); ok { // array case
-			for _, val = range array {
-				if val != nil {
-					x.IdsVoipNumbers = append(x.IdsVoipNumbers, val.(string))
-				}
-			}
-		}
 	}
 	if val, ok := m["idVoipProvider"]; ok && val != nil {
 		x.IdVoipProvider = val.(string)

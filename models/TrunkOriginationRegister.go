@@ -11,7 +11,6 @@ type TrunkOriginationRegister struct {
 	Id                        string               `bson:"_id" json:"id"`
 	IdCloudServicePbx         string               `bson:"idCloudServicePbx" json:"idCloudServicePbx"`
 	IdCloudServicePbxFailover string               `bson:"idCloudServicePbxFailover" json:"idCloudServicePbxFailover"`
-	IdsVoipNumbers            []string             `bson:"idsVoipNumbers" json:"idsVoipNumbers"`
 	IdVoipProvider            string               `bson:"idVoipProvider" json:"idVoipProvider"`
 	ProviderId                string               `bson:"providerId" json:"providerId"`
 	Reg_host                  string               `bson:"reg_host" json:"reg_host"`
@@ -46,9 +45,6 @@ func (x TrunkOriginationRegister) GetIdCloudServicePbx() string {
 }
 func (x TrunkOriginationRegister) GetIdCloudServicePbxFailover() string {
 	return x.IdCloudServicePbxFailover
-}
-func (x TrunkOriginationRegister) GetIdsVoipNumbers() []string {
-	return x.IdsVoipNumbers
 }
 func (x TrunkOriginationRegister) GetTrunkOriginationType() TrunkOriginationType {
 	return x.TrunkOriginationType
@@ -87,15 +83,6 @@ func BuildTrunkOriginationRegister(m map[string]interface{}, x *TrunkOrigination
 	}
 	if val, ok := m["idCloudServicePbxFailover"]; ok && val != nil {
 		x.IdCloudServicePbxFailover = val.(string)
-	}
-	if val, ok := m["idsVoipNumbers"]; ok && val != nil {
-		if array, ok := (val).(primitive.A); ok { // array case
-			for _, val = range array {
-				if val != nil {
-					x.IdsVoipNumbers = append(x.IdsVoipNumbers, val.(string))
-				}
-			}
-		}
 	}
 	if val, ok := m["idVoipProvider"]; ok && val != nil {
 		x.IdVoipProvider = val.(string)

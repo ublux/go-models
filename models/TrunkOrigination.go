@@ -9,7 +9,6 @@ type TrunkOrigination interface {
 	GetIdVoipProvider() string
 	GetIdCloudServicePbx() string
 	GetIdCloudServicePbxFailover() string
-	GetIdsVoipNumbers() []string
 	GetTrunkOriginationType() TrunkOriginationType
 	GetProviderId() string
 	GetFriendlyName() string
